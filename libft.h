@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 14:08:22 by fabet             #+#    #+#             */
-/*   Updated: 2021/10/10 17:11:28 by fabet            ###   ########.fr       */
+/*   Updated: 2021/10/10 19:28:21 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,15 @@ void	*ft_calloc(size_t count, size_t size);
 char	*ft_strchr(const char *s, int c);
 
 char	*ft_strrchr(const char *s, int c);
+
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
+
+void	*ft_memmove(void *dst, const void *src, size_t len);
+
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
+
+int		ft_tolower(int c);
+
+int		ft_toupper(int c);
 
 #endif
