@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 14:53:56 by fabet             #+#    #+#             */
-/*   Updated: 2021/10/08 15:20:16 by fabet            ###   ########.fr       */
+/*   Updated: 2021/10/10 13:45:38 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ char	*ft_strdup(const char *s1)
 
 	n = ft_strlen(s1) + 1;
 	s2 = (char *)malloc(n);
+	if (s2 == NULL)
+	{
+		return (NULL);
+	}
 	ptr = s2;
 	while (n != 0)
 	{
