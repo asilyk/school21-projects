@@ -50,3 +50,4 @@ int		ft_strncmp(char *s1, char *s2, unsigned int n);
 void	*ft_calloc(size_t count, size_t size);
 
 #endif
+
