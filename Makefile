@@ -1,6 +1,6 @@
 NAME = libft.a
 
-CC = clang
+CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror -c
 
@@ -31,24 +31,18 @@ FILES_B = 	ft_lstnew		ft_lstadd_front \
 			ft_lstclear		ft_lstiter \
 			ft_lstmap
 
+SRCS = $(addsuffix .c, $(FILES))
 
-SRCS_DIR = ./
+SRCS_B = $(addsuffix .c, $(FILES_B))
 
-SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
+OBJS = $(addsuffix .o, $(FILES))
 
-SRCS_B = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES_B)))
-
-
-OBJS_DIR = ./
-
-OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES)))
-
-OBJS_B = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES_B)))
+OBJS_B = $(addsuffix .o, $(FILES_B))
 
 
 .PHONY: bonus all clean fclean re
 
-srcs/%.o: srcs/%.c
+%.o: %.c
 	$(CC) $(CFLAGS) $< -o $@ $(HEADERS)
 
 $(NAME): $(OBJS)
