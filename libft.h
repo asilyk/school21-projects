@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 14:08:22 by fabet             #+#    #+#             */
-/*   Updated: 2021/10/09 12:45:46 by fabet            ###   ########.fr       */
+/*   Updated: 2021/10/10 17:11:28 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,8 @@ int		ft_strncmp(char *s1, char *s2, unsigned int n);
 
 void	*ft_calloc(size_t count, size_t size);
 
-#endif
+char	*ft_strchr(const char *s, int c);
 
+char	*ft_strrchr(const char *s, int c);
+
+#endif
