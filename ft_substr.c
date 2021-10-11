@@ -6,11 +6,12 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 01:41:13 by fabet             #+#    #+#             */
-/*   Updated: 2021/10/11 06:27:00 by fabet            ###   ########.fr       */
+/*   Updated: 2021/10/11 13:22:42 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 static void	ft_getstr(char const *s, unsigned int start,
 						size_t len, char *substr)
