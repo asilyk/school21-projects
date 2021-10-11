@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 01:41:13 by fabet             #+#    #+#             */
-/*   Updated: 2021/10/11 06:02:44 by fabet            ###   ########.fr       */
+/*   Updated: 2021/10/11 06:27:00 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,20 @@ static void	ft_getstr(char const *s, unsigned int start,
 	*substr = '\0';
 }
 
+static size_t	ft_find_substrlen(char const *s, unsigned int start, size_t len)
+{
+	size_t	substrlen;
+
+	substrlen = 0;
+	while (s[start] && len > 0)
+	{
+		start++;
+		substrlen++;
+		len--;
+	}
+	return (substrlen);
+}
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*substr;
@@ -40,7 +54,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	}
 	if (s[start] && len >= 0)
 	{
-		substr = (char *)malloc(len + 1);
+		substr = (char *)malloc(ft_find_substrlen(s, start, len) + 1);
 		if (substr == NULL)
 			return (NULL);
 		result = substr;
