@@ -5,36 +5,43 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/10 17:16:59 by fabet             #+#    #+#             */
-/*   Updated: 2021/10/10 19:07:09 by fabet            ###   ########.fr       */
+/*   Created: 2021/10/13 01:39:19 by fabet             #+#    #+#             */
+/*   Updated: 2021/10/13 01:39:25 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+static size_t	ft_find_dstlen(char **dst, size_t dstsize)
 {
-	char	*odst;
-	char	*osrc;
+	char	*dststart;
 	size_t	n;
-	size_t	dlen;
+	size_t	dstlen;
 
-	odst = dst;
-	osrc = (char *)src;
+	dststart = *dst;
 	n = dstsize;
-	while (n != 0 && *dst != '\0')
+	while (n != 0 && **dst != '\0')
 	{
-		dst++;
+		(*dst)++;
 		n--;
 	}
-	dlen = dst - odst;
-	n = dstsize - dlen;
+	dstlen = *dst - dststart;
+	return (dstlen);
+}
+
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+{
+	char	*osrc;
+	size_t	n;
+	size_t	dstlen;
+
+	osrc = (char *)src;
+	dstlen = ft_find_dstlen(&dst, dstsize);
+	n = dstsize - dstlen;
 	if (n == 0)
-	{
-		return (dlen + ft_strlen(src));
-	}
+		return (dstlen + ft_strlen(src));
 	n--;
-	while (*src != '\0')
+	while ((*src != '\0') && (n != 0))
 	{
 		if (n != 0)
 		{
@@ -43,6 +50,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 		}
 		src++;
 	}
+	while (*src != '\0')
+		src++;
 	*dst = '\0';
-	return (dlen + (src - osrc));
+	return (dstlen + (src - osrc));
 }
