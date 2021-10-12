@@ -6,14 +6,14 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 07:52:46 by fabet             #+#    #+#             */
-/*   Updated: 2021/10/12 08:13:49 by fabet            ###   ########.fr       */
+/*   Updated: 2021/10/12 16:31:12 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <unistd.h>
 
-static void	print_digits(int *n, int *size, int fd)
+static void	ft_print_digits(int *n, int *size, int fd)
 {
 	char	c;
 
@@ -23,7 +23,7 @@ static void	print_digits(int *n, int *size, int fd)
 	*size /= 10;
 }
 
-static void	print_zero(int n, int fd)
+static void	ft_print_zero(int n, int fd)
 {
 	char	c;
 
@@ -32,7 +32,7 @@ static void	print_zero(int n, int fd)
 	write(fd, &c, 1);
 }
 
-static void	print_minus(int *n, int fd)
+static void	ft_print_minus(int *n, int fd)
 {
 	char	c;
 
@@ -41,7 +41,7 @@ static void	print_minus(int *n, int fd)
 	*n = -*n;
 }
 
-static void	print_maxmin(int n, int fd)
+static void	ft_print_maxmin(int n, int fd)
 {
 	if (n == -2147483648)
 		ft_putstr_fd("-2147483648", fd);
@@ -56,17 +56,17 @@ void	ft_putnbr_fd(int n, int fd)
 
 	if (n == -2147483648 || n == 2147483647)
 	{
-		print_maxmin(n, fd);
+		ft_print_maxmin(n, fd);
 		return ;
 	}
 	size = 1;
 	if (n == 0)
 	{
-		print_zero(n, fd);
+		ft_print_zero(n, fd);
 		return ;
 	}
 	if (n < 0)
-		print_minus(&n, fd);
+		ft_print_minus(&n, fd);
 	temp = n;
 	while (temp > 0)
 	{
@@ -75,5 +75,5 @@ void	ft_putnbr_fd(int n, int fd)
 	}
 	size /= 10;
 	while (size > 0)
-		print_digits(&n, &size, fd);
+		ft_print_digits(&n, &size, fd);
 }
