@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 14:08:22 by fabet             #+#    #+#             */
-/*   Updated: 2021/10/12 11:19:14 by fabet            ###   ########.fr       */
+/*   Updated: 2021/10/12 19:36:02 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-int		ft_atoi(char *str);
+int		ft_atoi(const char *str);
 
 void	ft_bzero(void *s, size_t n);
 
@@ -45,7 +45,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 
 size_t	ft_strlen(const char *s);
 
-int		ft_strncmp(char *s1, char *s2, unsigned int n);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 void	*ft_calloc(size_t count, size_t size);
 
@@ -95,6 +95,14 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 
-char	*ft_itoa(int n);
+void	ft_lstdelone(t_list *lst, void (*del)(void*));
+
+void	ft_lstclear(t_list **lst, void (*del)(void*));
+
+void	ft_lstiter(t_list *lst, void (*f)(void *));
+
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+char	*ft_strtrim(char const *s1, char const *set);
 
 #endif
