@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 16:20:32 by fabet             #+#    #+#             */
-/*   Updated: 2021/10/10 16:43:24 by fabet            ###   ########.fr       */
+/*   Updated: 2021/10/12 19:39:46 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	if (*s == c)
+	unsigned char	ch;
+
+	ch = c;
+	if (*s == ch)
 		return ((char *)s);
 	while (*s)
 	{
 		s++;
-		if (*s == c)
+		if (*s == ch)
 			return ((char *)s);
 	}
 	return (NULL);
