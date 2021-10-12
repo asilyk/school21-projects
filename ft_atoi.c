@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 13:41:19 by fabet             #+#    #+#             */
-/*   Updated: 2021/10/10 14:57:51 by fabet            ###   ########.fr       */
+/*   Updated: 2021/10/12 19:26:00 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	ft_get_result(int counter, int result, int sign)
 	return (result * sign);
 }
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *str)
 {
 	int	sign;
 	int	result;
