@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 14:08:22 by fabet             #+#    #+#             */
-/*   Updated: 2021/10/12 10:58:24 by fabet            ###   ########.fr       */
+/*   Updated: 2021/10/12 11:19:14 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,7 @@ void	ft_putnbr_fd(int n, int fd);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+
+char	*ft_itoa(int n);
 
 #endif
