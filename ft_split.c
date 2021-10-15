@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 05:38:59 by fabet             #+#    #+#             */
-/*   Updated: 2021/10/15 21:50:01 by fabet            ###   ########.fr       */
+/*   Updated: 2021/10/15 22:16:52 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,21 @@ static void	ft_addword(char **array, size_t wnum, char **str, size_t wordlen)
 		chnum++;
 		wordlen--;
 	}
+	array[wnum][chnum] = '\0';
+}
+
+static char	**ft_freearray(char **array)
+{
+	size_t	i;
+
+	i = 0;
+	while (array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
+	return (array);
 }
 
 static char	**ft_fillarray(char **array, char c, char *str, char *strend)
@@ -47,7 +62,6 @@ static char	**ft_fillarray(char **array, char c, char *str, char *strend)
 	char	*temp;
 	size_t	wordlen;
 	size_t	wordscount;
-	int		i;
 
 	wnum = 0;
 	wordscount = ft_wordscount(str, c);
@@ -59,18 +73,9 @@ static char	**ft_fillarray(char **array, char c, char *str, char *strend)
 		while (*temp != c && temp < strend)
 			temp++;
 		wordlen = temp - str;
-		array[wnum] = (char *)malloc(sizeof(char) * wordlen);
+		array[wnum] = (char *)malloc(sizeof(char) * (wordlen + 1));
 		if (array[wnum] == NULL)
-		{
-			i = 0;
-			while(array[i])
-			{
-				free(array[i]);
-				i++;
-			}
-			free(array);
-			return (NULL);
-		}
+			return (ft_freearray(array));
 		ft_addword(array, wnum, &str, wordlen);
 		wnum++;
 	}
@@ -83,8 +88,6 @@ char	**ft_split(char const *s, char c)
 	char	**array;
 	char	*str;
 	char	*set;
-	size_t	wordscount;
-	char	*strend;
 
 	if (s == NULL)
 		return (NULL);
@@ -98,37 +101,18 @@ char	**ft_split(char const *s, char c)
 	{
 		free(str);
 		array = (char **)malloc(sizeof(char *));
+		if (array == NULL)
+			return (NULL);
 		array[0] = NULL;
 		return (array);
 	}
-	strend = str + ft_strlen(str);
-	wordscount = ft_wordscount(str, c);
-	array = (char **)malloc(sizeof(char *) * (wordscount + 1));
+	array = (char **)malloc(sizeof(char *) * (ft_wordscount(str, c) + 1));
 	if (array == NULL)
 	{
 		free(str);
 		return (NULL);
 	}
-	array = ft_fillarray(array, c, str, strend);
+	array = ft_fillarray(array, c, str, str + ft_strlen(str));
 	free(str);
 	return (array);
 }
-
-// #include <stdio.h>
-// #include <string.h>
-// int main()
-// {
-// 	char	**tab;
-// 	char	*splitme;
-// 	splitme = ft_strdup("--1-2--3---4----5-----42");
-// 	tab = ft_split(splitme, '-');
-// 	printf("%s\n", tab[0]);
-// 	printf("%d\n", strcmp(tab[0], "1"));
-// 	printf("%s\n", tab[1]);
-// 	printf("%d\n", strcmp(tab[1], "2"));
-// 	printf("%s\n", tab[2]);
-// 	printf("%s\n", tab[3]);
-// 	printf("%s\n", tab[4]);
-// 	printf("%s\n", tab[5]);
-// 	return (0);
-// }
