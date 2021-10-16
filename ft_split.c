@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 05:38:59 by fabet             #+#    #+#             */
-/*   Updated: 2021/10/15 22:16:52 by fabet            ###   ########.fr       */
+/*   Updated: 2021/10/16 07:17:18 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static size_t	ft_wordscount(char *str, char c)
 	size_t	result;
 
 	result = 1;
+	if (ft_strlen(str) == 0)
+		return (0);
 	while (*str)
 	{
 		if ((*str == c) && (*(str + 1) != c))
@@ -97,15 +99,6 @@ char	**ft_split(char const *s, char c)
 	*set = c;
 	str = ft_strtrim(s, set);
 	free(set);
-	if (ft_strlen(str) == 0)
-	{
-		free(str);
-		array = (char **)malloc(sizeof(char *));
-		if (array == NULL)
-			return (NULL);
-		array[0] = NULL;
-		return (array);
-	}
 	array = (char **)malloc(sizeof(char *) * (ft_wordscount(str, c) + 1));
 	if (array == NULL)
 	{
