@@ -48,7 +48,7 @@ OBJS_B = $(addsuffix .o, $(FILES_B))
 $(NAME): $(OBJS)
 	$(AR) $@ $^
 
-bonus: $(OBJS_B)
+bonus: $(OBJS) $(OBJS_B)
 	$(AR) $(NAME) $^
 
 all: $(NAME)
