@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 17:22:34 by fabet             #+#    #+#             */
-/*   Updated: 2021/11/01 17:48:31 by fabet            ###   ########.fr       */
+/*   Updated: 2021/11/01 18:20:37 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -276,6 +276,16 @@ int	main()
 	test = 46;
 	libcresult = printf("number: %d, char: %c, number %d\n", 42, 0, 42);
 	myresult = ft_printf("number: %d, char: %c, number %d\n", 42, 0, 42);
+	printresult(libcresult, myresult, test);
+
+	test = 47;
+	libcresult = printf("%c%c\n", 42, 41);
+	myresult = ft_printf("%c%c\n", 42, 41);
+	printresult(libcresult, myresult, test);
+
+	test = 48;
+	libcresult = printf("%%%cc\n", 42);
+	myresult = ft_printf("%%%cc\n", 42);
 	printresult(libcresult, myresult, test);
 
 	// test = 48;
