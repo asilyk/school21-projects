@@ -6,11 +6,12 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 12:06:19 by fabet             #+#    #+#             */
-/*   Updated: 2021/11/06 04:25:05 by fabet            ###   ########.fr       */
+/*   Updated: 2021/11/06 06:50:06 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
+#include "libft.h"
 #include <stdarg.h>
 
 static int	ft_is_set_char(char ch, char const *set)

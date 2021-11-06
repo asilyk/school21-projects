@@ -6,11 +6,12 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 23:55:11 by fabet             #+#    #+#             */
-/*   Updated: 2021/10/30 17:57:14 by fabet            ###   ########.fr       */
+/*   Updated: 2021/11/06 06:50:14 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
+#include "libft.h"
 
 static int	ft_find_case(const char chcase)
 {

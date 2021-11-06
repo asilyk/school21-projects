@@ -6,11 +6,12 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 21:09:08 by fabet             #+#    #+#             */
-/*   Updated: 2021/10/30 16:18:13 by fabet            ###   ########.fr       */
+/*   Updated: 2021/11/06 06:50:21 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
+#include "libft.h"
 
 static void	ft_printptr(int str[20], int i)
 {

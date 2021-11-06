@@ -6,11 +6,11 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 22:36:50 by fabet             #+#    #+#             */
-/*   Updated: 2021/10/30 16:20:09 by fabet            ###   ########.fr       */
+/*   Updated: 2021/11/06 06:01:24 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 #include <unistd.h>
 
 static void	ft_print_digits(unsigned int *n, unsigned long *size)
