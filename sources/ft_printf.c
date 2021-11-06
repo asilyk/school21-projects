@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 12:06:19 by fabet             #+#    #+#             */
-/*   Updated: 2021/11/06 07:26:32 by fabet            ###   ########.fr       */
+/*   Updated: 2021/11/06 07:37:34 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,32 @@
 #include "libft.h"
 #include <stdarg.h>
 
-static int	ft_is_set_char(char ch, char const *set)
+static int	ft_is_set_char(const char ch, const char *set)
 {
-	char	*ptr;
-
-	ptr = (char *)set;
-	while (*ptr)
+	while (*set)
 	{
-		if (*ptr == ch)
+		if (*set == ch)
 			return (1);
-		ptr++;
+		set++;
 	}
 	return (0);
 }
 
-static void	ft_parse_codes(const char *format, va_list *ap, int *counter)
+static void	ft_parse_codes(const char format, va_list *ap, int *counter)
 {
-	if (*format == 'c')
+	if (format == 'c')
 		*counter += ft_putchar_fd(va_arg(*ap, int), 1);
-	if (*format == 's')
+	if (format == 's')
 		*counter += ft_putstr_fd(va_arg(*ap, char *), 1);
-	if (*format == 'p')
+	if (format == 'p')
 		*counter += ft_putptr((uintptr_t) va_arg(*ap, void *));
-	if (*format == 'd' || *format == 'i')
+	if (format == 'd' || format == 'i')
 		*counter += ft_putnbr_fd(va_arg(*ap, int), 1);
-	if (*format == 'u')
+	if (format == 'u')
 		*counter += ft_putunbr(va_arg(*ap, unsigned int));
-	if (*format == 'x' || *format == 'X')
-		*counter += ft_puthexnbr(va_arg(*ap, int), *format);
-	if (*format == '%')
+	if (format == 'x' || format == 'X')
+		*counter += ft_puthexnbr(va_arg(*ap, int), format);
+	if (format == '%')
 		*counter += ft_putchar_fd('%', 1);
 }
 
@@ -62,7 +59,7 @@ int	ft_printf(const char *format, ...)
 			format++;
 			if (!ft_is_set_char(*format, "cspdiuxX%"))
 				continue ;
-			ft_parse_codes(format, &ap, &counter);
+			ft_parse_codes(*format, &ap, &counter);
 		}
 		format++;
 	}
