@@ -6,12 +6,26 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 12:06:19 by fabet             #+#    #+#             */
-/*   Updated: 2021/11/01 12:32:19 by fabet            ###   ########.fr       */
+/*   Updated: 2021/11/06 04:25:05 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 #include <stdarg.h>
+
+static int	ft_is_set_char(char ch, char const *set)
+{
+	char	*ptr;
+
+	ptr = (char *)set;
+	while (*ptr)
+	{
+		if (*ptr == ch)
+			return (1);
+		ptr++;
+	}
+	return (0);
+}
 
 static void	ft_cs_codes(const char format, va_list *ap, int *counter)
 {
@@ -83,6 +97,8 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
+			if (!ft_is_set_char(*format, "cspdiuxX%"))
+				continue ;
 			ft_parse_codes(format, &ap, &counter);
 		}
 		format++;
