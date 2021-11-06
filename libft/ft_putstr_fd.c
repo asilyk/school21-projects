@@ -6,25 +6,27 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 07:43:48 by fabet             #+#    #+#             */
-/*   Updated: 2021/10/30 14:46:39 by fabet            ###   ########.fr       */
+/*   Updated: 2021/11/06 07:23:03 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <unistd.h>
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_putstr_fd(char *s, int fd)
 {
+	int	counter;
+
+	counter = 0;
 	if (s != NULL)
 	{
 		while (*s)
 		{
-			ft_putchar_fd(*s, fd);
+			counter += ft_putchar_fd(*s, fd);
 			s++;
 		}
+		return (counter);
 	}
-	else
-	{
-		write(1, "(null)", 6);
-	}
+	write(1, "(null)", 6);
+	return (6);
 }

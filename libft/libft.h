@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 14:08:22 by fabet             #+#    #+#             */
-/*   Updated: 2021/11/06 06:13:17 by fabet            ###   ########.fr       */
+/*   Updated: 2021/11/06 07:23:59 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,9 @@ t_list	*ft_lstlast(t_list *lst);
 
 void	ft_lstadd_back(t_list **lst, t_list *new);
 
-void	ft_putchar_fd(char c, int fd);
+int		ft_putchar_fd(char c, int fd);
 
-void	ft_putstr_fd(char *s, int fd);
+int		ft_putstr_fd(char *s, int fd);
 
 void	ft_putendl_fd(char *s, int fd);
 
