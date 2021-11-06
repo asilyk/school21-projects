@@ -1,15 +1,14 @@
 NAME = libft.a
 
-CC = gcc
+CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -c
-
+CFLAGS = -Wall -Wextra -Werror
 
 AR = ar rcs
 
-RM = rm -f
+RM = rm -rf
 
-HEADERS = -I libft.h
+HEADERS = libft.h
 
 
 FILES = 	ft_memset		ft_bzero		ft_memcpy \
@@ -33,23 +32,20 @@ FILES_B = 	ft_lstnew		ft_lstadd_front \
 
 SRCS = $(addsuffix .c, $(FILES))
 
-SRCS_B = $(addsuffix .c, $(FILES_B))
+SRCS_B = $(addsuffix _bonus.c, $(FILES_B))
 
 OBJS = $(addsuffix .o, $(FILES))
 
-OBJS_B = $(addsuffix .o, $(FILES_B))
+OBJS_B = $(addsuffix _bonus.o, $(FILES_B))
 
-
-.PHONY: bonus all clean fclean re
-
-%.o: %.c
-	$(CC) $(CFLAGS) $< -o $@ $(HEADERS)
+%.o: %.c $(HEADERS)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
-	$(AR) $@ $^
+	$(AR) $@ $(OBJS)
 
 bonus: $(OBJS) $(OBJS_B)
-	$(AR) $(NAME) $^
+	$(AR) $(NAME) $(OBJS) $(OBJS_B)
 
 all: $(NAME)
 
@@ -59,4 +55,6 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 
-re: clean all
+re: fclean all
+
+.PHONY: all clean fclean re bonus

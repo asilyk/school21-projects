@@ -6,14 +6,14 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 05:38:59 by fabet             #+#    #+#             */
-/*   Updated: 2021/10/16 07:17:18 by fabet            ###   ########.fr       */
+/*   Updated: 2021/10/16 11:33:12 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-static size_t	ft_wordscount(char *str, char c)
+static size_t	ft_words_count(char *str, char c)
 {
 	size_t	result;
 
@@ -29,22 +29,22 @@ static size_t	ft_wordscount(char *str, char c)
 	return (result);
 }
 
-static void	ft_addword(char **array, size_t wnum, char **str, size_t wordlen)
+static void	ft_add_word(char **array, size_t wnum, char **str, size_t word_len)
 {
 	size_t	chnum;
 
 	chnum = 0;
-	while (wordlen > 0)
+	while (word_len > 0)
 	{
 		array[wnum][chnum] = **str;
 		(*str)++;
 		chnum++;
-		wordlen--;
+		word_len--;
 	}
 	array[wnum][chnum] = '\0';
 }
 
-static char	**ft_freearray(char **array)
+static char	**ft_free_array(char **array)
 {
 	size_t	i;
 
@@ -58,27 +58,27 @@ static char	**ft_freearray(char **array)
 	return (array);
 }
 
-static char	**ft_fillarray(char **array, char c, char *str, char *strend)
+static char	**ft_fill_array(char **array, char c, char *str, char *str_end)
 {
 	size_t	wnum;
 	char	*temp;
-	size_t	wordlen;
-	size_t	wordscount;
+	size_t	word_len;
+	size_t	words_count;
 
 	wnum = 0;
-	wordscount = ft_wordscount(str, c);
-	while (wordscount > wnum)
+	words_count = ft_words_count(str, c);
+	while (words_count > wnum)
 	{
 		while (*str == c)
 			str++;
 		temp = str;
-		while (*temp != c && temp < strend)
+		while (*temp != c && temp < str_end)
 			temp++;
-		wordlen = temp - str;
-		array[wnum] = (char *)malloc(sizeof(char) * (wordlen + 1));
+		word_len = temp - str;
+		array[wnum] = (char *)malloc(sizeof(char) * (word_len + 1));
 		if (array[wnum] == NULL)
-			return (ft_freearray(array));
-		ft_addword(array, wnum, &str, wordlen);
+			return (ft_free_array(array));
+		ft_add_word(array, wnum, &str, word_len);
 		wnum++;
 	}
 	array[wnum] = NULL;
@@ -99,13 +99,13 @@ char	**ft_split(char const *s, char c)
 	*set = c;
 	str = ft_strtrim(s, set);
 	free(set);
-	array = (char **)malloc(sizeof(char *) * (ft_wordscount(str, c) + 1));
+	array = (char **)malloc(sizeof(char *) * (ft_words_count(str, c) + 1));
 	if (array == NULL)
 	{
 		free(str);
 		return (NULL);
 	}
-	array = ft_fillarray(array, c, str, str + ft_strlen(str));
+	array = ft_fill_array(array, c, str, str + ft_strlen(str));
 	free(str);
 	return (array);
 }

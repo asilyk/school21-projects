@@ -6,14 +6,14 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 12:59:28 by fabet             #+#    #+#             */
-/*   Updated: 2021/10/12 16:41:08 by fabet            ###   ########.fr       */
+/*   Updated: 2021/10/16 11:30:50 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-static size_t	ft_digitscount(const int n)
+static size_t	ft_digits_count(const int n)
 {
 	size_t	count;
 	int		temp;
@@ -32,7 +32,7 @@ static size_t	ft_digitscount(const int n)
 	return (count);
 }
 
-static void	ft_fillstr(size_t count, int rank, char *str, int n)
+static void	ft_fill_str(size_t count, int rank, char *str, int n)
 {
 	if (n < 0)
 	{
@@ -56,7 +56,7 @@ static void	ft_fillstr(size_t count, int rank, char *str, int n)
 	*str = '\0';
 }
 
-static int	ft_tenpower(const int n)
+static int	ft_ten_power(const int n)
 {
 	int	pow;
 	int	temp;
@@ -82,8 +82,8 @@ char	*ft_itoa(int n)
 	int		rank;
 	size_t	count;
 
-	count = ft_digitscount(n);
-	rank = ft_tenpower(count);
+	count = ft_digits_count(n);
+	rank = ft_ten_power(count);
 	if (n >= 0)
 	{
 		str = (char *)malloc(sizeof(char) * (count + 1));
@@ -98,6 +98,6 @@ char	*ft_itoa(int n)
 			return (NULL);
 		result = str;
 	}
-	ft_fillstr(count, rank, str, n);
+	ft_fill_str(count, rank, str, n);
 	return (result);
 }
