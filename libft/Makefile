@@ -39,7 +39,7 @@ OBJS = $(addsuffix .o, $(FILES))
 OBJS_B = $(addsuffix _bonus.o, $(FILES_B))
 
 %.o: %.c $(HEADERS)
-	$(CC) $(CFLAGS) -c $< -o $@ -I$(HEADERS)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
 	$(AR) $@ $(OBJS)
