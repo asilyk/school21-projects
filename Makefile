@@ -67,7 +67,7 @@ $(PRINTF_NAME): $(PRINTF_OBJ) $(LIBFT_NAME)
 	$(CP) $(LIBFT_NAME) $(PRINTF_NAME)
 	$(AR) $@ $(PRINTF_OBJ)
 
-%.o: %.c $(PRINTF_HEADER)
+%.o: %.c $(PRINTF_HEADER) $(LIBFT_SRCS) $(LIBFT_HEADER)
 	$(CC) $(CFLAGS) -c $< -o $@ -I$(PRINTF_DIR) -I$(LIBFT_DIR)
 
 clean:
