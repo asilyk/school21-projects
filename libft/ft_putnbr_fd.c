@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 07:52:46 by fabet             #+#    #+#             */
-/*   Updated: 2021/11/08 05:23:56 by fabet            ###   ########.fr       */
+/*   Updated: 2021/11/08 05:30:36 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ static int	ft_print_maxmin(int n, int fd)
 int	ft_putnbr_fd(int n, int fd)
 {
 	unsigned long	size;
-	int			temp;
-	int			counter;
+	int				temp;
+	int				counter;
 
 	counter = 0;
 	if (n == -2147483648 || n == 2147483647)
