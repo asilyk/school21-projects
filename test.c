@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 17:22:34 by fabet             #+#    #+#             */
-/*   Updated: 2021/11/08 05:15:27 by fabet            ###   ########.fr       */
+/*   Updated: 2021/11/08 05:29:15 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -377,6 +377,27 @@ int	main()
 	libcresult = printf("!!%d %%\n", -2147483647);
 	printf("\n");
 	myresult = ft_printf("!!%d %%\n", -2147483647);
+	printf("\n");
+	printresult(libcresult, myresult, test);
+
+	test = 64;
+	libcresult = printf("!!%d %%\n", -214748364721474);
+	printf("\n");
+	myresult = ft_printf("!!%d %%\n", -214748364721474);
+	printf("\n");
+	printresult(libcresult, myresult, test);
+
+	test = 65;
+	libcresult = printf("!!%d %%\n", 214748364721474);
+	printf("\n");
+	myresult = ft_printf("!!%d %%\n", 214748364721474);
+	printf("\n");
+	printresult(libcresult, myresult, test);
+
+	test = 66;
+	libcresult = printf("!!%d %%\n", 21474836472147483);
+	printf("\n");
+	myresult = ft_printf("!!%d %%\n", 21474836472147483);
 	printf("\n");
 	printresult(libcresult, myresult, test);
 

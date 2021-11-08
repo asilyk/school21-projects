@@ -6,14 +6,14 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 07:52:46 by fabet             #+#    #+#             */
-/*   Updated: 2021/10/30 17:48:50 by fabet            ###   ########.fr       */
+/*   Updated: 2021/11/08 05:23:56 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <unistd.h>
 
-static void	ft_print_digits(int *n, int *size, int fd, int *counter)
+static void	ft_print_digits(int *n, unsigned long *size, int fd, int *counter)
 {
 	char	c;
 
@@ -57,9 +57,9 @@ static int	ft_print_maxmin(int n, int fd)
 
 int	ft_putnbr_fd(int n, int fd)
 {
-	int	size;
-	int	temp;
-	int	counter;
+	unsigned long	size;
+	int			temp;
+	int			counter;
 
 	counter = 0;
 	if (n == -2147483648 || n == 2147483647)
