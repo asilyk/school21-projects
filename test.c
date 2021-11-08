@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main1.c                                            :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 17:22:34 by fabet             #+#    #+#             */
-/*   Updated: 2021/11/06 04:17:36 by fabet            ###   ########.fr       */
+/*   Updated: 2021/11/08 05:15:27 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 #include <stdlib.h>
 
 #define ANSI_COLOR_GREEN	"\x1b[32m"
-#define ANSI_COLOR_RED     "\x1b[31m"
-#define ANSI_COLOR_RESET   "\x1b[0m"
-#define ANSI_COLOR_YELLOW  "\x1b[33m"
+#define ANSI_COLOR_RED		"\x1b[31m"
+#define ANSI_COLOR_RESET	"\x1b[0m"
+#define ANSI_COLOR_YELLOW	"\x1b[33m"
 
 void	printresult(int libcresult, int myresult, int test)
 {
@@ -336,14 +336,12 @@ int	main()
 	printf("\n");
 	myresult = ft_printf("%");
 	printf("\n");
-	printf("\n");
 	printresult(libcresult, myresult, test);
 
 	test = 58;
 	libcresult = printf("%", 'a');
 	printf("\n");
 	myresult = ft_printf("%", 'a');
-	printf("\n");
 	printf("\n");
 	printresult(libcresult, myresult, test);
 
@@ -352,14 +350,12 @@ int	main()
 	printf("\n");
 	myresult = ft_printf("%%%");
 	printf("\n");
-	printf("\n");
 	printresult(libcresult, myresult, test);
 
 	test = 60;
 	libcresult = printf("%cspdiuxX%", 'a');
 	printf("\n");
 	myresult = ft_printf("%cspdiuxX%", 'a');
-	printf("\n");
 	printf("\n");
 	printresult(libcresult, myresult, test);
 
@@ -368,7 +364,6 @@ int	main()
 	printf("\n");
 	myresult = ft_printf("%cykl%rrt%", 'a');
 	printf("\n");
-	printf("\n");
 	printresult(libcresult, myresult, test);
 
 	test = 62;
@@ -376,6 +371,12 @@ int	main()
 	printf("\n");
 	myresult = ft_printf("ykl%rrt%", 'a');
 	printf("\n");
+	printresult(libcresult, myresult, test);
+
+	test = 63;
+	libcresult = printf("!!%d %%\n", -2147483647);
+	printf("\n");
+	myresult = ft_printf("!!%d %%\n", -2147483647);
 	printf("\n");
 	printresult(libcresult, myresult, test);
 
