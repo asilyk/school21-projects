@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 04:45:45 by fabet             #+#    #+#             */
-/*   Updated: 2021/11/17 19:58:35 by fabet            ###   ########.fr       */
+/*   Updated: 2021/11/18 14:34:58 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	return (ptr);
 }
 
-char	*ft_strjoin(char const *rem, char const *buf)
+char	*ft_strjoin(char *rem, char *buf)
 {
 	char	*str;
 	size_t	len_rem;
@@ -77,6 +77,8 @@ char	*ft_strchr(const char *str, int c)
 	unsigned char	ch;
 
 	ch = c;
+	if (str == NULL)
+		return (NULL);
 	if (*str == ch)
 		return ((char *)str);
 	while (*str)
@@ -86,44 +88,4 @@ char	*ft_strchr(const char *str, int c)
 			return ((char *)str);
 	}
 	return (NULL);
-}
-
-char	*ft_read_buf(int fd, char	*rem)
-{
-	char		*buf;
-
-	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (read(fd, buf, 0) < 0)
-	{
-		free(buf);
-		return (NULL);
-	}
-	read(fd, buf, BUFFER_SIZE);
-	buf[BUFFER_SIZE] = '\0';
-	rem = ft_strjoin(rem, buf);
-	free(buf);
-	return (rem);
-}
-
-char	*ft_strdup(const char *s1)
-{
-	char	*s2;
-	char	*ptr;
-	size_t	n;
-
-	n = ft_strlen(s1) + 1;
-	s2 = (char *)malloc(n);
-	if (s2 == NULL)
-	{
-		return (NULL);
-	}
-	ptr = s2;
-	while (n != 0)
-	{
-		*s2 = *s1;
-		s1++;
-		s2++;
-		n--;
-	}
-	return (ptr);
 }
