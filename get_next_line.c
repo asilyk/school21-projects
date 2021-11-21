@@ -6,12 +6,11 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 04:45:47 by fabet             #+#    #+#             */
-/*   Updated: 2021/11/21 04:04:56 by fabet            ###   ########.fr       */
+/*   Updated: 2021/11/21 04:44:22 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-//#include "get_next_line_utils.c"
 
 char	*ft_strdup(const char *s1)
 {
@@ -84,28 +83,3 @@ char	*get_next_line(int fd)
 	free(temp);
 	return (str);
 }
-
-// #include <stdio.h>
-// #include <fcntl.h>
-// int		main(void)
-// {
-// 	int		fd;
-// 	char	*s;
-// 	//int i = 0;
-
-// 	fd = open("gnlTester/files/42_with_nl", O_RDONLY);
-// 	s = "\0";
-// 	s = get_next_line(fd);
-// 	printf("NEW:\t%s", s);
-// 	free(s);
-// 	s = get_next_line(fd);
-// 	printf("NEW:\t%s", s);
-// 	free(s);
-// 	s = get_next_line(fd);
-// 	printf("NEW:\t%s", s);
-// 	free(s);
-// 	// s = get_next_line(fd);
-// 	// printf("NEW:\t%s", s);
-// 	// free(s);
-// 	return (0);
-// }

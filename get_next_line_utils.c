@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 04:45:45 by fabet             #+#    #+#             */
-/*   Updated: 2021/11/21 02:34:38 by fabet            ###   ########.fr       */
+/*   Updated: 2021/11/21 04:42:08 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ size_t	ft_strlen(const char *s)
 {
 	size_t	len;
 
+	if (s == NULL)
+		return (0);
 	len = 0;
 	while (*s)
 	{
@@ -44,6 +46,28 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	return (ptr);
 }
 
+char	*ft_fill_rem(char *rem, char *buf, char *str)
+{
+	size_t	len_rem;
+	size_t	len_buf;
+
+	len_buf = ft_strlen(buf);
+	len_rem = ft_strlen(rem);
+	if (rem == NULL)
+	{
+		ft_memcpy(str, buf, len_buf);
+	}
+	else
+	{
+		ft_memcpy(str, rem, len_rem);
+		ft_memcpy(str + len_rem, buf, len_buf);
+		free(rem);
+	}
+	str[len_rem + len_buf] = '\0';
+	free(buf);
+	return (str);
+}
+
 char	*ft_strjoin(char *rem, char *buf)
 {
 	char	*str;
@@ -53,29 +77,9 @@ char	*ft_strjoin(char *rem, char *buf)
 	if (buf == NULL)
 		return (NULL);
 	len_buf = ft_strlen(buf);
-	if (rem == NULL)
-	{
-		str = (char *)malloc(sizeof(char) * (len_buf + 1));
-		if (str == NULL)
-		{
-			free(buf);
-			return (NULL);
-		}
-		ft_memcpy(str, buf, len_buf);
-		str[len_buf] = '\0';
-		free(buf);
-		return (str);
-	}
 	len_rem = ft_strlen(rem);
 	str = (char *)malloc(sizeof(char) * (len_rem + len_buf + 1));
-	if (str == NULL)
-		return (NULL);
-	ft_memcpy(str, rem, len_rem);
-	ft_memcpy(str + ft_strlen(rem), buf, len_buf);
-	str[len_rem + len_buf] = '\0';
-	free(buf);
-	free(rem);
-	return (str);
+	return (ft_fill_rem(rem, buf, str));
 }
 
 char	*ft_strchr(const char *str, int c)
