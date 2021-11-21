@@ -6,11 +6,12 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 04:45:47 by fabet             #+#    #+#             */
-/*   Updated: 2021/11/18 14:34:57 by fabet            ###   ########.fr       */
+/*   Updated: 2021/11/21 03:37:03 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+//#include "get_next_line_utils.c"
 
 char	*ft_strdup(const char *s1)
 {
@@ -19,6 +20,8 @@ char	*ft_strdup(const char *s1)
 	size_t	n;
 
 	n = ft_strlen(s1) + 1;
+	if (n == 1)
+		return (NULL);
 	s2 = (char *)malloc(n);
 	if (s2 == NULL)
 		return (NULL);
@@ -37,18 +40,19 @@ int	ft_read_buf(int fd, char **rem)
 {
 	char		*buf;
 	int			count;
+	char		test[1];
 
+	if (read(fd, test, 0) < 0)
+		return (0);
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (read(fd, buf, 0) < 0)
+	count = read(fd, buf, BUFFER_SIZE);
+	if (count == 0)
 	{
 		free(buf);
-		*rem = NULL;
-		return (-1);
+		return (count);
 	}
-	count = read(fd, buf, BUFFER_SIZE);
 	buf[count] = '\0';
 	*rem = ft_strjoin(*rem, buf);
-	free(buf);
 	return (count);
 }
 
@@ -60,15 +64,13 @@ char	*get_next_line(int fd)
 	char		*temp;
 	int			count;
 
-	str = NULL;
 	str_end = ft_strchr(rem, '\n');
 	while (str_end == NULL)
 	{
 		count = ft_read_buf(fd, &rem);
-		if (count == 0 || rem == NULL)
+		if (count == 0)
 		{
-			free(rem);
-			return (NULL);
+			return (rem);
 		}
 		str_end = ft_strchr(rem, '\n');
 	}
@@ -86,15 +88,21 @@ char	*get_next_line(int fd)
 // {
 // 	int		fd;
 // 	char	*s;
-// 	int i = 0;
+// 	//int i = 0;
 
-// 	fd = open("gnlTester/files/empty", O_RDONLY);
+// 	fd = open("gnlTester/files/41_no_nl", O_RDONLY);
 // 	s = "\0";
-// 	while (s != NULL)
-// 	{
-// 		s = get_next_line(fd);
-// 		printf("NEW:\t%s", s);
-// 		i++;
-// 	}
+// 	s = get_next_line(fd);
+// 	printf("NEW:\t%s", s);
+// 	free(s);
+// 	s = get_next_line(fd);
+// 	printf("NEW:\t%s", s);
+// 	free(s);
+// 	// s = get_next_line(fd);
+// 	// printf("NEW:\t%s", s);
+// 	// free(s);
+// 	// s = get_next_line(fd);
+// 	// printf("NEW:\t%s", s);
+// 	// free(s);
 // 	return (0);
 // }

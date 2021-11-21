@@ -6,12 +6,14 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 04:45:43 by fabet             #+#    #+#             */
-/*   Updated: 2021/11/18 14:34:59 by fabet            ###   ########.fr       */
+/*   Updated: 2021/11/21 03:34:07 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
+
+//#define BUFFER_SIZE 1
 
 # include <stdlib.h>
 # include <unistd.h>
