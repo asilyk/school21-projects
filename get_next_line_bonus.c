@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 04:45:47 by fabet             #+#    #+#             */
-/*   Updated: 2021/11/21 14:56:46 by fabet            ###   ########.fr       */
+/*   Updated: 2021/11/21 20:09:26 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char	*get_next_line(int fd)
 		}
 		str_end = ft_strchr(rem[fd], '\n');
 	}
-	str = (char *)malloc(sizeof(char) * (str_end - rem[fd] + 1));
+	str = (char *)malloc(sizeof(char) * (str_end - rem[fd] + 2));
 	ft_memcpy(str, rem[fd], str_end - rem[fd] + 1);
 	str[str_end - rem[fd] + 1] = '\0';
 	temp = rem[fd];
