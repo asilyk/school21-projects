@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 04:45:47 by fabet             #+#    #+#             */
-/*   Updated: 2021/11/21 03:37:03 by fabet            ###   ########.fr       */
+/*   Updated: 2021/11/21 03:46:48 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,9 @@ char	*get_next_line(int fd)
 		count = ft_read_buf(fd, &rem);
 		if (count == 0)
 		{
-			return (rem);
+			str = rem;
+			rem = NULL;
+			return (str);
 		}
 		str_end = ft_strchr(rem, '\n');
 	}
