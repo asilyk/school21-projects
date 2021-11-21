@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 04:45:47 by fabet             #+#    #+#             */
-/*   Updated: 2021/11/21 03:46:48 by fabet            ###   ########.fr       */
+/*   Updated: 2021/11/21 04:04:56 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ char	*get_next_line(int fd)
 	}
 	str = (char *)malloc(sizeof(char) * (str_end - rem + 1));
 	ft_memcpy(str, rem, str_end - rem + 1);
+	str[str_end - rem + 1] = '\0';
 	temp = rem;
 	rem = ft_strdup(rem + ft_strlen(str));
 	free(temp);
@@ -92,7 +93,7 @@ char	*get_next_line(int fd)
 // 	char	*s;
 // 	//int i = 0;
 
-// 	fd = open("gnlTester/files/41_no_nl", O_RDONLY);
+// 	fd = open("gnlTester/files/42_with_nl", O_RDONLY);
 // 	s = "\0";
 // 	s = get_next_line(fd);
 // 	printf("NEW:\t%s", s);
@@ -100,9 +101,9 @@ char	*get_next_line(int fd)
 // 	s = get_next_line(fd);
 // 	printf("NEW:\t%s", s);
 // 	free(s);
-// 	// s = get_next_line(fd);
-// 	// printf("NEW:\t%s", s);
-// 	// free(s);
+// 	s = get_next_line(fd);
+// 	printf("NEW:\t%s", s);
+// 	free(s);
 // 	// s = get_next_line(fd);
 // 	// printf("NEW:\t%s", s);
 // 	// free(s);
