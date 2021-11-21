@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 04:45:47 by fabet             #+#    #+#             */
-/*   Updated: 2021/11/21 05:05:52 by fabet            ###   ########.fr       */
+/*   Updated: 2021/11/21 14:56:46 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ft_read_buf(int fd, char **rem)
 	int			count;
 	char		test[1];
 
-	if (read(fd, test, 0) < 0)
+	if ((read(fd, test, 0) < 0) || (BUFFER_SIZE < 1))
 		return (0);
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	count = read(fd, buf, BUFFER_SIZE);
