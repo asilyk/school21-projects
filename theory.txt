@@ -1,0 +1,60 @@
+TY - телетайп(оригинальные терминалы использовали линейный принтер для вывода и клавиатуру для ввода)(по сути - терминал)
+SSH - протокол позволяющий удаленно управлять операционной системой после подключения через хост
+UFW - инструмент для настройки сетевой защиты
+root                    пароль HelloWorld1
+fabet                   пароль  HelloWorld1
+ssh fabet@127.0.0.1 -p 4242         Подключение к виртуальной машине через терминал
+lsblk                           проверить разделы
+hostnamectl                     Проверить хостнейм
+hostnamectl set-hostname new_hostname   Изменить хостнейм
+sudo nano /etc/hosts            Изменить хостнейм
+adduser <username>                Создание нового пользователя
+adduser <username> <namegroup>          Добавление пользователя в группу
+getent group sudo                       Пользователи группы sudo
+getent group user42                 пользователи группы user42
+sudo groupadd user42            создать новую группу
+sudo -lU <username>                     привилегии юзера
+groups <username>         проверить все группы пользователя
+Deluder <username>                      удаление юзера
+delgroup <namegroup>          удалить группу
+apt install libpam-pwquality
+sudo chage -l <username>              Пароль-чек пользователя
+vim /etc/pam.d/common-password          Политика паролей
+minlen = 10                 минимальная длина пароля
+dcredit = -1                как минимум 1 цифра
+ucredit = -1                как минимум 1 буква верхнего регистра
+lcredit = -1                как минимум 1 буква нижнего регистра
+difok = 7               количество символов, которое не должно входить в старый пароль
+maxrepeat = 3               не должно быть более 3 идущих подряд символов
+usercheck = 1               не должно содержать имя пользователя
+sudo nano /etc/login.defs       Политика истечения срока действия пароле
+passwd -aS | grep P                 посмотреть все пароли пользователей
+passwd                      изменить пароль
+lastlog                             Последние логи в системе
+sudo aa-status                                  Cтатус AppArmor
+sudo apt install apparmor-utils apparmor-profiles       установка
+apparmor_status                         статус
+sudo service ssh status             Статус ssh
+systemctl restart ssh
+sudo ufw status numbered        Статус ufw
+sudo ufw status                     Статус ufw 
+apt install ufw                 установка
+ufw status verbose              проверка статуса ufw
+ufw enable                      включить UFW (при первой установке отключен)
+ufw disable             отлючить UFW
+ufw default deny incoming           запрет всех входящий подключений
+ufw default allow outgoing          разрешение исходящих подключений
+ufw allow 4242                      открытие порта 4242 для входящих соединений
+ufw status numbered                 нумерованный список всех установленных правил
+sudo ufw delete             Удалить порт
+sudo grep Port /etc/ssh/sshd_config     Посмотреть какие порты стоят
+sudo visudo                         Файл конфигурации sudo
+dpkg -s "sudo".           Проверка установки пакета
+Defaults    passwd_tries=3                  количество попыток ввода пароля, перед тем, как sudo прекратит работу
+Defaults    badpass_message="Invalid password(sudo)"  вывод сообщение об ошибке ввода пароля
+Defaults    logfile="/var/log/sudo/sudo.log"      записывать в файл sudo.log все попытки подключения к sudo
+Defaults    requiretty                  разрешение использования sudo через терминал, но не через скрипты
+Defaults    secure_path="...”                ограничение путей, которые может использовать sudo
+sh /usr/local/bin monitoring.sh
+sudo crontab -l                     Проверка скрипта cron
+Crontab -e              Изменить скрипт
