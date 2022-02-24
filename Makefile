@@ -3,11 +3,12 @@ NAME = so_long.out
 CC		=	cc
 CFLAGS	=	-Wall -Werror -Wextra
 MLX		=	-L ./mlx -lmlx -framework OpenGL -framework AppKit
-INC		=	-I ./mlx -I ./render -I ./get_next_line -I ./get_map -I ./check -I ./
+INC		=	-I ./mlx -I ./itoa -I ./render -I ./get_next_line -I ./get_map -I ./check -I ./
 
 SRCS	=	get_next_line/ft_get_next_line.c \
 			get_next_line/ft_get_next_line_utils.c \
 			get_map/ft_get_map.c \
+			itoa/ft_itoa.c \
 			render/ft_hooks.c \
 			render/ft_render_map.c \
 			check/ft_check_file.c \
@@ -18,6 +19,7 @@ SRCS	=	get_next_line/ft_get_next_line.c \
 			so_long.c
 
 HEADERS	=	get_next_line/ft_get_next_line.h \
+			itoa/ft_itoa.h \
 			get_map/ft_get_map.h \
 			render/ft_hooks.h \
 			render/ft_render_map.h \

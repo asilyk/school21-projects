@@ -6,11 +6,12 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 10:20:34 by fabet             #+#    #+#             */
-/*   Updated: 2022/02/23 13:17:06 by fabet            ###   ########.fr       */
+/*   Updated: 2022/02/24 09:42:22 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_render_map.h"
+#include "ft_itoa.h"
 
 void	ft_setup_images(void *mlx, t_map *map)
 {
@@ -36,7 +37,7 @@ void	ft_setup_images(void *mlx, t_map *map)
 			&width, &height);
 }
 
-void	ft_render_map(void *mlx, void *mlx_win, t_map *map)
+static void	ft_put_images(void *mlx, void *mlx_win, t_map *map)
 {
 	unsigned int	x;
 	unsigned int	y;
@@ -61,4 +62,17 @@ void	ft_render_map(void *mlx, void *mlx_win, t_map *map)
 	}
 	mlx_put_image_to_window(mlx, mlx_win, map->player_image,
 		map->player_position_x * 50, map->player_position_y * 50);
+}
+
+static void	ft_put_strings(void *mlx, void *mlx_win, t_map *map)
+{
+	mlx_string_put(mlx, mlx_win, 10, 10, 0xFFFFFF, "Number of movements: ");
+	mlx_string_put(mlx, mlx_win, 150, 10, 0xFFFFFF,
+		ft_itoa(map->number_of_movements));
+}
+
+void	ft_render_map(void *mlx, void *mlx_win, t_map *map)
+{
+	ft_put_images(mlx, mlx_win, map);
+	ft_put_strings(mlx, mlx_win, map);
 }

@@ -6,23 +6,11 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 10:21:33 by fabet             #+#    #+#             */
-/*   Updated: 2022/02/23 13:23:42 by fabet            ###   ########.fr       */
+/*   Updated: 2022/02/23 14:08:05 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_hooks.h"
-
-void	ft_putnbr(unsigned int nb)
-{
-	char	ch;
-
-	if (nb >= 10)
-	{
-		ft_putnbr(nb / 10);
-	}
-	ch = (nb % 10) + '0';
-	write(1, &ch, 1);
-}
 
 int	ft_end_game(t_vars *vars)
 {
@@ -58,9 +46,6 @@ static void	ft_take_step(t_vars *vars, short int direction, char axis)
 		return ;
 	}
 	vars->map->number_of_movements++;
-	write(1, "Number of movements: ", 21);
-	ft_putnbr(vars->map->number_of_movements);
-	write(1, "\n", 1);
 }
 
 static void	ft_move_player(t_vars *vars, short int direction, char axis)
