@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:12:24 by fabet             #+#    #+#             */
-/*   Updated: 2022/02/25 11:15:56 by fabet            ###   ########.fr       */
+/*   Updated: 2022/02/27 12:49:40 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,16 @@ static void	ft_check_filename(char *filename)
 	size_t	is_valid_filename;
 
 	i = 1;
-	is_valid_filename = 0;
+	is_valid_filename = FALSE;
 	while (filename[i + 3])
 	{
 		if (filename[i] == '.' && filename[i + 1] == 'b'
-			&& filename[i + 2] == 'e' && filename[i + 3] == 'r')
-		{
-			is_valid_filename = 1;
-		}
+			&& filename[i + 2] == 'e' && filename[i + 3] == 'r'
+			&& filename[i - 1] != '/')
+			is_valid_filename = TRUE;
 		i++;
 	}
-	if (is_valid_filename == 0)
+	if (is_valid_filename == FALSE)
 	{
 		write(1, "Error! Invalid filename.\n", 25);
 		exit(1);
