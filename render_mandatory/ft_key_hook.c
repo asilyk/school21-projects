@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 10:21:33 by fabet             #+#    #+#             */
-/*   Updated: 2022/02/25 10:53:45 by fabet            ###   ########.fr       */
+/*   Updated: 2022/02/27 13:53:41 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 
 static void	ft_take_step(t_vars *vars, short int direction, char axis)
 {
-	if (direction > 0 && axis == 'x')
-		vars->map->player_direction = RIGHT;
-	if (direction < 0 && axis == 'x')
-		vars->map->player_direction = LEFT;
 	if (axis == 'x')
 		vars->map->player_position_x += direction;
 	if (axis == 'y')

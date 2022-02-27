@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_put_strings.c                                   :+:      :+:    :+:   */
+/*   ft_check.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/25 09:03:34 by fabet             #+#    #+#             */
-/*   Updated: 2022/02/27 12:07:26 by fabet            ###   ########.fr       */
+/*   Created: 2022/02/23 07:12:32 by fabet             #+#    #+#             */
+/*   Updated: 2022/02/27 13:55:06 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_render_map.h"
-#include "ft_itoa.h"
+#ifndef FT_CHECK_H
+# define FT_CHECK_H
 
-void	ft_put_strings(t_vars *vars)
-{
-	char	*str;
+# include <unistd.h>
+# include <fcntl.h>
+# include "so_long_mandatory.h"
 
-	str = ft_itoa(vars->map->number_of_movements);
-	mlx_string_put(vars->mlx, vars->win, 10, 10, 0xFFFFFF,
-		"Number of movements: ");
-	mlx_string_put(vars->mlx, vars->win, 150, 10, 0xFFFFFF, str);
-	free(str);
-}
+void	ft_check_file(int argc, char *filename);
+void	ft_check_map(t_vars *vars);
+void	ft_check_size(t_vars *vars);
+void	ft_check_components(t_vars *vars);
+void	ft_check_walls(t_vars *vars);
+size_t	ft_rowlen(char	*row);
+
+#endif

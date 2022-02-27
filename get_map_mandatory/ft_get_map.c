@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 11:54:45 by fabet             #+#    #+#             */
-/*   Updated: 2022/02/27 13:21:22 by fabet            ###   ########.fr       */
+/*   Updated: 2022/02/27 13:53:53 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,15 +119,9 @@ void	ft_get_map(char *filename, t_vars *vars)
 	vars->map->victory_score = ft_get_victory_score(filename);
 	vars->map->current_score = 0;
 	vars->map->number_of_movements = 0;
-	vars->map->animation_step = 1;
-	vars->map->player_direction = RIGHT;
 	vars->map->game_is_over = FALSE;
 	vars->mlx = NULL;
 	vars->win = NULL;
-	vars->map->enemy_directions = NULL;
-	vars->map->enemy_positions_x = NULL;
-	vars->map->enemy_positions_y = NULL;
 	ft_check_size(vars);
 	ft_find_player_position(vars->map);
-	ft_create_enemies(vars);
 }

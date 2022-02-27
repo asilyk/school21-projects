@@ -6,11 +6,11 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 10:53:12 by fabet             #+#    #+#             */
-/*   Updated: 2022/02/26 17:47:41 by fabet            ###   ########.fr       */
+/*   Updated: 2022/02/27 13:56:16 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_mandatory.h"
 
 static void	ft_free_components(t_vars *vars)
 {
@@ -37,12 +37,6 @@ int	ft_end_game(t_vars *vars)
 	if (vars->map == NULL)
 		exit(1);
 	ft_free_components(vars);
-	if (vars->map->enemy_positions_x != NULL)
-		free(vars->map->enemy_positions_x);
-	if (vars->map->enemy_positions_y != NULL)
-		free(vars->map->enemy_positions_y);
-	if (vars->map->enemy_directions != NULL)
-		free(vars->map->enemy_directions);
 	free(vars->map);
 	free(vars);
 	exit(1);
