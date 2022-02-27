@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_mandatory.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 08:57:08 by fabet             #+#    #+#             */
-/*   Updated: 2022/02/27 13:52:37 by fabet            ###   ########.fr       */
+/*   Updated: 2022/02/27 14:26:19 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_MANDATORY_H
+# define SO_LONG_MANDATORY_H
 
 # include <stdlib.h>
 # include "mlx.h"

@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 07:57:53 by fabet             #+#    #+#             */
-/*   Updated: 2022/02/27 13:45:52 by fabet            ###   ########.fr       */
+/*   Updated: 2022/02/27 14:24:58 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	ft_put_collectible_image(t_vars *vars, size_t x, size_t y)
 {
 	if (vars->map->components[y / IMAGES_SCALE][x / IMAGES_SCALE] == 'C')
 		mlx_put_image_to_window(vars->mlx, vars->win,
-		vars->map->collectible_image, x, y);
+			vars->map->collectible_image, x, y);
 }
 
 void	ft_put_collectibles_images(t_vars *vars)
