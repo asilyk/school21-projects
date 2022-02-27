@@ -57,6 +57,8 @@ HEADERS_BONUS	=	get_next_line/ft_get_next_line.h \
 					check_bonus/ft_check.h \
 					so_long_bonus.h
 
+.PHONY: all bonus clean fclean re
+
 $(NAME): $(SRCS_MANDATORY) $(HEADERS_MANDATORY)
 	make -s -C ./mlx
 	$(CC) $(CFLAGS) $(MLX) $(INC_MANDATORY) -o $(NAME) $(SRCS_MANDATORY)
