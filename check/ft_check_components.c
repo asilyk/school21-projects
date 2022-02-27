@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 11:04:18 by fabet             #+#    #+#             */
-/*   Updated: 2022/02/23 11:09:59 by fabet            ###   ########.fr       */
+/*   Updated: 2022/02/25 11:09:53 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,18 @@ size_t	ft_rowlen(char	*row)
 	return (i);
 }
 
-static void	ft_check_component(char component)
+static void	ft_check_component(char component, t_vars *vars)
 {
 	if (component != '0' && component != '1'
 		&& component != 'C' && component != 'E'
 		&& component != 'P' && component != '\n')
 	{
 		write(1, "Error! Inknown component in map.\n", 33);
-		exit(1);
+		ft_end_game(vars);
 	}
 }
 
-void	ft_check_components(t_map *map)
+void	ft_check_components(t_vars *vars)
 {
 	size_t	i;
 	size_t	j;
@@ -43,22 +43,22 @@ void	ft_check_components(t_map *map)
 
 	i = 0;
 	number_of_exits = 0;
-	while (map->components[i])
+	while (vars->map->components[i])
 	{
 		j = 0;
-		while (map->components[i][j])
+		while (vars->map->components[i][j])
 		{
-			ft_check_component(map->components[i][j]);
-			if (map->components[i][j] == 'E')
+			ft_check_component(vars->map->components[i][j], vars);
+			if (vars->map->components[i][j] == 'E')
 				number_of_exits++;
 			j++;
 		}
 		i++;
 	}
-	if (map->victory_score == 0 || map->player_position_x == 0
-		|| map->player_position_y == 0 || number_of_exits == 0)
+	if (vars->map->victory_score == 0 || vars->map->player_position_x == 0
+		|| vars->map->player_position_y == 0 || number_of_exits == 0)
 	{
 		write(1, "Error! Required map component not found.\n", 41);
-		exit(1);
+		ft_end_game(vars);
 	}
 }

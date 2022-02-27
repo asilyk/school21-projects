@@ -6,14 +6,14 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 14:05:17 by fabet             #+#    #+#             */
-/*   Updated: 2022/02/23 14:07:33 by fabet            ###   ########.fr       */
+/*   Updated: 2022/02/24 16:26:37 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_ITOA_H
 # define FT_ITOA_H
 
-#include <stdlib.h>
+# include <stdlib.h>
 
 char	*ft_itoa(int n);
 

@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_size.c                                    :+:      :+:    :+:   */
+/*   ft_put_strings.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/23 11:05:49 by fabet             #+#    #+#             */
-/*   Updated: 2022/02/25 12:43:46 by fabet            ###   ########.fr       */
+/*   Created: 2022/02/25 09:03:34 by fabet             #+#    #+#             */
+/*   Updated: 2022/02/27 12:07:26 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_check.h"
+#include "ft_render_map.h"
+#include "ft_itoa.h"
 
-void	ft_check_size(t_vars *vars)
+void	ft_put_strings(t_vars *vars)
 {
-	size_t	i;
+	char	*str;
 
-	i = 0;
-	while (vars->map->components[i])
-	{
-		if (ft_rowlen(vars->map->components[i]) != vars->map->width)
-		{
-			write(1, "Error! Map is not rectangular.\n", 31);
-			ft_end_game(vars);
-		}
-		i++;
-	}
+	str = ft_itoa(vars->map->number_of_movements);
+	mlx_string_put(vars->mlx, vars->win, 10, 10, 0xFFFFFF,
+		"Number of movements: ");
+	mlx_string_put(vars->mlx, vars->win, 150, 10, 0xFFFFFF, str);
+	free(str);
 }

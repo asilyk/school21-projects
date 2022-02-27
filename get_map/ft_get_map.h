@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 13:21:09 by fabet             #+#    #+#             */
-/*   Updated: 2022/02/23 12:39:59 by fabet            ###   ########.fr       */
+/*   Updated: 2022/02/25 10:58:40 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "ft_check.h"
 # include "so_long.h"
 
-t_map	*ft_get_map(char *filename);
+void	ft_get_map(char *filename, t_vars *vars);
+void	ft_create_enemies(t_vars *vars);
 
 #endif

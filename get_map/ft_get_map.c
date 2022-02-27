@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 11:54:45 by fabet             #+#    #+#             */
-/*   Updated: 2022/02/23 11:25:07 by fabet            ###   ########.fr       */
+/*   Updated: 2022/02/26 15:21:17 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	ft_get_map_height_and_width(t_map *map, char *filename)
 	map->width = width;
 }
 
-static unsigned int	ft_get_victory_score(char *filename)
+static size_t	ft_get_victory_score(char *filename)
 {
 	int		fd;
 	int		count;
@@ -58,8 +58,8 @@ static unsigned int	ft_get_victory_score(char *filename)
 static void	ft_find_player_position(t_map	*map)
 {
 	char			**components;
-	unsigned int	x;
-	unsigned int	y;
+	size_t			x;
+	size_t			y;
 
 	components = map->components;
 	x = 0;
@@ -83,20 +83,17 @@ static void	ft_find_player_position(t_map	*map)
 	map->player_position_y = 0;
 }
 
-void	*ft_get_map_data(t_map *map, char *filename)
+void	ft_get_map_data(char *filename, t_vars *vars)
 {
 	int			fd;
 	char		*new_line;
 	char		**components;
 	char		**result;
 
-	ft_get_map_height_and_width(map, filename);
-	map->victory_score = ft_get_victory_score(filename);
-	map->current_score = 0;
-	map->number_of_movements = 0;
-	components = (char **)malloc(sizeof(char *) * (map->height + 1));
+	ft_get_map_height_and_width(vars->map, filename);
+	components = (char **)malloc(sizeof(char *) * (vars->map->height + 1));
 	if (components == NULL)
-		return (NULL);
+		ft_end_game(vars);
 	result = components;
 	fd = open(filename, O_RDONLY);
 	new_line = ft_get_next_line(fd);
@@ -108,20 +105,26 @@ void	*ft_get_map_data(t_map *map, char *filename)
 	}
 	*components = NULL;
 	close(fd);
-	return (result);
+	vars->map->components = result;
 }
 
-t_map	*ft_get_map(char *filename)
+void	ft_get_map(char *filename, t_vars *vars)
 {
-	t_map		*map;
-
-	map = (t_map *)malloc(sizeof(t_map));
-	if (map == NULL)
-		return (NULL);
-	map->components = ft_get_map_data(map, filename);
-	if (map->components == NULL)
-		return (NULL);
-	ft_check_size(map);
-	ft_find_player_position(map);
-	return (map);
+	vars->map = (t_map *)malloc(sizeof(t_map));
+	if (vars->map == NULL)
+		ft_end_game(vars);
+	ft_get_map_data(filename, vars);
+	if (vars->map->components == NULL)
+		ft_end_game(vars);
+	vars->map->victory_score = ft_get_victory_score(filename);
+	vars->map->current_score = 0;
+	vars->map->number_of_movements = 0;
+	vars->map->animation_step = 1;
+	vars->map->player_direction = RIGHT;
+	vars->map->game_is_over = FALSE;
+	vars->mlx = NULL;
+	vars->win = NULL;
+	ft_check_size(vars);
+	ft_find_player_position(vars->map);
+	ft_create_enemies(vars);
 }
