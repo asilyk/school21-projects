@@ -6,119 +6,12 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 17:34:48 by fabet             #+#    #+#             */
-/*   Updated: 2022/06/13 01:14:53 by fabet            ###   ########.fr       */
+/*   Updated: 2022/06/22 12:34:52 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-#include <stdio.h>
-#include <stdlib.h>
 
-int	ft_init_mutexes(t_simulation_data *simulation_data, pthread_mutex_t *forks, pthread_mutex_t *output)
-{
-	int	i;
-
-	i = 0;
-	while (i < simulation_data->number_of_philosophers)
-	{
-		if (pthread_mutex_init(&forks[i], NULL) != 0)
-		{
-			printf("Error! Failed to create mutex!\n");
-			return (1);
-		}
-		i++;
-	}
-	if (pthread_mutex_init(output, NULL) != 0)
-	{
-		printf("Error! Failed to create mutex!\n");
-		return (1);
-	}
-	return (0);
-}
-
-int	ft_init_philosophers(t_philosopher *philosophers, t_simulation_data *simulation_data, pthread_mutex_t *forks, pthread_mutex_t *output)
-{
-	int	i;
-
-	i = 0;
-	while (i < simulation_data->number_of_philosophers)
-	{
-		philosophers[i].id = i + 1;
-		philosophers[i].simulation_data = simulation_data;
-		philosophers[i].last_meal_time = simulation_data->start_time;
-		philosophers[i].output = output;
-		philosophers[i].right_fork = &forks[i];
-		if (i < simulation_data->number_of_philosophers - 1)
-			philosophers[i].left_fork = &forks[i + 1];
-		else
-			philosophers[i].left_fork = &forks[0];
-		if (pthread_mutex_init(&philosophers->data_mutex, NULL) != 0)
-		{
-			printf("Error! Failed to create mutex!\n");
-			return (1);
-		}
-		philosophers[i].meals_count = 0;
-		i++;
-	}
-	return (0);
-}
-
-int	ft_create_threads(pthread_t *philosophers_pthreads, t_philosopher *philosophers, t_simulation_data *simulation_data)
-{
-	int	i;
-
-	i = 0;
-	while (i < simulation_data->number_of_philosophers)
-	{
-		if (pthread_create(&philosophers_pthreads[i], NULL, &ft_philosopher_routine, &philosophers[i]) != 0)
-		{
-			printf("Error! Failed to create thread!\n");
-			return (1);
-		}
-		i++;
-	}
-	return(0);
-}
-
-int	ft_join_threads(pthread_t *philosophers_pthreads, t_simulation_data *simulation_data)
-{
-	int	i;
-
-	i = 0;
-	while (i < simulation_data->number_of_philosophers)
-	{
-		if (pthread_join(philosophers_pthreads[i], NULL) != 0)
-		{
-			printf("Error! Failed to join thread!\n");
-			return (1);
-		}
-		i++;
-	}
-	return(0);
-}
-
-void	ft_free(t_simulation_data *simulation_data, pthread_t *philosophers_pthreads, pthread_mutex_t *forks, pthread_mutex_t *output, t_philosopher *philosophers)
-{
-	int	i;
-
-	i = 0;
-	while (i < simulation_data->number_of_philosophers)
-	{
-		if (pthread_mutex_destroy(&forks[i]) != 0)
-		printf("Error! Failed to destroy mutex!\n");
-	}
-	if (pthread_mutex_destroy(output) != 0)
-		printf("Error! Failed to destroy mutex!\n");
-	if (forks != NULL)
-		free(forks);
-	if(philosophers_pthreads != NULL)
-		free(philosophers_pthreads);
-	if (philosophers != NULL)
-		free(philosophers);
-	if (simulation_data != NULL)
-		free(simulation_data);
-}
-#include <unistd.h>//
 int	main(int argc, char *argv[])
 {
 	t_simulation_data	*simulation_data;
