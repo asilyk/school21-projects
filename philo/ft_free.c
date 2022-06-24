@@ -6,13 +6,17 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 12:24:04 by fabet             #+#    #+#             */
-/*   Updated: 2022/06/22 12:24:16 by fabet            ###   ########.fr       */
+/*   Updated: 2022/06/24 18:53:30 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_free(t_simulation_data *simulation_data, pthread_t *philosophers_pthreads, pthread_mutex_t *forks, pthread_mutex_t *output, t_philosopher *philosophers)
+void	ft_free(
+	t_simulation_data *simulation_data,
+	pthread_t *philosophers_pthreads,
+	pthread_mutex_t *forks, pthread_mutex_t *output,
+	t_philosopher *philosophers)
 {
 	int	i;
 

@@ -6,17 +6,17 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 16:33:29 by fabet             #+#    #+#             */
-/*   Updated: 2022/06/22 12:34:28 by fabet            ###   ########.fr       */
+/*   Updated: 2022/06/24 18:17:26 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
-#include <pthread.h>
-#include <sys/time.h>
-#include <stdio.h>
-#include <stdlib.h>
+# include <pthread.h>
+# include <sys/time.h>
+# include <stdio.h>
+# include <stdlib.h>
 
 typedef struct s_simulation_data
 {
@@ -44,16 +44,34 @@ typedef struct s_philosopher
 int					ft_strict_atoi(const char *str);
 t_simulation_data	*ft_parse_argv(int argc, char *argv[]);
 
-int					ft_init_mutexes(t_simulation_data *simulation_data, pthread_mutex_t *forks, pthread_mutex_t *output);
-int					ft_init_philosophers(t_philosopher *philosophers, t_simulation_data *simulation_data, pthread_mutex_t *forks, pthread_mutex_t *output);
+int					ft_init_mutexes(
+						t_simulation_data *simulation_data,
+						pthread_mutex_t *forks,
+						pthread_mutex_t *output);
+int					ft_init_philosophers(t_philosopher *philosophers,
+						t_simulation_data *simulation_data,
+						pthread_mutex_t *forks,
+						pthread_mutex_t *output);
 
-int					ft_create_threads(pthread_t *philosophers_pthreads, t_philosopher *philosophers, t_simulation_data *simulation_data);
-int					ft_join_threads(pthread_t *philosophers_pthreads, t_simulation_data *simulation_data);
+int					ft_create_threads(
+						pthread_t *philosophers_pthreads,
+						t_philosopher *philosophers,
+						t_simulation_data *simulation_data);
+int					ft_join_threads(
+						pthread_t *philosophers_pthreads,
+						t_simulation_data *simulation_data);
 
-int					ft_count_timestamp_in_ms(struct timeval start_time, struct timeval actual_time);
+long				ft_count_timestamp_in_ms(
+						struct timeval start_time,
+						struct timeval actual_time);
 
 void				*ft_philosopher_routine(void *data);
 
-void				ft_free(t_simulation_data *simulation_data, pthread_t *philosophers_pthreads, pthread_mutex_t *forks, pthread_mutex_t *output, t_philosopher *philosophers);
+void				ft_free(
+						t_simulation_data *simulation_data,
+						pthread_t *philosophers_pthreads,
+						pthread_mutex_t *forks,
+						pthread_mutex_t *output,
+						t_philosopher *philosophers);
 
 #endif

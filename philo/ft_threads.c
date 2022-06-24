@@ -6,13 +6,16 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 12:23:25 by fabet             #+#    #+#             */
-/*   Updated: 2022/06/22 12:23:46 by fabet            ###   ########.fr       */
+/*   Updated: 2022/06/24 18:54:04 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_create_threads(pthread_t *philosophers_pthreads, t_philosopher *philosophers, t_simulation_data *simulation_data)
+int	ft_create_threads(
+		pthread_t *philosophers_pthreads,
+		t_philosopher *philosophers,
+		t_simulation_data *simulation_data)
 {
 	int	i;
 

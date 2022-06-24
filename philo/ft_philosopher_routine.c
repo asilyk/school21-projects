@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 22:57:36 by fabet             #+#    #+#             */
-/*   Updated: 2022/06/13 01:12:35 by fabet            ###   ########.fr       */
+/*   Updated: 2022/06/24 19:14:06 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	ft_take_fork(t_philosopher *philosopher, pthread_mutex_t *fork)
 		printf("Error! Failed to get time of day!\n");
 		return ;
 	}
-	printf("%d %d has taken a fork\n", ft_count_timestamp_in_ms(philosopher->simulation_data->start_time, actual_time), philosopher->id);
+	printf("%ld %d has taken a fork\n", ft_count_timestamp_in_ms(philosopher->simulation_data->start_time, actual_time), philosopher->id);
 	pthread_mutex_unlock(philosopher->output);
 }
 
@@ -53,7 +53,7 @@ static void	ft_eat(t_philosopher *philosopher)
 		return ;
 	}
 	pthread_mutex_unlock(&philosopher->data_mutex);
-	printf("%d %d is eating\n", ft_count_timestamp_in_ms(philosopher->simulation_data->start_time, philosopher->last_meal_time), philosopher->id);
+	printf("%ld %d is eating\n", ft_count_timestamp_in_ms(philosopher->simulation_data->start_time, philosopher->last_meal_time), philosopher->id);
 	pthread_mutex_unlock(philosopher->output);
 	usleep(philosopher->simulation_data->time_to_eat * 1000);
 	pthread_mutex_unlock(philosopher->right_fork);
@@ -70,7 +70,7 @@ static void	ft_sleep(t_philosopher *philosopher)
 		printf("Error! Failed to get time of day!\n");
 		return ;
 	}
-	printf("%d %d is sleeping\n", ft_count_timestamp_in_ms(philosopher->simulation_data->start_time, actual_time), philosopher->id);
+	printf("%ld %d is sleeping\n", ft_count_timestamp_in_ms(philosopher->simulation_data->start_time, actual_time), philosopher->id);
 	pthread_mutex_unlock(philosopher->output);
 	usleep(philosopher->simulation_data->time_to_sleep * 1000);
 }
@@ -85,7 +85,7 @@ static void ft_think(t_philosopher *philosopher)
 		printf("Error! Failed to get time of day!\n");
 		return ;
 	}
-	printf("%d %d is thinking\n", ft_count_timestamp_in_ms(philosopher->simulation_data->start_time, actual_time), philosopher->id);
+	printf("%ld %d is thinking\n", ft_count_timestamp_in_ms(philosopher->simulation_data->start_time, actual_time), philosopher->id);
 	pthread_mutex_unlock(philosopher->output);
 }
 
@@ -94,6 +94,7 @@ void	*ft_philosopher_routine(void *data)
 	t_philosopher	*philosopher;
 
 	philosopher = (t_philosopher*)data;
+
 	if (philosopher->id % 2 == 0)
 		usleep(philosopher->simulation_data->time_to_eat * 1000);
 	while (1)
