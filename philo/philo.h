@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 16:33:29 by fabet             #+#    #+#             */
-/*   Updated: 2022/06/24 18:17:26 by fabet            ###   ########.fr       */
+/*   Updated: 2022/06/26 09:05:28 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ int					ft_join_threads(
 long				ft_count_timestamp_in_ms(
 						struct timeval start_time,
 						struct timeval actual_time);
+
+void				ft_sleep(int ms);
 
 void				*ft_philosopher_routine(void *data);
 

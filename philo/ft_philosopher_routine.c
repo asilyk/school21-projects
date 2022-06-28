@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_philosopher_routine.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fabet <fabet@student.42.fr>                +#+  +:+       +#+        */
+/*   By: alexander <alexander@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 22:57:36 by fabet             #+#    #+#             */
-/*   Updated: 2022/06/24 19:14:06 by fabet            ###   ########.fr       */
+/*   Updated: 2022/06/28 14:29:18 by alexander        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,7 @@ static void	ft_take_fork(t_philosopher *philosopher, pthread_mutex_t *fork)
 
 	pthread_mutex_lock(fork);
 	pthread_mutex_lock(philosopher->output);
-	if (gettimeofday(&actual_time, NULL) != 0)
-	{
-		printf("Error! Failed to get time of day!\n");
-		return ;
-	}
+	gettimeofday(&actual_time, NULL);
 	printf("%ld %d has taken a fork\n", ft_count_timestamp_in_ms(philosopher->simulation_data->start_time, actual_time), philosopher->id);
 	pthread_mutex_unlock(philosopher->output);
 }
@@ -47,32 +43,24 @@ static void	ft_eat(t_philosopher *philosopher)
 {
 	pthread_mutex_lock(philosopher->output);
 	pthread_mutex_lock(&philosopher->data_mutex);
-	if (gettimeofday(&philosopher->last_meal_time, NULL) != 0)
-	{
-		printf("Error! Failed to get time of day!\n");
-		return ;
-	}
+	gettimeofday(&philosopher->last_meal_time, NULL);
 	pthread_mutex_unlock(&philosopher->data_mutex);
 	printf("%ld %d is eating\n", ft_count_timestamp_in_ms(philosopher->simulation_data->start_time, philosopher->last_meal_time), philosopher->id);
 	pthread_mutex_unlock(philosopher->output);
-	usleep(philosopher->simulation_data->time_to_eat * 1000);
+	ft_sleep(philosopher->simulation_data->time_to_eat);
 	pthread_mutex_unlock(philosopher->right_fork);
 	pthread_mutex_unlock(philosopher->left_fork);
 }
 
-static void	ft_sleep(t_philosopher *philosopher)
+static void	ft_fall_asleep(t_philosopher *philosopher)
 {
 	struct timeval	actual_time;
 
 	pthread_mutex_lock(philosopher->output);
-	if (gettimeofday(&actual_time, NULL) != 0)
-	{
-		printf("Error! Failed to get time of day!\n");
-		return ;
-	}
+	gettimeofday(&actual_time, NULL);
 	printf("%ld %d is sleeping\n", ft_count_timestamp_in_ms(philosopher->simulation_data->start_time, actual_time), philosopher->id);
 	pthread_mutex_unlock(philosopher->output);
-	usleep(philosopher->simulation_data->time_to_sleep * 1000);
+	ft_sleep(philosopher->simulation_data->time_to_sleep);
 }
 
 static void ft_think(t_philosopher *philosopher)
@@ -80,11 +68,7 @@ static void ft_think(t_philosopher *philosopher)
 	struct timeval	actual_time;
 
 	pthread_mutex_lock(philosopher->output);
-	if (gettimeofday(&actual_time, NULL) != 0)
-	{
-		printf("Error! Failed to get time of day!\n");
-		return ;
-	}
+	gettimeofday(&actual_time, NULL);
 	printf("%ld %d is thinking\n", ft_count_timestamp_in_ms(philosopher->simulation_data->start_time, actual_time), philosopher->id);
 	pthread_mutex_unlock(philosopher->output);
 }
@@ -96,7 +80,7 @@ void	*ft_philosopher_routine(void *data)
 	philosopher = (t_philosopher*)data;
 
 	if (philosopher->id % 2 == 0)
-		usleep(philosopher->simulation_data->time_to_eat * 1000);
+		ft_sleep(philosopher->simulation_data->time_to_eat);
 	while (1)
 	{
 		if (philosopher->simulation_data->is_stopped == 0)
@@ -113,13 +97,15 @@ void	*ft_philosopher_routine(void *data)
 		else
 			break;
 		if (philosopher->simulation_data->is_stopped == 0)
-			ft_sleep(philosopher);
+			ft_fall_asleep(philosopher);
 		else
 			break;
 		if (philosopher->simulation_data->is_stopped == 0)
 			ft_think(philosopher);
 		else
 			break;
+		// if (philosopher->simulation_data->is_stopped == 0)
+		// 	break;
 	}
 	return (NULL);
 }
