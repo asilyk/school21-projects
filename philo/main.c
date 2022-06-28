@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexander <alexander@student.42.fr>        +#+  +:+       +#+        */
+/*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/08 17:34:48 by fabet             #+#    #+#             */
-/*   Updated: 2022/06/28 19:38:38 by alexander        ###   ########.fr       */
+/*   Created: 2022/06/28 20:24:28 by fabet             #+#    #+#             */
+/*   Updated: 2022/06/28 20:24:30 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,7 @@ int	main(int argc, char *argv[])
 		fed_philosophers = 0;
 		while(i < simulation_data->number_of_philosophers)
 		{
-			printf("WAIT MUTEX OF %d...\n", i);
 			pthread_mutex_lock(&philosophers[i].data_mutex);
-			printf("GET MUTEX OF %d!\n", i);
 
 			gettimeofday(&actual_time, NULL);
 			if (ft_count_timestamp_in_ms(philosophers[i].last_meal_time, actual_time) > simulation_data->time_to_die)
@@ -75,14 +73,15 @@ int	main(int argc, char *argv[])
 
 				return (1);
 			}
+
 			if (simulation_data->number_of_meals > 0)
 			{
 				if (philosophers[i].meals_count >= simulation_data->number_of_meals)
 					fed_philosophers++;
 			}
-			i++;
 
 			pthread_mutex_unlock(&philosophers[i].data_mutex);
+			i++;
 		}
 
 		if (fed_philosophers == simulation_data->number_of_philosophers)
