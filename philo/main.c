@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 20:24:28 by fabet             #+#    #+#             */
-/*   Updated: 2022/06/28 20:24:30 by fabet            ###   ########.fr       */
+/*   Updated: 2022/06/29 08:38:11 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int	main(int argc, char *argv[])
 	int	i;
 	int	fed_philosophers;
 	struct timeval	actual_time;
-
 	while(1)
 	{
 		i = 0;
@@ -61,7 +60,6 @@ int	main(int argc, char *argv[])
 		while(i < simulation_data->number_of_philosophers)
 		{
 			pthread_mutex_lock(&philosophers[i].data_mutex);
-
 			gettimeofday(&actual_time, NULL);
 			if (ft_count_timestamp_in_ms(philosophers[i].last_meal_time, actual_time) > simulation_data->time_to_die)
 			{
@@ -86,7 +84,7 @@ int	main(int argc, char *argv[])
 
 		if (fed_philosophers == simulation_data->number_of_philosophers)
 		{
-			pthread_mutex_lock(&philosophers[i].data_mutex);
+			pthread_mutex_lock(&philosophers[i].data_mutex); // wrong mutex!!!!!
 			simulation_data->is_stopped = 1;
 			pthread_mutex_unlock(&philosophers[i].data_mutex);
 			break;

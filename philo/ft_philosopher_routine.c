@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 22:57:36 by fabet             #+#    #+#             */
-/*   Updated: 2022/06/28 20:22:47 by fabet            ###   ########.fr       */
+/*   Updated: 2022/06/28 21:50:16 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,10 @@ static void	ft_eat(t_philosopher *philosopher)
 
 	pthread_mutex_unlock(philosopher->right_fork);
 	pthread_mutex_unlock(philosopher->left_fork);
+
+	pthread_mutex_lock(&philosopher->data_mutex);
+	philosopher->meals_count++;
+	pthread_mutex_unlock(&philosopher->data_mutex);
 }
 
 static void	ft_fall_asleep(t_philosopher *philosopher)
@@ -108,9 +112,6 @@ void	*ft_philosopher_routine(void *data)
 		{
 			pthread_mutex_unlock(&philosopher->data_mutex);
 			ft_eat(philosopher);
-			pthread_mutex_lock(&philosopher->data_mutex);
-			philosopher->meals_count++;
-			pthread_mutex_unlock(&philosopher->data_mutex);
 		}
 		else
 		{
