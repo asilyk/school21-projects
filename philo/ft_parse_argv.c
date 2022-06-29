@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 16:38:23 by fabet             #+#    #+#             */
-/*   Updated: 2022/06/28 20:23:29 by fabet            ###   ########.fr       */
+/*   Updated: 2022/06/29 11:05:31 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ static t_simulation_data	*ft_init_simulation_data(int argc, char *argv[])
 	if (simulation_data == NULL)
 	{
 		printf("Error! Failed to allocate memory!\n");
+		return (NULL);
+	}
+	if (pthread_mutex_init(&simulation_data->sim_data, NULL) != 0)
+	{
+		printf("Error! Failed to create mutex!\n");
 		return (NULL);
 	}
 	simulation_data->number_of_philosophers = ft_strict_atoi(argv[1]);

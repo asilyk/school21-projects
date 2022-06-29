@@ -6,34 +6,13 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 12:24:04 by fabet             #+#    #+#             */
-/*   Updated: 2022/06/28 20:23:05 by fabet            ###   ########.fr       */
+/*   Updated: 2022/06/29 13:02:29 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_free(
-	t_simulation_data *simulation_data,
-	pthread_t *philosophers_pthreads,
-	pthread_mutex_t *forks, pthread_mutex_t *output,
-	t_philosopher *philosophers)
+void	ft_free()
 {
-	int	i;
-
-	i = 0;
-	while (i < simulation_data->number_of_philosophers)
-	{
-		if (pthread_mutex_destroy(&forks[i]) != 0)
-		printf("Error! Failed to destroy mutex!\n");
-	}
-	if (pthread_mutex_destroy(output) != 0)
-		printf("Error! Failed to destroy mutex!\n");
-	if (forks != NULL)
-		free(forks);
-	if(philosophers_pthreads != NULL)
-		free(philosophers_pthreads);
-	if (philosophers != NULL)
-		free(philosophers);
-	if (simulation_data != NULL)
-		free(simulation_data);
+	printf("Free...");
 }

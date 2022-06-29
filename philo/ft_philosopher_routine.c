@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 22:57:36 by fabet             #+#    #+#             */
-/*   Updated: 2022/06/28 21:50:16 by fabet            ###   ########.fr       */
+/*   Updated: 2022/06/29 13:26:47 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,52 +95,52 @@ void	*ft_philosopher_routine(void *data)
 		ft_sleep(philosopher->simulation_data->time_to_eat);
 	while (1)
 	{
-		pthread_mutex_lock(&philosopher->data_mutex);
+		pthread_mutex_lock(&philosopher->simulation_data->sim_data);
 		if (philosopher->simulation_data->is_stopped == 0)
 		{
-			pthread_mutex_unlock(&philosopher->data_mutex);
+			pthread_mutex_unlock(&philosopher->simulation_data->sim_data);
 			ft_take_forks(philosopher);
 		}
 		else
 		{
-			pthread_mutex_unlock(&philosopher->data_mutex);
+			pthread_mutex_unlock(&philosopher->simulation_data->sim_data);
 			break;
 		}
 
-		pthread_mutex_lock(&philosopher->data_mutex);
+		pthread_mutex_lock(&philosopher->simulation_data->sim_data);
 		if (philosopher->simulation_data->is_stopped == 0)
 		{
-			pthread_mutex_unlock(&philosopher->data_mutex);
+			pthread_mutex_unlock(&philosopher->simulation_data->sim_data);
 			ft_eat(philosopher);
 		}
 		else
 		{
-			pthread_mutex_unlock(&philosopher->data_mutex);
+			pthread_mutex_unlock(&philosopher->simulation_data->sim_data);
 			break;
 		}
 
-		pthread_mutex_lock(&philosopher->data_mutex);
+		pthread_mutex_lock(&philosopher->simulation_data->sim_data);
 		if (philosopher->simulation_data->is_stopped == 0)
 		{
+			pthread_mutex_unlock(&philosopher->simulation_data->sim_data);
 			ft_fall_asleep(philosopher);
-			pthread_mutex_unlock(&philosopher->data_mutex);
 		}
 		else
 		{
-			pthread_mutex_unlock(&philosopher->data_mutex);
+			pthread_mutex_unlock(&philosopher->simulation_data->sim_data);
 			break;
 		}
 
 
-		pthread_mutex_lock(&philosopher->data_mutex);
+		pthread_mutex_lock(&philosopher->simulation_data->sim_data);
 		if (philosopher->simulation_data->is_stopped == 0)
 		{
-			pthread_mutex_unlock(&philosopher->data_mutex);
+			pthread_mutex_unlock(&philosopher->simulation_data->sim_data);
 			ft_think(philosopher);
 		}
 		else
 		{
-			pthread_mutex_unlock(&philosopher->data_mutex);
+			pthread_mutex_unlock(&philosopher->simulation_data->sim_data);
 			break;
 		}
 	}

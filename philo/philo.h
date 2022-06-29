@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 20:24:40 by fabet             #+#    #+#             */
-/*   Updated: 2022/06/28 20:24:42 by fabet            ###   ########.fr       */
+/*   Updated: 2022/06/29 13:26:22 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 
+pthread_mutex_t global_mutex;
+
 typedef struct s_simulation_data
 {
 	int				number_of_philosophers;
@@ -27,18 +29,19 @@ typedef struct s_simulation_data
 	int				number_of_meals;
 	struct timeval	start_time;
 	int				is_stopped;
+	pthread_mutex_t	sim_data;
 }	t_simulation_data;
 
 typedef struct s_philosopher
 {
-	t_simulation_data	*simulation_data;
 	int					id;
+	int					meals_count;
+	struct timeval		last_meal_time;
+	t_simulation_data	*simulation_data;
+	pthread_mutex_t		data_mutex;
 	pthread_mutex_t		*left_fork;
 	pthread_mutex_t		*right_fork;
 	pthread_mutex_t		*output;
-	pthread_mutex_t		data_mutex;
-	struct timeval		last_meal_time;
-	int					meals_count;
 }	t_philosopher;
 
 int					ft_strict_atoi(const char *str);
@@ -69,11 +72,6 @@ void				ft_sleep(int ms);
 
 void				*ft_philosopher_routine(void *data);
 
-void				ft_free(
-						t_simulation_data *simulation_data,
-						pthread_t *philosophers_pthreads,
-						pthread_mutex_t *forks,
-						pthread_mutex_t *output,
-						t_philosopher *philosophers);
+void				ft_free();
 
 #endif

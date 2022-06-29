@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 20:23:20 by fabet             #+#    #+#             */
-/*   Updated: 2022/06/28 20:23:24 by fabet            ###   ########.fr       */
+/*   Updated: 2022/06/29 13:27:04 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_init_philosophers(t_philosopher *philosophers, t_simulation_data *simulat
 			philosophers[i].left_fork = &forks[i + 1];
 		else
 			philosophers[i].left_fork = &forks[0];
-		if (pthread_mutex_init(&philosophers->data_mutex, NULL) != 0)
+		if (pthread_mutex_init(&philosophers[i].data_mutex, NULL) != 0)
 		{
 			printf("Error! Failed to create mutex!\n");
 			return (1);
