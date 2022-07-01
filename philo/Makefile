@@ -6,9 +6,17 @@ RM				=	rm -f
 
 NAME			=	philo
 
-SOURCES			=	*.c
+SOURCES			=	main.c \
+					ft_parse_argv.c \
+					ft_init.c \
+					ft_monitor.c \
+					ft_threads.c \
+					ft_philo_actions.c \
+					ft_philo_routine.c \
+					ft_utilities1.c \
+					ft_utilities2.c \
 
-HEADER			=	*.h
+HEADER			=	philo.h
 
 $(NAME): $(SOURCES) $(HEADER)
 	$(CC) $(CFLAGS) $(SOURCES) -o $(NAME)
