@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 12:15:49 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/01 15:58:13 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 20:54:41 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,20 +67,4 @@ int	ft_is_stopped(t_sim_data *sim_data)
 	is_stopped = sim_data->is_stopped;
 	pthread_mutex_unlock(&sim_data->sim_mutex);
 	return (is_stopped);
-}
-
-void	ft_print(t_philo *philo, char *action_str)
-{
-	struct timeval	actual_time;
-	long			timestamp_in_ms;
-
-	if (ft_is_stopped(philo->sim_data) == FALSE)
-	{
-		gettimeofday(&actual_time, NULL);
-		timestamp_in_ms = ft_count_timestamp_in_ms(philo->sim_data->start_time,
-				actual_time);
-		pthread_mutex_lock(philo->output);
-		printf("%ld %d %s\n", timestamp_in_ms, philo->id, action_str);
-		pthread_mutex_unlock(philo->output);
-	}
 }
