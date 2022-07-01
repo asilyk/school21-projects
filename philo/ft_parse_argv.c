@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 16:38:23 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/01 15:38:36 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 21:01:47 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ static int	ft_check_argc(int argc)
 	if (argc < 5 || argc > 6)
 	{
 		ft_print_error("Error! Invalid number of arguments!\n");
-		return (1);
+		return (ERROR);
 	}
-	return (0);
+	return (OK);
 }
 
 static t_sim_data	*ft_init_sim_data(int argc, char *argv[])
@@ -53,7 +53,7 @@ static t_sim_data	*ft_init_sim_data(int argc, char *argv[])
 static int	ft_check_sim_data(t_sim_data *sim_data)
 {
 	if (sim_data == NULL)
-		return (1);
+		return (ERROR);
 	if (sim_data->number_of_philos == -1
 		|| sim_data->time_to_die == -1
 		|| sim_data->time_to_eat == -1
@@ -62,19 +62,19 @@ static int	ft_check_sim_data(t_sim_data *sim_data)
 	{
 		free(sim_data);
 		ft_print_error("Error! Invalid arguments format!\n");
-		return (1);
+		return (ERROR);
 	}
-	return (0);
+	return (OK);
 }
 
 t_sim_data	*ft_parse_argv(int argc, char *argv[])
 {
 	t_sim_data	*sim_data;
 
-	if (ft_check_argc(argc) != 0)
+	if (ft_check_argc(argc) == ERROR)
 		return (NULL);
 	sim_data = ft_init_sim_data(argc, argv);
-	if (ft_check_sim_data(sim_data) != 0)
+	if (ft_check_sim_data(sim_data) == ERROR)
 		return (NULL);
 	gettimeofday(&sim_data->start_time, NULL);
 	return (sim_data);

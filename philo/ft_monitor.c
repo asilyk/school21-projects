@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 13:13:46 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/01 15:48:37 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 21:02:59 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	ft_monitor(t_sim_data *sim_data, t_philo *philos)
 	int	i;
 	int	fed_philos;
 
-	while (1)
+	while (TRUE)
 	{
 		i = 0;
 		fed_philos = 0;

@@ -65,7 +65,7 @@ void	*ft_philo_routine(void *data)
 	philo = (t_philo *) data;
 	if (philo->id % 2 == 0)
 		ft_sleep(philo->sim_data->time_to_eat);
-	while (1)
+	while (TRUE)
 	{
 		if (ft_is_stopped(philo->sim_data) == 0)
 			ft_take_forks(philo);
