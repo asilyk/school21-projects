@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 20:24:28 by fabet             #+#    #+#             */
-/*   Updated: 2022/06/29 13:26:38 by fabet            ###   ########.fr       */
+/*   Updated: 2022/06/30 09:17:53 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	main(int argc, char *argv[])
 				printf("%ld %d died\n", ft_count_timestamp_in_ms(simulation_data->start_time, actual_time), philosophers[i].id);
 				pthread_mutex_unlock(&output);
 
-				return (1);
+				break;
 			}
 
 			if (simulation_data->number_of_meals > 0)
@@ -69,6 +69,13 @@ int	main(int argc, char *argv[])
 
 			i++;
 		}
+
+		int is_stopped = 0;
+		pthread_mutex_lock(&simulation_data->sim_data);
+		is_stopped = simulation_data->is_stopped;
+		pthread_mutex_unlock(&simulation_data->sim_data);
+		if (is_stopped == 1)
+			break;
 
 		if (fed_philosophers == simulation_data->number_of_philosophers)
 		{
