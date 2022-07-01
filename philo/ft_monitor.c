@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 13:13:46 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/01 21:31:26 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 23:37:02 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	ft_is_dead(t_sim_data *sim_data, t_philo *philo)
 	last_meal_time = philo->last_meal_time;
 	pthread_mutex_unlock(&philo->data_mutex);
 	gettimeofday(&actual_time, NULL);
-	if (ft_count_timestamp_in_ms(last_meal_time, actual_time)
+	if (ft_count_timestamp(last_meal_time, actual_time)
 		> sim_data->time_to_die)
 	{
 		ft_print(philo, "died");

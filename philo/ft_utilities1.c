@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 12:15:49 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/01 23:34:01 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 23:37:02 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_strict_atoi(const char *str)
 	return (result);
 }
 
-int	ft_count_timestamp_in_ms(
+int	ft_count_timestamp(
 			t_timeval start_time,
 			t_timeval actual_time)
 {
@@ -52,7 +52,7 @@ void	ft_sleep(int ms)
 
 	gettimeofday(&start_time, NULL);
 	gettimeofday(&actual_time, NULL);
-	while (ft_count_timestamp_in_ms(start_time, actual_time) < ms)
+	while (ft_count_timestamp(start_time, actual_time) < ms)
 	{
 		gettimeofday(&actual_time, NULL);
 		usleep(10);
