@@ -6,13 +6,11 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 16:38:23 by fabet             #+#    #+#             */
-/*   Updated: 2022/06/29 11:05:31 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 11:41:07 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-#include <stdlib.h>
-#include <stdio.h> //delete!
 
 static int	ft_check_argc(int argc)
 {

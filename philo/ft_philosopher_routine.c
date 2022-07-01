@@ -6,13 +6,11 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 22:57:36 by fabet             #+#    #+#             */
-/*   Updated: 2022/06/30 11:30:46 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 11:41:35 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-#include <unistd.h>
-#include <stdio.h>
 
 static void	ft_take_fork(t_philosopher *philosopher, pthread_mutex_t *fork)
 {

@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 20:24:40 by fabet             #+#    #+#             */
-/*   Updated: 2022/06/29 13:26:22 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 11:41:28 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <sys/time.h>
 # include <stdio.h>
 # include <stdlib.h>
+#include <unistd.h>
 
 pthread_mutex_t global_mutex;
 
