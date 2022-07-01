@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 12:15:49 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/01 23:24:19 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 23:34:01 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_strict_atoi(const char *str)
 			counter++;
 		}
 		else
-			return (-1);
+			return (WRONG_FORMAT);
 	}
 	return (result);
 }

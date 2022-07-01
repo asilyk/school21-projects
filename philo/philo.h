@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 20:24:40 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/01 23:25:14 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 23:33:30 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,16 @@
 # include <pthread.h>
 # include <sys/time.h>
 
-# define TRUE	1
-# define FALSE	0
+# define WRONG_FORMAT	-1
 
-# define ERROR	1
-# define OK		0
+# define TRUE			1
+# define FALSE			0
 
-# define DEAD	1
-# define ALIVE	0
+# define ERROR			1
+# define OK				0
+
+# define DEAD			1
+# define ALIVE			0
 
 typedef struct timeval	t_timeval;
 

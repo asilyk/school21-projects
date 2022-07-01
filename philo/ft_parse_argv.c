@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 16:38:23 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/01 21:05:07 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 23:33:55 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,11 @@ static int	ft_check_sim_data(t_sim_data *sim_data)
 {
 	if (sim_data == NULL)
 		return (ERROR);
-	if (sim_data->number_of_philos == -1
-		|| sim_data->time_to_die == -1
-		|| sim_data->time_to_eat == -1
-		|| sim_data->time_to_sleep == -1
-		|| sim_data->number_of_meals == -1)
+	if (sim_data->number_of_philos == WRONG_FORMAT
+		|| sim_data->time_to_die == WRONG_FORMAT
+		|| sim_data->time_to_eat == WRONG_FORMAT
+		|| sim_data->time_to_sleep == WRONG_FORMAT
+		|| sim_data->number_of_meals == WRONG_FORMAT)
 	{
 		free(sim_data);
 		ft_print_error("Error! Invalid arguments format!\n");
