@@ -6,13 +6,13 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:57:30 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/01 21:32:23 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 23:20:04 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_free(t_data *data)
+static void	ft_free_philos(t_data *data)
 {
 	int	i;
 
@@ -22,14 +22,33 @@ void	ft_free(t_data *data)
 		while (i < data->sim_data->number_of_philos)
 		{
 			pthread_mutex_destroy(&data->philos[i].data_mutex);
-			pthread_mutex_destroy(&data->forks[i]);
 			i++;
 		}
 		free(data->philos);
-		pthread_mutex_destroy(&data->output);
 	}
+}
+
+static void	ft_free_forks(t_data *data)
+{
+	int	i;
+
+	i = 0;
 	if (data->forks != NULL)
+	{
+		while (i < data->sim_data->number_of_philos)
+		{
+			pthread_mutex_destroy(&data->forks[i]);
+			i++;
+		}
 		free(data->forks);
+	}
+}
+
+void	ft_free(t_data *data)
+{
+	ft_free_philos(data);
+	ft_free_forks(data);
+	pthread_mutex_destroy(&data->output);
 	pthread_mutex_destroy(&data->sim_data->sim_mutex);
 	if (data->sim_data != NULL)
 		free(data->sim_data);
