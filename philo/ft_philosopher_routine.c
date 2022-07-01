@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 22:57:36 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/01 11:53:27 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 11:59:30 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,16 +80,6 @@ static void ft_think(t_philosopher *philosopher)
 	pthread_mutex_lock(philosopher->output);
 	printf("%ld %d is thinking\n", ft_count_timestamp_in_ms(philosopher->simulation_data->start_time, actual_time), philosopher->id);
 	pthread_mutex_unlock(philosopher->output);
-}
-
-int	ft_is_stopped(t_simulation_data *simulation_data)
-{
-	int	is_stopped;
-
-	pthread_mutex_lock(&simulation_data->sim_data);
-	is_stopped = simulation_data->is_stopped;
-	pthread_mutex_unlock(&simulation_data->sim_data);
-	return (is_stopped);
 }
 
 void	*ft_philosopher_routine(void *data)

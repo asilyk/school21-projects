@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 20:24:40 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/01 11:41:28 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 11:59:59 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ long				ft_count_timestamp_in_ms(
 void				ft_sleep(int ms);
 
 void				*ft_philosopher_routine(void *data);
+
+int					ft_is_stopped(t_simulation_data *simulation_data)
 
 void				ft_free();
 

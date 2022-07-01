@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 20:24:28 by fabet             #+#    #+#             */
-/*   Updated: 2022/06/30 09:17:53 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 12:01:07 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,7 @@ int	main(int argc, char *argv[])
 			i++;
 		}
 
-		int is_stopped = 0;
-		pthread_mutex_lock(&simulation_data->sim_data);
-		is_stopped = simulation_data->is_stopped;
-		pthread_mutex_unlock(&simulation_data->sim_data);
-		if (is_stopped == 1)
+		if (ft_is_stopped(simulation_data) == 1)
 			break;
 
 		if (fed_philosophers == simulation_data->number_of_philosophers)
