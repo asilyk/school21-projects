@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 20:24:40 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/01 12:09:55 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 13:14:56 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_philosopher
 }	t_philosopher;
 
 int					ft_strict_atoi(const char *str);
+void				ft_print(t_philosopher *philosopher, char *action_str);
 t_simulation_data	*ft_parse_argv(int argc, char *argv[]);
 
 int					ft_init_mutexes(
@@ -72,6 +73,8 @@ long				ft_count_timestamp_in_ms(
 void				ft_sleep(int ms);
 
 void				*ft_philosopher_routine(void *data);
+
+void				ft_monitor(t_simulation_data *simulation_data, t_philosopher *philosophers);
 
 int					ft_is_stopped(t_simulation_data *simulation_data);
 
