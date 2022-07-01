@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 20:23:20 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/01 13:45:40 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 15:38:18 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,17 @@ int	ft_init_mutexes(
 	{
 		if (pthread_mutex_init(&forks[i], NULL) != 0)
 		{
-			printf("Error! Failed to create mutex!\n");
-			return (1);
+			ft_print_error("Error! Failed to create mutex!\n");
+			return (ERROR);
 		}
 		i++;
 	}
 	if (pthread_mutex_init(output, NULL) != 0)
 	{
-		printf("Error! Failed to create mutex!\n");
-		return (1);
+		ft_print_error("Error! Failed to create mutex!\n");
+		return (ERROR);
 	}
-	return (0);
+	return (OK);
 }
 
 int	ft_init_philos(
@@ -59,11 +59,11 @@ int	ft_init_philos(
 			philos[i].left_fork = &forks[0];
 		if (pthread_mutex_init(&philos[i].data_mutex, NULL) != 0)
 		{
-			printf("Error! Failed to create mutex!\n");
-			return (1);
+			ft_print_error("Error! Failed to create mutex!\n");
+			return (ERROR);
 		}
 		philos[i].meals_count = 0;
 		i++;
 	}
-	return (0);
+	return (OK);
 }

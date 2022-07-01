@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 13:13:46 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/01 13:31:02 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 15:48:37 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ static int	ft_is_dead(t_sim_data *sim_data, t_philo *philo)
 	if (ft_count_timestamp_in_ms(last_meal_time, actual_time)
 		> sim_data->time_to_die)
 	{
-		pthread_mutex_lock(&sim_data->sim_data);
-		sim_data->is_stopped = 1;
-		pthread_mutex_unlock(&sim_data->sim_data);
 		ft_print(philo, "died");
+		pthread_mutex_lock(&sim_data->sim_mutex);
+		sim_data->is_stopped = 1;
+		pthread_mutex_unlock(&sim_data->sim_mutex);
 		return (TRUE);
 	}
 	return (FALSE);
@@ -52,9 +52,9 @@ static int	ft_are_fed(int fed_philos, t_sim_data *sim_data)
 {
 	if (fed_philos == sim_data->number_of_philos)
 	{
-		pthread_mutex_lock(&sim_data->sim_data);
+		pthread_mutex_lock(&sim_data->sim_mutex);
 		sim_data->is_stopped = 1;
-		pthread_mutex_unlock(&sim_data->sim_data);
+		pthread_mutex_unlock(&sim_data->sim_mutex);
 		return (TRUE);
 	}
 	return (FALSE);

@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 20:24:40 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/01 13:44:50 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 15:39:30 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 
 # define TRUE 1
 # define FALSE 0
+# define ERROR 1
+# define OK 0
 
 typedef struct s_sim_data
 {
@@ -31,7 +33,7 @@ typedef struct s_sim_data
 	int				number_of_meals;
 	struct timeval	start_time;
 	int				is_stopped;
-	pthread_mutex_t	sim_data;
+	pthread_mutex_t	sim_mutex;
 }	t_sim_data;
 
 typedef struct s_philo
@@ -78,5 +80,10 @@ void				*ft_philo_routine(void *data);
 void				ft_monitor(t_sim_data *sim_data, t_philo *philos);
 
 int					ft_is_stopped(t_sim_data *sim_data);
+
+void				ft_free(t_sim_data *sim_data, pthread_t *philos_pthreads, pthread_mutex_t *forks, t_philo *philos);
+
+void	ft_print_error(char *error_str);
+
 
 #endif
