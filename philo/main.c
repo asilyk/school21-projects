@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 20:24:28 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/01 13:28:49 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 13:50:17 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int	main(int argc, char *argv[])
 {
-	t_sim_data	*sim_data;
+	t_sim_data			*sim_data;
 	pthread_t			*philos_pthreads;
 	pthread_mutex_t		*forks;
 	pthread_mutex_t		output;
-	t_philo		*philos;
+	t_philo				*philos;
 
 	sim_data = ft_parse_argv(argc, argv);
 	philos_pthreads = (pthread_t *)malloc(sizeof(pthread_t) * sim_data->number_of_philos);

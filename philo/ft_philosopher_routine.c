@@ -37,14 +37,10 @@ static void	ft_eat(t_philo *philo)
 	pthread_mutex_lock(&philo->data_mutex);
 	gettimeofday(&philo->last_meal_time, NULL);
 	pthread_mutex_unlock(&philo->data_mutex);
-
 	ft_print(philo, "is eating");
-
 	ft_sleep(philo->sim_data->time_to_eat);
-
 	pthread_mutex_unlock(philo->right_fork);
 	pthread_mutex_unlock(philo->left_fork);
-
 	pthread_mutex_lock(&philo->data_mutex);
 	philo->meals_count++;
 	pthread_mutex_unlock(&philo->data_mutex);
@@ -56,7 +52,7 @@ static void	ft_fall_asleep(t_philo *philo)
 	ft_sleep(philo->sim_data->time_to_sleep);
 }
 
-static void ft_think(t_philo *philo)
+static void	ft_think(t_philo *philo)
 {
 	ft_print(philo, "is thinking");
 }
@@ -65,7 +61,7 @@ void	*ft_philo_routine(void *data)
 {
 	t_philo	*philo;
 
-	philo = (t_philo*)data;
+	philo = (t_philo *) data;
 	if (philo->id % 2 == 0)
 		ft_sleep(philo->sim_data->time_to_eat);
 	while (1)
@@ -73,19 +69,19 @@ void	*ft_philo_routine(void *data)
 		if (ft_is_stopped(philo->sim_data) == 0)
 			ft_take_forks(philo);
 		else
-			break;
+			break ;
 		if (ft_is_stopped(philo->sim_data) == 0)
 			ft_eat(philo);
 		else
-			break;
+			break ;
 		if (ft_is_stopped(philo->sim_data) == 0)
 			ft_fall_asleep(philo);
 		else
-			break;
+			break ;
 		if (ft_is_stopped(philo->sim_data) == 0)
 			ft_think(philo);
 		else
-			break;
+			break ;
 	}
 	return (NULL);
 }

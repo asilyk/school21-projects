@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 20:24:40 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/01 13:28:21 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 13:44:50 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_philo
 	int					id;
 	int					meals_count;
 	struct timeval		last_meal_time;
-	t_sim_data	*sim_data;
+	t_sim_data			*sim_data;
 	pthread_mutex_t		data_mutex;
 	pthread_mutex_t		*left_fork;
 	pthread_mutex_t		*right_fork;
@@ -48,7 +48,7 @@ typedef struct s_philo
 
 int					ft_strict_atoi(const char *str);
 void				ft_print(t_philo *philo, char *action_str);
-t_sim_data	*ft_parse_argv(int argc, char *argv[]);
+t_sim_data			*ft_parse_argv(int argc, char *argv[]);
 
 int					ft_init_mutexes(
 						t_sim_data *sim_data,
@@ -78,7 +78,5 @@ void				*ft_philo_routine(void *data);
 void				ft_monitor(t_sim_data *sim_data, t_philo *philos);
 
 int					ft_is_stopped(t_sim_data *sim_data);
-
-void				ft_free();
 
 #endif

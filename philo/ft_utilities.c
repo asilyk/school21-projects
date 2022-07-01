@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 12:15:49 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/01 13:23:56 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 13:49:55 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ void	ft_print(t_philo *philo, char *action_str)
 	long			timestamp_in_ms;
 
 	gettimeofday(&actual_time, NULL);
-	timestamp_in_ms =  ft_count_timestamp_in_ms(philo->sim_data->start_time, actual_time);
+	timestamp_in_ms = ft_count_timestamp_in_ms(philo->sim_data->start_time,
+			actual_time);
 	pthread_mutex_lock(philo->output);
 	printf("%ld %d %s\n", timestamp_in_ms, philo->id, action_str);
 	pthread_mutex_unlock(philo->output);

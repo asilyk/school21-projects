@@ -6,13 +6,16 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 20:23:20 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/01 13:26:03 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 13:45:40 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_init_mutexes(t_sim_data *sim_data, pthread_mutex_t *forks, pthread_mutex_t *output)
+int	ft_init_mutexes(
+			t_sim_data *sim_data,
+			pthread_mutex_t *forks,
+			pthread_mutex_t *output)
 {
 	int	i;
 
@@ -34,7 +37,11 @@ int	ft_init_mutexes(t_sim_data *sim_data, pthread_mutex_t *forks, pthread_mutex_
 	return (0);
 }
 
-int	ft_init_philos(t_philo *philos, t_sim_data *sim_data, pthread_mutex_t *forks, pthread_mutex_t *output)
+int	ft_init_philos(
+			t_philo *philos,
+			t_sim_data *sim_data,
+			pthread_mutex_t *forks,
+			pthread_mutex_t *output)
 {
 	int	i;
 
