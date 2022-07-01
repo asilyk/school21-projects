@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 20:24:40 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/01 21:32:07 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 21:55:21 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@
 
 # define ERROR	1
 # define OK		0
+
+# define DEAD	1
+# define ALIVE	0
 
 typedef struct timeval	t_timeval;
 
@@ -72,6 +75,12 @@ void		ft_monitor(t_sim_data *sim_data, t_philo *philos);
 // ft_threads.c
 int			ft_create_threads(t_data *data);
 int			ft_join_threads(t_data *data);
+
+// ft_philo_actions.c
+void		ft_take_forks(t_philo *philo);
+void		ft_eat(t_philo *philo);
+void		ft_fall_asleep(t_philo *philo);
+void		ft_think(t_philo *philo);
 
 // ft_philo_routine.c
 void		*ft_philo_routine(void *data);

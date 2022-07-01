@@ -12,50 +12,26 @@
 
 #include "philo.h"
 
-static void	ft_take_fork(t_philo *philo, pthread_mutex_t *fork)
+static int	ft_routine_cycle(t_philo *philo)
 {
-	pthread_mutex_lock(fork);
-	ft_print(philo, "has taken a fork");
-}
-
-static void	ft_take_forks(t_philo *philo)
-{
-	if (philo->id != philo->sim_data->number_of_philos)
-	{
-		ft_take_fork(philo, philo->right_fork);
-		ft_take_fork(philo, philo->left_fork);
-	}
+	if (ft_is_stopped(philo->sim_data) == FALSE)
+		ft_take_forks(philo);
 	else
-	{
-		ft_take_fork(philo, philo->left_fork);
-		if (philo->sim_data->number_of_philos > 1)
-			ft_take_fork(philo, philo->right_fork);
-	}
-}
-
-static void	ft_eat(t_philo *philo)
-{
-	pthread_mutex_lock(&philo->data_mutex);
-	gettimeofday(&philo->last_meal_time, NULL);
-	pthread_mutex_unlock(&philo->data_mutex);
-	ft_print(philo, "is eating");
-	ft_sleep(philo->sim_data->time_to_eat);
-	pthread_mutex_unlock(philo->right_fork);
-	pthread_mutex_unlock(philo->left_fork);
-	pthread_mutex_lock(&philo->data_mutex);
-	philo->meals_count++;
-	pthread_mutex_unlock(&philo->data_mutex);
-}
-
-static void	ft_fall_asleep(t_philo *philo)
-{
-	ft_print(philo, "is sleeping");
-	ft_sleep(philo->sim_data->time_to_sleep);
-}
-
-static void	ft_think(t_philo *philo)
-{
-	ft_print(philo, "is thinking");
+		return (DEAD);
+	if (ft_is_stopped(philo->sim_data) == FALSE
+		&& philo->sim_data->number_of_philos > 1)
+		ft_eat(philo);
+	else
+		return (DEAD);
+	if (ft_is_stopped(philo->sim_data) == FALSE)
+		ft_fall_asleep(philo);
+	else
+		return (DEAD);
+	if (ft_is_stopped(philo->sim_data) == FALSE)
+		ft_think(philo);
+	else
+		return (DEAD);
+	return (ALIVE);
 }
 
 void	*ft_philo_routine(void *data)
@@ -67,22 +43,7 @@ void	*ft_philo_routine(void *data)
 		ft_sleep(philo->sim_data->time_to_eat);
 	while (TRUE)
 	{
-		if (ft_is_stopped(philo->sim_data) == FALSE)
-			ft_take_forks(philo);
-		else
-			break ;
-		if (ft_is_stopped(philo->sim_data) == FALSE
-			&& philo->sim_data->number_of_philos > 1)
-			ft_eat(philo);
-		else
-			break ;
-		if (ft_is_stopped(philo->sim_data) == FALSE)
-			ft_fall_asleep(philo);
-		else
-			break ;
-		if (ft_is_stopped(philo->sim_data) == FALSE)
-			ft_think(philo);
-		else
+		if (ft_routine_cycle(philo) == DEAD)
 			break ;
 	}
 	return (NULL);
