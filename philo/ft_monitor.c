@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 13:13:46 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/01 21:02:59 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 21:04:44 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	ft_is_dead(t_sim_data *sim_data, t_philo *philo)
 	{
 		ft_print(philo, "died");
 		pthread_mutex_lock(&sim_data->sim_mutex);
-		sim_data->is_stopped = 1;
+		sim_data->is_stopped = TRUE;
 		pthread_mutex_unlock(&sim_data->sim_mutex);
 		return (TRUE);
 	}

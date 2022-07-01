@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 16:38:23 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/01 21:01:47 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 21:05:07 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static t_sim_data	*ft_init_sim_data(int argc, char *argv[])
 		sim_data->number_of_meals = ft_strict_atoi(argv[5]);
 	else
 		sim_data->number_of_meals = 0;
-	sim_data->is_stopped = 0;
+	sim_data->is_stopped = FALSE;
 	return (sim_data);
 }
 

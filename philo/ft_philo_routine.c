@@ -67,20 +67,20 @@ void	*ft_philo_routine(void *data)
 		ft_sleep(philo->sim_data->time_to_eat);
 	while (TRUE)
 	{
-		if (ft_is_stopped(philo->sim_data) == 0)
+		if (ft_is_stopped(philo->sim_data) == FALSE)
 			ft_take_forks(philo);
 		else
 			break ;
-		if (ft_is_stopped(philo->sim_data) == 0
+		if (ft_is_stopped(philo->sim_data) == FALSE
 			&& philo->sim_data->number_of_philos > 1)
 			ft_eat(philo);
 		else
 			break ;
-		if (ft_is_stopped(philo->sim_data) == 0)
+		if (ft_is_stopped(philo->sim_data) == FALSE)
 			ft_fall_asleep(philo);
 		else
 			break ;
-		if (ft_is_stopped(philo->sim_data) == 0)
+		if (ft_is_stopped(philo->sim_data) == FALSE)
 			ft_think(philo);
 		else
 			break ;
