@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:57:30 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/01 21:21:26 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 21:32:23 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void	ft_free(t_data *data)
 
 void	ft_print(t_philo *philo, char *action_str)
 {
-	struct timeval	actual_time;
-	long			timestamp_in_ms;
+	t_timeval	actual_time;
+	long		timestamp_in_ms;
 
 	if (ft_is_stopped(philo->sim_data) == FALSE)
 	{

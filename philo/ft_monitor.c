@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 13:13:46 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/01 21:19:22 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 21:31:26 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	ft_is_dead(t_sim_data *sim_data, t_philo *philo)
 {
-	struct timeval	actual_time;
-	struct timeval	last_meal_time;
+	t_timeval	actual_time;
+	t_timeval	last_meal_time;
 
 	pthread_mutex_lock(&philo->data_mutex);
 	last_meal_time = philo->last_meal_time;

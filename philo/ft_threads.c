@@ -6,24 +6,21 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 20:24:13 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/01 20:52:24 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 21:29:17 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_create_threads(
-		pthread_t *philos_pthreads,
-		t_philo *philos,
-		t_sim_data *sim_data)
+int	ft_create_threads(t_data *data)
 {
 	int	i;
 
 	i = 0;
-	while (i < sim_data->number_of_philos)
+	while (i < data->sim_data->number_of_philos)
 	{
-		if (pthread_create(&philos_pthreads[i], NULL,
-				&ft_philo_routine, &philos[i]) != 0)
+		if (pthread_create(&data->philos_pthreads[i], NULL,
+				&ft_philo_routine, &data->philos[i]) != 0)
 		{
 			ft_print_error("Error! Failed to create thread!\n");
 			return (ERROR);
@@ -33,14 +30,14 @@ int	ft_create_threads(
 	return (OK);
 }
 
-int	ft_join_threads(pthread_t *philos_pthreads, t_sim_data *sim_data)
+int	ft_join_threads(t_data *data)
 {
 	int	i;
 
 	i = 0;
-	while (i < sim_data->number_of_philos)
+	while (i < data->sim_data->number_of_philos)
 	{
-		if (pthread_join(philos_pthreads[i], NULL) != 0)
+		if (pthread_join(data->philos_pthreads[i], NULL) != 0)
 		{
 			ft_print_error("Error! Failed to join thread!\n");
 			return (ERROR);

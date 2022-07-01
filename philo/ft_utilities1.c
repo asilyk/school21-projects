@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 12:15:49 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/01 20:54:41 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 21:31:26 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	ft_strict_atoi(const char *str)
 }
 
 long	ft_count_timestamp_in_ms(
-			struct timeval start_time,
-			struct timeval actual_time)
+			t_timeval start_time,
+			t_timeval actual_time)
 {
 	long	seconds;
 	long	useconds;
@@ -47,8 +47,8 @@ long	ft_count_timestamp_in_ms(
 
 void	ft_sleep(int ms)
 {
-	struct timeval	start_time;
-	struct timeval	actual_time;
+	t_timeval	start_time;
+	t_timeval	actual_time;
 
 	gettimeofday(&start_time, NULL);
 	gettimeofday(&actual_time, NULL);
