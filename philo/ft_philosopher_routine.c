@@ -28,7 +28,8 @@ static void	ft_take_forks(t_philo *philo)
 	else
 	{
 		ft_take_fork(philo, philo->left_fork);
-		ft_take_fork(philo, philo->right_fork);
+		if (philo->sim_data->number_of_philos > 1)
+			ft_take_fork(philo, philo->right_fork);
 	}
 }
 
@@ -70,7 +71,8 @@ void	*ft_philo_routine(void *data)
 			ft_take_forks(philo);
 		else
 			break ;
-		if (ft_is_stopped(philo->sim_data) == 0)
+		if (ft_is_stopped(philo->sim_data) == 0
+			&& philo->sim_data->number_of_philos > 1)
 			ft_eat(philo);
 		else
 			break ;
