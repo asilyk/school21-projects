@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 20:24:40 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/01 20:57:34 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 21:21:50 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,7 @@ void		ft_sleep(int ms);
 int			ft_is_stopped(t_sim_data *sim_data);
 
 // ft_utilities2.c
-void		ft_free(t_sim_data *sim_data,
-				pthread_t *philos_pthreads,
-				pthread_mutex_t *forks,
-				t_philo *philos);
+void		ft_free(t_data *data);
 void		ft_print(t_philo *philo, char *action_str);
 void		ft_print_error(char *error_str);
 

@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 13:13:46 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/01 21:04:44 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 21:19:22 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	ft_are_fed(int fed_philos, t_sim_data *sim_data)
 	if (fed_philos == sim_data->number_of_philos)
 	{
 		pthread_mutex_lock(&sim_data->sim_mutex);
-		sim_data->is_stopped = 1;
+		sim_data->is_stopped = TRUE;
 		pthread_mutex_unlock(&sim_data->sim_mutex);
 		return (TRUE);
 	}

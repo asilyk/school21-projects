@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 20:24:28 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/01 20:40:37 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 21:22:52 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	main(int argc, char *argv[])
 	ft_monitor(data.sim_data, data.philos);
 	if (ft_join_threads(data.philos_pthreads, data.sim_data) == ERROR)
 	{
-		ft_free(data.sim_data, data.philos_pthreads, data.forks, data.philos);
+		ft_free(&data);
 		return (ERROR);
 	}
-	ft_free(data.sim_data, data.philos_pthreads, data.forks, data.philos);
+	ft_free(&data);
 	return (OK);
 }

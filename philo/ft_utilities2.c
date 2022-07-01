@@ -6,39 +6,35 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:57:30 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/01 20:54:35 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 21:21:26 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_free(
-			t_sim_data *sim_data,
-			pthread_t *philos_pthreads,
-			pthread_mutex_t *forks,
-			t_philo *philos)
+void	ft_free(t_data *data)
 {
 	int	i;
 
 	i = 0;
-	if (philos != NULL)
+	if (data->philos != NULL)
 	{
-		while (i < sim_data->number_of_philos)
+		while (i < data->sim_data->number_of_philos)
 		{
-			pthread_mutex_destroy(&philos[i].data_mutex);
-			pthread_mutex_destroy(&forks[i]);
+			pthread_mutex_destroy(&data->philos[i].data_mutex);
+			pthread_mutex_destroy(&data->forks[i]);
 			i++;
 		}
-		free(philos);
-		pthread_mutex_destroy(philos[0].output);
+		free(data->philos);
+		pthread_mutex_destroy(&data->output);
 	}
-	if (forks != NULL)
-		free(forks);
-	pthread_mutex_destroy(&sim_data->sim_mutex);
-	if (sim_data != NULL)
-		free(sim_data);
-	if (philos_pthreads != NULL)
-		free(philos_pthreads);
+	if (data->forks != NULL)
+		free(data->forks);
+	pthread_mutex_destroy(&data->sim_data->sim_mutex);
+	if (data->sim_data != NULL)
+		free(data->sim_data);
+	if (data->philos_pthreads != NULL)
+		free(data->philos_pthreads);
 }
 
 void	ft_print(t_philo *philo, char *action_str)

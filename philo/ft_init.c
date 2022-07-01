@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 20:23:20 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/01 20:52:47 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 21:22:21 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,7 @@ int	ft_init(int argc, char *argv[], t_data *data)
 		|| ft_create_threads(data->philos_pthreads,
 			data->philos, data->sim_data) == ERROR)
 	{
-		ft_free(data->sim_data, data->philos_pthreads,
-			data->forks, data->philos);
+		ft_free(data);
 		return (ERROR);
 	}
 	return (OK);
