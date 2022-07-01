@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 20:24:40 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/01 21:55:21 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 23:25:14 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void		*ft_philo_routine(void *data);
 
 // ft_utilities1.c
 int			ft_strict_atoi(const char *str);
-long		ft_count_timestamp_in_ms(
+int			ft_count_timestamp_in_ms(
 				t_timeval start_time,
 				t_timeval actual_time);
 void		ft_sleep(int ms);

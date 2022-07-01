@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:57:30 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/01 23:20:04 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 23:26:03 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	ft_free(t_data *data)
 void	ft_print(t_philo *philo, char *action_str)
 {
 	t_timeval	actual_time;
-	long		timestamp_in_ms;
+	int			timestamp_in_ms;
 
 	if (ft_is_stopped(philo->sim_data) == FALSE)
 	{
@@ -67,7 +67,7 @@ void	ft_print(t_philo *philo, char *action_str)
 		timestamp_in_ms = ft_count_timestamp_in_ms(philo->sim_data->start_time,
 				actual_time);
 		pthread_mutex_lock(philo->output);
-		printf("%ld %d %s\n", timestamp_in_ms, philo->id, action_str);
+		printf("%d %d %s\n", timestamp_in_ms, philo->id, action_str);
 		pthread_mutex_unlock(philo->output);
 	}
 }
