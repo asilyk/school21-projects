@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 22:57:36 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/01 11:41:35 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/01 11:53:27 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static void	ft_take_fork(t_philosopher *philosopher, pthread_mutex_t *fork)
 	pthread_mutex_lock(fork);
 
 	gettimeofday(&actual_time, NULL);
-
 	pthread_mutex_lock(philosopher->output);
 	printf("%ld %d has taken a fork\n", ft_count_timestamp_in_ms(philosopher->simulation_data->start_time, actual_time), philosopher->id);
 	pthread_mutex_unlock(philosopher->output);
@@ -83,64 +82,41 @@ static void ft_think(t_philosopher *philosopher)
 	pthread_mutex_unlock(philosopher->output);
 }
 
+int	ft_is_stopped(t_simulation_data *simulation_data)
+{
+	int	is_stopped;
+
+	pthread_mutex_lock(&simulation_data->sim_data);
+	is_stopped = simulation_data->is_stopped;
+	pthread_mutex_unlock(&simulation_data->sim_data);
+	return (is_stopped);
+}
+
 void	*ft_philosopher_routine(void *data)
 {
 	t_philosopher	*philosopher;
 
 	philosopher = (t_philosopher*)data;
-
 	if (philosopher->id % 2 == 0)
 		ft_sleep(philosopher->simulation_data->time_to_eat);
 	while (1)
 	{
-		pthread_mutex_lock(&philosopher->simulation_data->sim_data);
-		if (philosopher->simulation_data->is_stopped == 0)
-		{
-			pthread_mutex_unlock(&philosopher->simulation_data->sim_data);
+		if (ft_is_stopped(philosopher->simulation_data) == 0)
 			ft_take_forks(philosopher);
-		}
 		else
-		{
-			pthread_mutex_unlock(&philosopher->simulation_data->sim_data);
 			break;
-		}
-
-		pthread_mutex_lock(&philosopher->simulation_data->sim_data);
-		if (philosopher->simulation_data->is_stopped == 0)
-		{
-			pthread_mutex_unlock(&philosopher->simulation_data->sim_data);
+		if (ft_is_stopped(philosopher->simulation_data) == 0)
 			ft_eat(philosopher);
-		}
 		else
-		{
-			pthread_mutex_unlock(&philosopher->simulation_data->sim_data);
 			break;
-		}
-
-		pthread_mutex_lock(&philosopher->simulation_data->sim_data);
-		if (philosopher->simulation_data->is_stopped == 0)
-		{
-			pthread_mutex_unlock(&philosopher->simulation_data->sim_data);
+		if (ft_is_stopped(philosopher->simulation_data) == 0)
 			ft_fall_asleep(philosopher);
-		}
 		else
-		{
-			pthread_mutex_unlock(&philosopher->simulation_data->sim_data);
 			break;
-		}
-
-
-		pthread_mutex_lock(&philosopher->simulation_data->sim_data);
-		if (philosopher->simulation_data->is_stopped == 0)
-		{
-			pthread_mutex_unlock(&philosopher->simulation_data->sim_data);
+		if (ft_is_stopped(philosopher->simulation_data) == 0)
 			ft_think(philosopher);
-		}
 		else
-		{
-			pthread_mutex_unlock(&philosopher->simulation_data->sim_data);
 			break;
-		}
 	}
 	return (NULL);
 }
