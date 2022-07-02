@@ -34,11 +34,11 @@ static int	ft_routine_cycle(t_philo *philo)
 	return (ALIVE);
 }
 
-void	*ft_philo_routine(void *data)
+void	*ft_philo_routine(void *args)
 {
 	t_philo	*philo;
 
-	philo = (t_philo *) data;
+	philo = (t_philo *) args;
 	if (philo->id % 2 == 0)
 		ft_sleep(philo->sim_data->time_to_eat);
 	while (TRUE)
