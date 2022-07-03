@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 12:33:15 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/03 16:49:14 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/03 20:48:50 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int argc, char *argv[])
 {
-	int			pid;
+	pid_t		pid;
 	int			i;
 	t_sim_data	*sim_data;
 

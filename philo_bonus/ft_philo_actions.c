@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 21:52:28 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/03 16:56:49 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/03 20:50:36 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,9 @@ static void	ft_take_fork(t_philo *philo)
 
 void	ft_take_forks(t_philo *philo)
 {
-	if (philo->id != philo->sim_data->number_of_philos)
-	{
+	ft_take_fork(philo);
+	if (philo->sim_data->number_of_philos > 1)
 		ft_take_fork(philo);
-		ft_take_fork(philo);
-	}
-	else
-	{
-		ft_take_fork(philo);
-		if (philo->sim_data->number_of_philos > 1)
-			ft_take_fork(philo);
-	}
 }
 
 void	ft_eat(t_philo *philo)

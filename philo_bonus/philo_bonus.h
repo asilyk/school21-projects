@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 12:40:59 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/03 16:55:01 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/03 20:48:43 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <pthread.h>
 # include <sys/time.h>
 # include <semaphore.h>
+# include <signal.h>
 
 # define WRONG_FORMAT	-1
 
