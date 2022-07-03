@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 21:52:28 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/03 16:19:03 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/03 16:56:49 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,16 @@ void	ft_take_forks(t_philo *philo)
 
 void	ft_eat(t_philo *philo)
 {
-	// pthread_mutex_lock(&philo->data_mutex);
+	sem_wait(philo->data);
 	gettimeofday(&philo->last_meal_time, NULL);
-	// pthread_mutex_unlock(&philo->data_mutex);
+	sem_post(philo->data);
 	ft_print(philo, "is eating");
 	ft_sleep(philo->sim_data->time_to_eat);
 	sem_post(philo->sim_data->forks);
 	sem_post(philo->sim_data->forks);
-	// pthread_mutex_lock(&philo->data_mutex);
+	sem_wait(philo->data);
 	philo->meals_count++;
-	// pthread_mutex_unlock(&philo->data_mutex);
+	sem_post(philo->data);
 }
 
 void	ft_fall_asleep(t_philo *philo)

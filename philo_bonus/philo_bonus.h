@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 12:40:59 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/03 16:16:25 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/03 16:55:01 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,9 @@
 # define DEAD			1
 # define ALIVE			0
 
-#define OUTPUT_SEM		"output_semaphore"
-#define FORKS_SEM		"forks_semaphore"
+# define OUTPUT_SEM		"output_semaphore"
+# define FORKS_SEM		"forks_semaphore"
+# define DATA_SEM		"philo_data_semaphore"
 
 typedef struct timeval	t_timeval;
 
@@ -55,16 +56,17 @@ typedef struct s_philo
 	int					meals_count;
 	t_timeval			last_meal_time;
 	t_sim_data			*sim_data;
+	sem_t				*data;
 }	t_philo;
 
 // ft_parse_argv.c
 t_sim_data	*ft_parse_argv(int argc, char *argv[]);
 
 // ft_init.c
-t_philo	*ft_init_philo(t_sim_data *sim_data, int id);
+t_philo		*ft_init_philo(t_sim_data *sim_data, int id);
 
 // ft_monitor.c
-void	*ft_monitor(void *args);
+void		*ft_monitor(void *args);
 
 // ft_philo_actions.c
 void		ft_take_forks(t_philo *philo);
@@ -73,7 +75,7 @@ void		ft_fall_asleep(t_philo *philo);
 void		ft_think(t_philo *philo);
 
 // ft_philo_routine.c
-void	ft_philo_routine(t_philo *philo);
+void		ft_philo_routine(t_philo *philo);
 
 // ft_utilities.c
 int			ft_strict_atoi(const char *str);

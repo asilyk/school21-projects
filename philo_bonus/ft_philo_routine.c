@@ -14,23 +14,28 @@
 
 static int	ft_routine_cycle(t_philo *philo)
 {
+	printf("id: %d %p is_stopped=%d\n", philo->id, philo->sim_data, philo->sim_data->is_stopped);
 	if (ft_is_stopped(philo->sim_data) == FALSE)
 		ft_take_forks(philo);
 	else
 		return (DEAD);
+		printf("id: %d %p is_stopped=%d\n", philo->id, philo->sim_data, philo->sim_data->is_stopped);
 	if (ft_is_stopped(philo->sim_data) == FALSE
 		&& philo->sim_data->number_of_philos > 1)
 		ft_eat(philo);
 	else
 		return (DEAD);
+		printf("id: %d %p is_stopped=%d\n", philo->id, philo->sim_data, philo->sim_data->is_stopped);
 	if (ft_is_stopped(philo->sim_data) == FALSE)
 		ft_fall_asleep(philo);
 	else
 		return (DEAD);
+		printf("id: %d %p is_stopped=%d\n", philo->id, philo->sim_data, philo->sim_data->is_stopped);
 	if (ft_is_stopped(philo->sim_data) == FALSE)
 		ft_think(philo);
 	else
 		return (DEAD);
+		printf("id: %d %p is_stopped=%d\n", philo->id, philo->sim_data, philo->sim_data->is_stopped);
 	return (ALIVE);
 }
 
@@ -51,5 +56,7 @@ void	ft_philo_routine(t_philo *philo)
 		if (ft_routine_cycle(philo) == DEAD)
 			break ;
 	}
+	if (pthread_join(monitor_thread, NULL) != 0)
+		ft_print_error("Error! Failed to join thread!\n");
 	return ;
 }

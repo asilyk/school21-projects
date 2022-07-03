@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 12:33:15 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/03 16:01:28 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/03 16:49:14 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	main(int argc, char *argv[])
 {
-	int	pid;
-	int	i;
+	int			pid;
+	int			i;
 	t_sim_data	*sim_data;
 
 	sim_data = ft_parse_argv(argc, argv);
@@ -33,7 +33,7 @@ int	main(int argc, char *argv[])
 		if	(pid == 0)
 		{
 			t_philo		*philo;
-			philo = ft_init_philo(sim_data, i);
+			philo = ft_init_philo(sim_data, i + 1);
 			if (philo == NULL)
 				return (ERROR);
 			ft_philo_routine(philo);
@@ -42,6 +42,6 @@ int	main(int argc, char *argv[])
 		}
 		i++;
 	}
-	while (waitpid(-1, NULL, 0) > 0);
+	waitpid(-1, 0, 0);
 	return (OK);
 }
