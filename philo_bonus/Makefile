@@ -8,6 +8,9 @@ NAME			=	philo_bonus
 
 SOURCES			=	main.c \
 					ft_parse_argv.c \
+					ft_monitor.c \
+					ft_philo_actions.c \
+					ft_philo_routine.c \
 					ft_utilities.c \
 
 HEADER			=	philo_bonus.h
