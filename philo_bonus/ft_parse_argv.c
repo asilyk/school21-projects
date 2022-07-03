@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 16:38:23 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/03 13:16:02 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/03 16:17:36 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ static t_sim_data	*ft_init_sim_data(int argc, char *argv[])
 	else
 		sim_data->number_of_meals = 0;
 	sim_data->is_stopped = FALSE;
+	sem_unlink(OUTPUT_SEM);
+	sim_data->output = sem_open(OUTPUT_SEM, O_CREAT, 0660, 1);
+	sem_unlink(FORKS_SEM);
+	sim_data->output = sem_open(FORKS_SEM, O_CREAT, 0660, sim_data->number_of_philos);
 	return (sim_data);
 }
 

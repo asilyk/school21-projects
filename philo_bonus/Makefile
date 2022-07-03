@@ -7,6 +7,7 @@ RM				=	rm -f
 NAME			=	philo_bonus
 
 SOURCES			=	main.c \
+					ft_init.c \
 					ft_parse_argv.c \
 					ft_monitor.c \
 					ft_philo_actions.c \

@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 21:52:28 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/03 15:29:22 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/03 16:19:03 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	ft_take_fork(t_philo *philo)
 {
-	// pthread_mutex_lock(fork);
+	sem_wait(philo->sim_data->forks);
 	ft_print(philo, "has taken a fork");
 }
 
@@ -40,8 +40,8 @@ void	ft_eat(t_philo *philo)
 	// pthread_mutex_unlock(&philo->data_mutex);
 	ft_print(philo, "is eating");
 	ft_sleep(philo->sim_data->time_to_eat);
-	// pthread_mutex_unlock(philo->right_fork);
-	// pthread_mutex_unlock(philo->left_fork);
+	sem_post(philo->sim_data->forks);
+	sem_post(philo->sim_data->forks);
 	// pthread_mutex_lock(&philo->data_mutex);
 	philo->meals_count++;
 	// pthread_mutex_unlock(&philo->data_mutex);
