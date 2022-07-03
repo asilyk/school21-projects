@@ -1,0 +1,27 @@
+CC				=	cc
+
+CFLAGS			=	-Wall -Werror -Wextra
+
+RM				=	rm -f
+
+NAME			=	philo_bonus
+
+SOURCES			=	main.c \
+					ft_parse_argv.c \
+					ft_utilities.c \
+
+HEADER			=	philo_bonus.h
+
+$(NAME): $(SOURCES) $(HEADER)
+	$(CC) $(CFLAGS) $(SOURCES) -o $(NAME)
+
+.PHONY: all clean fclean re
+
+all: $(NAME)
+
+clean:
+	$(RM) $(NAME)
+
+fclean: clean
+
+re: fclean all
