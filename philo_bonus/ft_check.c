@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:01:03 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/04 14:02:49 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/04 14:05:40 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_check_argc(int argc)
 
 int	ft_check_sim_data(t_sim_data *sim_data, char **argv)
 {
-	if (sim_data->number_of_philos < 2
+	if (sim_data->number_of_philos < 1
 		|| sim_data->time_to_die < 0
 		|| sim_data->time_to_eat < 0
 		|| sim_data->time_to_sleep < 0
