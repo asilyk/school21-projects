@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 12:40:59 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/03 20:48:43 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/03 23:16:01 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_sim_data
 	int				is_stopped;
 	sem_t			*forks;
 	sem_t			*output;
+	struct s_philo	*philos;
 }	t_sim_data;
 
 typedef struct s_philo
@@ -58,13 +59,14 @@ typedef struct s_philo
 	t_timeval			last_meal_time;
 	t_sim_data			*sim_data;
 	sem_t				*data;
+	pid_t				pid;
 }	t_philo;
 
 // ft_parse_argv.c
 t_sim_data	*ft_parse_argv(int argc, char *argv[]);
 
 // ft_init.c
-t_philo		*ft_init_philo(t_sim_data *sim_data, int id);
+t_philo		*ft_init_philos(t_sim_data *sim_data);
 
 // ft_monitor.c
 void		*ft_monitor(void *args);

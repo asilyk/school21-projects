@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 12:33:15 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/03 20:48:50 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/03 23:14:26 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	main(int argc, char *argv[])
 {
-	pid_t		pid;
 	int			i;
 	t_sim_data	*sim_data;
 
@@ -22,26 +21,38 @@ int	main(int argc, char *argv[])
 	if (sim_data == NULL)
 		return (ERROR);
 	i = 0;
+	sim_data->philos = ft_init_philos(sim_data);
+	if (sim_data->philos == NULL)
+		return (ERROR);
 	while (i < sim_data->number_of_philos)
 	{
-		pid = fork();
-		if (pid == -1)
+		sim_data->philos[i].pid = fork();
+		if (sim_data->philos[i].pid == -1)
 		{
 			ft_print_error("Error! Failed to create process!\n");
 			return (ERROR);
 		}
-		if	(pid == 0)
+		if	(sim_data->philos[i].pid == 0)
 		{
-			t_philo		*philo;
-			philo = ft_init_philo(sim_data, i + 1);
-			if (philo == NULL)
-				return (ERROR);
-			ft_philo_routine(philo);
-			free(philo);
+			ft_philo_routine(&sim_data->philos[i]);
 			return (OK);
 		}
 		i++;
 	}
-	waitpid(-1, 0, 0);
+	//waitpid(-1, 0, 0);
+	i = 0;
+	int	ret;
+	while (i < sim_data->number_of_philos)
+	{
+		waitpid(-1, &ret, 0);
+		if (ret != 0)
+		{
+			i = -1;
+			while (++i < sim_data->number_of_philos)
+				kill(sim_data->philos[i].pid, 15);
+			break ;
+		}
+		i++;
+	}
 	return (OK);
 }
