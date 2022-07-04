@@ -37,29 +37,3 @@ void	ft_philo_routine(void *args)
 		exit(1);
 	exit(0);
 }
-
-void	ft_stop_sim(t_sim_data *sim_data)
-{
-	int	i;
-	int	ret;
-
-	i = 0;
-	while (i < sim_data->number_of_philos)
-	{
-		waitpid(-1, &ret, 0);
-		if (ret != 0)
-		{
-			i = -1;
-			while (++i < sim_data->number_of_philos)
-				kill(sim_data->philos[i].pid, 15);
-			break ;
-		}
-		i++;
-	}
-	sem_close(sim_data->forks_sem);
-	sem_close(sim_data->output_sem);
-	sem_close(sim_data->data_sem);
-	sem_unlink("forks_sem");
-	sem_unlink("output_sem");
-	sem_unlink("data_sem");
-}

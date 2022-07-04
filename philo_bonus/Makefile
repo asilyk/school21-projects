@@ -12,6 +12,7 @@ SOURCES			=	main.c \
 					ft_monitor.c \
 					ft_philo_actions.c \
 					ft_philo_routine.c \
+					ft_stop_sim.c \
 					ft_utilities.c \
 
 HEADER			=	philo_bonus.h
