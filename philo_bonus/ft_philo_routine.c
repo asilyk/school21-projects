@@ -12,46 +12,54 @@
 
 #include "philo_bonus.h"
 
-static int	ft_routine_cycle(t_philo *philo)
+void	ft_philo_routine(void *args)
 {
-	if (ft_is_stopped(philo->sim_data) == FALSE)
+	t_philo		*philo;
+	t_sim_data	*sim_data;
+
+	philo = (t_philo *)args;
+	sim_data = philo->sim_data;
+	pthread_create(&(philo->death_check), NULL, ft_monitor, args);
+	if (philo->id % 2)
+		usleep(15000);
+	while (!(sim_data->is_stopped))
+	{
 		ft_take_forks(philo);
-	else
-		return (DEAD);
-	if (ft_is_stopped(philo->sim_data) == FALSE
-		&& philo->sim_data->number_of_philos > 1)
 		ft_eat(philo);
-	else
-		return (DEAD);
-	if (ft_is_stopped(philo->sim_data) == FALSE)
+		if (philo->meals_count >= sim_data->number_of_meals
+			&& sim_data->number_of_meals != -1)
+			break ;
 		ft_fall_asleep(philo);
-	else
-		return (DEAD);
-	if (ft_is_stopped(philo->sim_data) == FALSE)
 		ft_think(philo);
-	else
-		return (DEAD);
-	return (ALIVE);
+	}
+	pthread_join(philo->death_check, NULL);
+	if (sim_data->is_stopped)
+		exit(1);
+	exit(0);
 }
 
-void	ft_philo_routine(t_philo *philo)
+void	ft_stop_sim(t_sim_data *sim_data)
 {
-	pthread_t	monitor_thread;
+	int	i;
+	int	ret;
 
-	if (philo->id % 2 == 0)
-		ft_sleep(philo->sim_data->time_to_eat);
-	if (pthread_create(&monitor_thread, NULL,
-			&ft_monitor, philo) != 0)
+	i = 0;
+	while (i < sim_data->number_of_philos)
 	{
-		ft_print_error("Error! Failed to create thread!\n");
-		return ;
-	}
-	while (TRUE)
-	{
-		if (ft_routine_cycle(philo) == DEAD)
+		waitpid(-1, &ret, 0);
+		if (ret != 0)
+		{
+			i = -1;
+			while (++i < sim_data->number_of_philos)
+				kill(sim_data->philos[i].pid, 15);
 			break ;
+		}
+		i++;
 	}
-	if (pthread_join(monitor_thread, NULL) != 0)
-		ft_print_error("Error! Failed to join thread!\n");
-	return ;
+	sem_close(sim_data->forks_sem);
+	sem_close(sim_data->output_sem);
+	sem_close(sim_data->data_sem);
+	sem_unlink("forks_sem");
+	sem_unlink("output_sem");
+	sem_unlink("data_sem");
 }

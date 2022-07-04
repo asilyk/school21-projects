@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 12:40:59 by fabet             #+#    #+#             */
-/*   Updated: 2022/07/03 23:16:01 by fabet            ###   ########.fr       */
+/*   Updated: 2022/07/04 14:03:04 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,73 +21,64 @@
 # include <semaphore.h>
 # include <signal.h>
 
-# define WRONG_FORMAT	-1
-
 # define TRUE			1
 # define FALSE			0
 
 # define ERROR			1
 # define OK				0
 
-# define DEAD			1
-# define ALIVE			0
-
-# define OUTPUT_SEM		"output_semaphore"
-# define FORKS_SEM		"forks_semaphore"
-# define DATA_SEM		"philo_data_semaphore"
+# define WRONG_FORMAT	-1
 
 typedef struct timeval	t_timeval;
-
-typedef struct s_sim_data
-{
-	int				number_of_philos;
-	int				time_to_die;
-	int				time_to_eat;
-	int				time_to_sleep;
-	int				number_of_meals;
-	t_timeval		start_time;
-	int				is_stopped;
-	sem_t			*forks;
-	sem_t			*output;
-	struct s_philo	*philos;
-}	t_sim_data;
 
 typedef struct s_philo
 {
 	int					id;
 	int					meals_count;
 	t_timeval			last_meal_time;
-	t_sim_data			*sim_data;
-	sem_t				*data;
+	struct s_sim_data	*sim_data;
+	pthread_t			death_check;
 	pid_t				pid;
 }	t_philo;
 
-// ft_parse_argv.c
-t_sim_data	*ft_parse_argv(int argc, char *argv[]);
+typedef struct s_sim_data
+{
+	int					number_of_philos;
+	int					time_to_die;
+	int					time_to_eat;
+	int					time_to_sleep;
+	int					number_of_meals;
+	int					is_stopped;
+	t_timeval			start_time;
+	sem_t				*data_sem;
+	sem_t				*forks_sem;
+	sem_t				*output_sem;
+	t_philo				philos[200];
+}	t_sim_data;
 
-// ft_init.c
-t_philo		*ft_init_philos(t_sim_data *sim_data);
-
-// ft_monitor.c
-void		*ft_monitor(void *args);
+// ft_check.c
+int		ft_check_argc(int argc);
+int		ft_check_sim_data(t_sim_data *sim_data, char **argv);
 
 // ft_philo_actions.c
-void		ft_take_forks(t_philo *philo);
-void		ft_eat(t_philo *philo);
-void		ft_fall_asleep(t_philo *philo);
-void		ft_think(t_philo *philo);
+void	ft_take_forks(t_philo *philo);
+void	ft_eat(t_philo *philo);
+void	ft_fall_asleep(t_philo *philo);
+void	ft_think(t_philo *philo);
 
-// ft_philo_routine.c
-void		ft_philo_routine(t_philo *philo);
+int		ft_parse_argv(t_sim_data *sim_data, int argc, char **argv);
 
-// ft_utilities.c
-int			ft_strict_atoi(const char *str);
-int			ft_count_timestamp(
-				t_timeval start_time,
-				t_timeval actual_time);
-void		ft_sleep(int ms);
-int			ft_is_stopped(t_sim_data *sim_data);
-void		ft_print(t_philo *philo, char *action_str);
-void		ft_print_error(char *error_str);
+int		ft_strict_atoi(const char *str);
+void	ft_print(t_philo *philo, char *action_str);
+void	ft_print_error(char *error_str);
+
+int		ft_count_timestamp(
+			t_timeval start_time,
+			t_timeval actual_time);
+void	ft_sleep(int ms);
+
+void	ft_philo_routine(void *args);
+void	*ft_monitor(void *args);
+void	ft_stop_sim(t_sim_data *sim_data);
 
 #endif
