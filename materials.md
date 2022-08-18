@@ -9,6 +9,7 @@
 - [weambros's minishell](https://youtu.be/Um3pzuee-4Y)
 - [rdrizzle's minishell part 1](https://youtu.be/A7ccmRSn7JY)
 - [rdrizzle's minishell part 2](https://youtu.be/pRIXOy1OskE)
+- [imicah's minishell](https://youtu.be/7B6o2YyvIKw)
 
 ## Theory
 - [Unix Threads in C](https://youtube.com/playlist?list=PLfqABt5AS4FmuQf70psXrsMLEDQXNkLq2)
