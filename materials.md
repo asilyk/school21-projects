@@ -18,6 +18,7 @@
 - [ufitzhug's theory](https://github.com/bakyt92/09_minishell/blob/master/Functions_approved.md)
 - [Structure of minishell](https://vk.com/@swquinc-minishell-chast-1-suschnost-shell-i-struktura-proekta)
 - [Shell with C](https://tproger.ru/translations/unix-shell-in-c/)
+- [Writing Your Own Shell](https://www.cs.purdue.edu/homes/grr/SystemsProgrammingBook/Book/Chapter5-WritingYourOwnShell.pdf)
 
 ## Cases
 - [dpowdere's cases](https://docs.google.com/spreadsheets/d/1RPxSWKzRELfAirkaLeqqzoEArkaq9Vy7tTEHEnamlgA/edit#gid=0)
