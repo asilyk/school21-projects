@@ -1,5 +1,7 @@
 # Materials
 
+## Project
+- [Structure of minishell](https://miro.com/welcomeonboard/d084QmFkOG9zczFKcmxYT00wNUNjTEFUbUFvUlVJeGx4MHpNV1dGTmNXWGVjQTB4N1pRN1pWWkFGNmJXSnVGTnwzNDU4NzY0NTM1ODg3ODczMjQ0fDI=?share_link_id=813100388065)
 ## Testers
 
 - [minishell-test](https://pypi.org/project/minishell-test/#description)
