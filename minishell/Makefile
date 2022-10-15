@@ -57,9 +57,9 @@ LIBFT_SOURCES	=	libft/ft_atoi.c \
 					libft/ft_strtrim.c \
 					libft/ft_substr.c \
 					libft/ft_tolower.c \
-					libft/ft_toupper.c \
+					libft/ft_toupper.c
 
-LIBFT_HEADER	=	libft/libft.h \
+LIBFT_HEADER	=	libft/libft.h
 
 INCLUDES		=	-Iincludes -I$(LIBFT_DIR) -I$(READLINE_DIR)/include
 
