@@ -16,9 +16,12 @@ LIBFT			=	$(LIBFT_DIR)/libft.a
 
 INCLUDES		=	-Iincludes -I$(LIBFT_DIR) -I$(READLINE_DIR)/include
 
-HEADERS			=	includes/minishell.h
+HEADERS			=	includes/minishell.h \
+					includes/utilities.h
 
-SOURCES			=	sources/main.c
+SOURCES			=	sources/main.c \
+					sources/utilities/ft_arrdup.c \
+					sources/utilities/ft_free_arr.c
 
 $(LIBFT):
 	make -C $(LIBFT_DIR)
