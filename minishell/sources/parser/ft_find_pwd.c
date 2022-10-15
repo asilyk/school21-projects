@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_find_pwd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/19 18:30:13 by fabet             #+#    #+#             */
-/*   Updated: 2022/10/15 15:43:57 by fabet            ###   ########.fr       */
+/*   Created: 2022/08/19 20:01:29 by fabet             #+#    #+#             */
+/*   Updated: 2022/10/15 15:42:42 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "parser.h"
 
-int	main(int argc, char **argv, char **envp)
+int	ft_find_pwd(t_tools *tools)
 {
-	t_tools	tools;
+	int	i;
 
-	(void)argv;
-	if (argc != 1)
+	i = 0;
+	while (tools->envp[i])
 	{
-		printf("Error! Invalid number of arguments.\n");
-		exit(0);
+		if (!ft_strncmp(tools->envp[i], "PWD=", 4))
+			tools->pwd = ft_substr(tools->envp[i],
+					4, ft_strlen(tools->envp[i]) - 4);
+		if (!ft_strncmp(tools->envp[i], "OLDPWD=", 7))
+			tools->old_pwd = ft_substr(tools->envp[i],
+					7, ft_strlen(tools->envp[i]) - 7);
+		i++;
 	}
-	tools.envp = ft_arrdup(envp);
-	ft_find_pwd(&tools);
-	// printf("%s\n%s\n", tools.pwd, tools.old_pwd);
-	return (0);
+	return (1);
 }

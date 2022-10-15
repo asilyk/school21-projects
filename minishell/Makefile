@@ -64,11 +64,13 @@ LIBFT_HEADER	=	libft/libft.h
 INCLUDES		=	-Iincludes -I$(LIBFT_DIR) -I$(READLINE_DIR)/include
 
 HEADERS			=	includes/minishell.h \
-					includes/utilities.h
+					includes/utilities.h \
+					includes/parser.h
 
 SOURCES			=	sources/main.c \
 					sources/utilities/ft_arrdup.c \
-					sources/utilities/ft_free_arr.c
+					sources/utilities/ft_free_arr.c \
+					sources/parser/ft_find_pwd.c
 
 $(NAME): $(SOURCES) $(HEADERS) $(LIBFT_SOURCES) $(LIBFT_HEADER)
 	make -C $(LIBFT_DIR)
