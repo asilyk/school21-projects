@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 21:02:57 by fabet             #+#    #+#             */
-/*   Updated: 2022/10/15 15:40:36 by fabet            ###   ########.fr       */
+/*   Updated: 2022/10/15 19:15:15 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,15 @@ typedef struct s_tools
 	bool					heredoc;
 	bool					reset;
 }	t_tools;
+
+typedef struct s_global
+{
+	int	error_num;
+	int	stop_heredoc;
+	int	in_cmd;
+	int	in_heredoc;
+}	t_global;
+
+extern t_global	g_global;
 
 #endif

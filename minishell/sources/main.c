@@ -6,11 +6,13 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 18:30:13 by fabet             #+#    #+#             */
-/*   Updated: 2022/10/15 15:43:57 by fabet            ###   ########.fr       */
+/*   Updated: 2022/10/15 19:21:22 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+t_global	g_global;
 
 int	main(int argc, char **argv, char **envp)
 {
@@ -24,6 +26,7 @@ int	main(int argc, char **argv, char **envp)
 	}
 	tools.envp = ft_arrdup(envp);
 	ft_find_pwd(&tools);
-	// printf("%s\n%s\n", tools.pwd, tools.old_pwd);
+	ft_implement_tools(&tools);
+
 	return (0);
 }

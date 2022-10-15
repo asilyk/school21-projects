@@ -70,7 +70,9 @@ HEADERS			=	includes/minishell.h \
 SOURCES			=	sources/main.c \
 					sources/utilities/ft_arrdup.c \
 					sources/utilities/ft_free_arr.c \
-					sources/parser/ft_find_pwd.c
+					sources/utilities/ft_handle_signals.c \
+					sources/utilities/ft_implement_tools.c \
+					sources/parser/ft_parse_envp.c
 
 $(NAME): $(SOURCES) $(HEADERS) $(LIBFT_SOURCES) $(LIBFT_HEADER)
 	make -C $(LIBFT_DIR)

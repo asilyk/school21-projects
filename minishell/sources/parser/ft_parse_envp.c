@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_find_pwd.c                                      :+:      :+:    :+:   */
+/*   ft_parse_envp.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/19 20:01:29 by fabet             #+#    #+#             */
-/*   Updated: 2022/10/15 15:42:42 by fabet            ###   ########.fr       */
+/*   Created: 2022/08/22 17:04:18 by fabet             #+#    #+#             */
+/*   Updated: 2022/10/15 19:14:31 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "utilities.h"
 
 int	ft_find_pwd(t_tools *tools)
 {
@@ -28,4 +28,42 @@ int	ft_find_pwd(t_tools *tools)
 		i++;
 	}
 	return (1);
+}
+
+static char	*ft_find_path(char **envp)
+{
+	int		i;
+
+	i = 0;
+	while (envp[i])
+	{
+		if (!ft_strncmp(envp[i], "PATH=", 5))
+			return (ft_substr(envp[i], 5, ft_strlen(envp[i]) - 5));
+		i++;
+	}
+	return (ft_strdup("\0"));
+}
+
+int	ft_parse_envp(t_tools *tools)
+{
+	char	*path_from_envp;
+	int		i;
+	char	*tmp;
+
+	path_from_envp = ft_find_path(tools->envp);
+	tools->paths = ft_split(path_from_envp, ':');
+	free(path_from_envp);
+	i = 0;
+	while (tools->paths[i])
+	{
+		if (ft_strncmp(&tools->paths[i][ft_strlen(tools->paths[i]) - 1],
+			"/", 1) != 0)
+		{
+			tmp = ft_strjoin(tools->paths[i], "/");
+			free(tools->paths[i]);
+			tools->paths[i] = tmp;
+		}
+		i++;
+	}
+	return (EXIT_SUCCESS);
 }
