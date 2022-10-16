@@ -68,6 +68,7 @@ HEADERS			=	includes/minishell.h \
 					includes/parser.h
 
 SOURCES			=	sources/main.c \
+					sources/ft_minishell_loop.c \
 					sources/utilities/ft_arrdup.c \
 					sources/utilities/ft_free_arr.c \
 					sources/utilities/ft_handle_signals.c \
