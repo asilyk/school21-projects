@@ -71,7 +71,7 @@ SOURCES			=	sources/main.c \
 					sources/utilities/ft_arrdup.c \
 					sources/utilities/ft_free_arr.c \
 					sources/utilities/ft_handle_signals.c \
-					sources/utilities/ft_implement_tools.c \
+					sources/utilities/ft_init_tools.c \
 					sources/parser/ft_parse_envp.c
 
 $(NAME): $(SOURCES) $(HEADERS) $(LIBFT_SOURCES) $(LIBFT_HEADER)
