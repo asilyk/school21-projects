@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_implement_tools.c                               :+:      :+:    :+:   */
+/*   ft_init_tools.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 16:57:48 by fabet             #+#    #+#             */
-/*   Updated: 2022/10/15 17:04:55 by fabet            ###   ########.fr       */
+/*   Updated: 2022/10/16 10:19:24 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utilities.h"
 
-int	ft_implement_tools(t_tools *tools)
+int	ft_init_tools(t_tools *tools)
 {
 	tools->simple_cmds = NULL;
 	tools->lexer_list = NULL;
