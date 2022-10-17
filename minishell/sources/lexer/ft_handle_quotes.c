@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_arrdup.c                                        :+:      :+:    :+:   */
+/*   ft_handle_quotes.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 16:40:16 by fabet             #+#    #+#             */
-/*   Updated: 2022/10/16 16:40:18 by fabet            ###   ########.fr       */
+/*   Created: 2022/10/16 16:39:50 by fabet             #+#    #+#             */
+/*   Updated: 2022/10/16 16:39:51 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utilities.h"
+#include "lexer.h"
 
-char	**ft_arrdup(char **arr)
+int	ft_handle_quotes(int i, char *str, char del)
 {
-	char	**result;
-	size_t	i;
+	int	j;
 
-	i = 0;
-	while (arr[i] != NULL)
-		i++;
-	result = ft_calloc(sizeof(char *), i + 1);
-	if (!result)
-		return (NULL);
-	i = 0;
-	while (arr[i] != NULL)
+	j = 0;
+	if (str[i + j] == del)
 	{
-		result[i] = ft_strdup(arr[i]);
-		if (result[i] == NULL)
-		{
-			ft_free_arr(result);
-			return (result);
-		}
-		i++;
+		j++;
+		while (str[i + j] != del && str[i + j])
+			j++;
+		j++;
 	}
-	return (result);
+	return (j);
 }

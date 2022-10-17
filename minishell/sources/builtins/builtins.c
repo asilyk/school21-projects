@@ -1,38 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_arrdup.c                                        :+:      :+:    :+:   */
+/*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 16:40:16 by fabet             #+#    #+#             */
-/*   Updated: 2022/10/16 16:40:18 by fabet            ###   ########.fr       */
+/*   Created: 2022/10/16 16:39:06 by fabet             #+#    #+#             */
+/*   Updated: 2022/10/16 16:39:08 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utilities.h"
+#include "builtins.h"
 
-char	**ft_arrdup(char **arr)
+int	(*builtin_arr(char *str))(t_tools *tools, t_simple_cmds *simple_cmd)
 {
-	char	**result;
-	size_t	i;
+	static void	*builtins[7][2] = {
+	{"echo", ft_echo},
+	{"cd", ft_cd},
+	{"pwd", ft_pwd},
+	{"export", ft_export},
+	{"unset", ft_unset},
+	{"env", ft_env},
+	{"exit", ft_exit}
+	};
+	int			i;
 
 	i = 0;
-	while (arr[i] != NULL)
-		i++;
-	result = ft_calloc(sizeof(char *), i + 1);
-	if (!result)
-		return (NULL);
-	i = 0;
-	while (arr[i] != NULL)
+	while (i < 7)
 	{
-		result[i] = ft_strdup(arr[i]);
-		if (result[i] == NULL)
+		if (str)
 		{
-			ft_free_arr(result);
-			return (result);
+			if (!ft_strncmp(builtins[i][0], str, ft_strlen((builtins[i][0]))))
+				return (builtins[i][1]);
 		}
 		i++;
 	}
-	return (result);
+	return (NULL);
 }

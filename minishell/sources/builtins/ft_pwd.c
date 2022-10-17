@@ -1,38 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_arrdup.c                                        :+:      :+:    :+:   */
+/*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 16:40:16 by fabet             #+#    #+#             */
-/*   Updated: 2022/10/16 16:40:18 by fabet            ###   ########.fr       */
+/*   Created: 2022/10/16 16:39:22 by fabet             #+#    #+#             */
+/*   Updated: 2022/10/16 16:39:23 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utilities.h"
+#include "builtins.h"
 
-char	**ft_arrdup(char **arr)
+int	ft_pwd(t_tools *tools, t_simple_cmds *simple_cmd)
 {
-	char	**result;
-	size_t	i;
-
-	i = 0;
-	while (arr[i] != NULL)
-		i++;
-	result = ft_calloc(sizeof(char *), i + 1);
-	if (!result)
-		return (NULL);
-	i = 0;
-	while (arr[i] != NULL)
-	{
-		result[i] = ft_strdup(arr[i]);
-		if (result[i] == NULL)
-		{
-			ft_free_arr(result);
-			return (result);
-		}
-		i++;
-	}
-	return (result);
+	(void) simple_cmd;
+	ft_putendl_fd(tools->pwd, STDOUT_FILENO);
+	return (EXIT_SUCCESS);
 }

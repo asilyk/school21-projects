@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_arrdup.c                                        :+:      :+:    :+:   */
+/*   expander.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 16:40:16 by fabet             #+#    #+#             */
-/*   Updated: 2022/10/16 16:40:18 by fabet            ###   ########.fr       */
+/*   Created: 2022/10/16 16:38:46 by fabet             #+#    #+#             */
+/*   Updated: 2022/10/16 16:47:08 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utilities.h"
+#ifndef EXPANDER_H
+# define EXPANDER_H
 
-char	**ft_arrdup(char **arr)
-{
-	char	**result;
-	size_t	i;
+# include "minishell.h"
 
-	i = 0;
-	while (arr[i] != NULL)
-		i++;
-	result = ft_calloc(sizeof(char *), i + 1);
-	if (!result)
-		return (NULL);
-	i = 0;
-	while (arr[i] != NULL)
-	{
-		result[i] = ft_strdup(arr[i]);
-		if (result[i] == NULL)
-		{
-			ft_free_arr(result);
-			return (result);
-		}
-		i++;
-	}
-	return (result);
-}
+char	**ft_start_expander(t_tools *tools, char **str);
+
+char	*ft_start_expander_str(t_tools *tools, char *str);
+
+size_t	ft_dollar_sign(char *str);
+
+char	*ft_char_to_str(char c);
+
+size_t	ft_after_dol_lenght(char *str, int j);
+
+int		ft_question_mark(char **temp);
+
+#endif

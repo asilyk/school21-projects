@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_tools.c                               :+:      :+:    :+:   */
+/*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/22 16:57:48 by fabet             #+#    #+#             */
-/*   Updated: 2022/10/16 10:19:24 by fabet            ###   ########.fr       */
+/*   Created: 2022/10/16 16:39:14 by fabet             #+#    #+#             */
+/*   Updated: 2022/10/16 16:39:15 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utilities.h"
+#include "builtins.h"
 
-int	ft_init_tools(t_tools *tools)
+int	ft_env(t_tools *tools, t_simple_cmds *simple_cmd)
 {
-	tools->simple_cmds = NULL;
-	tools->lexer_list = NULL;
-	tools->reset = false;
-	tools->pid = NULL;
-	tools->heredoc = false;
-	g_global.stop_heredoc = 0;
-	g_global.in_cmd = 0;
-	g_global.in_heredoc = 0;
-	ft_parse_envp(tools);
-	ft_init_signals();
-	return (1);
+	int		i;
+
+	(void) simple_cmd;
+	i = 0;
+	while (tools->envp[i])
+	{
+		ft_putendl_fd(tools->envp[i], STDOUT_FILENO);
+		i++;
+	}
+	return (EXIT_SUCCESS);
 }

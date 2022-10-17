@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_arrdup.c                                        :+:      :+:    :+:   */
+/*   ft_equal_sign.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 16:40:16 by fabet             #+#    #+#             */
-/*   Updated: 2022/10/16 16:40:18 by fabet            ###   ########.fr       */
+/*   Created: 2022/10/16 16:40:22 by fabet             #+#    #+#             */
+/*   Updated: 2022/10/16 16:40:23 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utilities.h"
 
-char	**ft_arrdup(char **arr)
+size_t	ft_equal_sign(char *str)
 {
-	char	**result;
 	size_t	i;
 
 	i = 0;
-	while (arr[i] != NULL)
-		i++;
-	result = ft_calloc(sizeof(char *), i + 1);
-	if (!result)
-		return (NULL);
-	i = 0;
-	while (arr[i] != NULL)
+	while (str[i])
 	{
-		result[i] = ft_strdup(arr[i]);
-		if (result[i] == NULL)
-		{
-			ft_free_arr(result);
-			return (result);
-		}
+		if (str[i] == '=')
+			return (i + 1);
 		i++;
 	}
-	return (result);
+	return (0);
 }

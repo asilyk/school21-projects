@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/19 18:30:13 by fabet             #+#    #+#             */
-/*   Updated: 2022/10/16 13:44:40 by fabet            ###   ########.fr       */
+/*   Created: 2022/10/16 16:40:44 by fabet             #+#    #+#             */
+/*   Updated: 2022/10/16 16:40:46 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char **argv, char **envp)
 	(void)argv;
 	if (argc != 1)
 	{
-		printf("Error! Invalid number of arguments.\n");
+		printf("Error! Inavalid number of arguments.\n");
 		exit(0);
 	}
 	tools.envp = ft_arrdup(envp);

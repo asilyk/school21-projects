@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/19 18:40:10 by fabet             #+#    #+#             */
-/*   Updated: 2022/10/16 13:45:33 by fabet            ###   ########.fr       */
+/*   Created: 2022/10/16 16:38:52 by fabet             #+#    #+#             */
+/*   Updated: 2022/10/16 16:38:54 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,24 @@
 
 # include <stdio.h>
 # include <stdlib.h>
-# include <stdbool.h>
-# include <readline/readline.h>
+# include <string.h>
+# include <fcntl.h>
 # include <unistd.h>
-# include "libft.h"
-# include "utilities.h"
-# include "parser.h"
-# include "structures.h"
+# include <readline/readline.h>
+# include <readline/history.h>
+# include <stdbool.h>
+# include <dirent.h>
 
-int	ft_minishell_loop(t_tools *tools);
+# include "libft.h"
+# include "structures.h"
+# include "parser.h"
+# include "utilities.h"
+# include "error.h"
+# include "lexer.h"
+# include "builtins.h"
+# include "executor.h"
+# include "expander.h"
+
+int				ft_minishell_loop(t_tools *tools);
 
 #endif

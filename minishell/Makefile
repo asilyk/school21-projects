@@ -63,17 +63,60 @@ LIBFT_HEADER	=	libft/libft.h
 
 INCLUDES		=	-Iincludes -I$(LIBFT_DIR) -I$(READLINE_DIR)/include
 
-HEADERS			=	includes/minishell.h \
+HEADERS			=	includes/builtins.h \
+					includes/error.h \
+					includes/executor.h \
+					includes/lexer.h \
+					includes/minishell.h \
+					includes/parser.h \
 					includes/utilities.h \
-					includes/parser.h
+					includes/expander.h \
+					includes/structures.h
 
 SOURCES			=	sources/main.c \
 					sources/ft_minishell_loop.c \
+					 \
+					sources/lexer/ft_handle_quotes.c \
+					sources/lexer/ft_handle_token.c \
+					sources/lexer/ft_token_reader.c \
+					sources/lexer/ft_lexer_clear_utilities.c \
+					sources/lexer/ft_lexer_utilities.c \
+					 \
+					sources/parser/ft_rm_redirections.c \
+					sources/parser/ft_start_parser.c \
+					sources/parser/ft_parse_envp.c \
+					sources/parser/parser_utilities.c \
+					 \
+					sources/builtins/builtins.c \
+					sources/builtins/ft_cd.c \
+					sources/builtins/ft_echo.c \
+					sources/builtins/ft_env.c \
+					sources/builtins/ft_exit.c \
+					sources/builtins/ft_export.c \
+					sources/builtins/ft_pwd.c \
+					sources/builtins/ft_unset.c \
+					 \
+					sources/utilities/ft_signals.c \
+					sources/utilities/t_simple_cmds_utilities.c \
 					sources/utilities/ft_arrdup.c \
 					sources/utilities/ft_free_arr.c \
-					sources/utilities/ft_handle_signals.c \
-					sources/utilities/ft_init_tools.c \
-					sources/parser/ft_parse_envp.c
+					sources/utilities/ft_quotes.c \
+					sources/utilities/ft_tools.c \
+					sources/utilities/ft_check_valid_identifier.c \
+					sources/utilities/ft_equal_sign.c \
+					sources/utilities/ft_resplit_str.c \
+					 \
+					sources/error/error_handling.c \
+					sources/error/ft_error.c \
+					 \
+					sources/executor/ft_check_redirections.c \
+					sources/executor/ft_start_executor.c \
+					sources/executor/ft_handle_cmd.c \
+					sources/executor/ft_heredoc.c \
+					sources/executor/ft_prepare_executor.c \
+					 \
+					sources/expander/ft_start_expander.c \
+					sources/expander/expanders_utilities.c
 
 $(NAME): $(SOURCES) $(HEADERS) $(LIBFT_SOURCES) $(LIBFT_HEADER)
 	make -C $(LIBFT_DIR)

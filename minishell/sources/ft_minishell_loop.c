@@ -5,27 +5,35 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/22 20:31:01 by fabet             #+#    #+#             */
-/*   Updated: 2022/10/16 13:53:54 by fabet            ###   ########.fr       */
+/*   Created: 2022/10/16 16:40:41 by fabet             #+#    #+#             */
+/*   Updated: 2022/10/16 16:40:43 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "utilities.h"
 
 int	ft_minishell_loop(t_tools *tools)
 {
-	char	*tmp;
+	char	*temp;
 
 	tools->args = readline("ms$ ");
-	tmp = ft_strtrim(tools->args, " ");
+	temp = ft_strtrim(tools->args, " ");
 	free(tools->args);
-	tools->args = tmp;
+	tools->args = temp;
 	if (!tools->args)
 	{
-		printf("wtf");
 		ft_putendl_fd("exit", STDOUT_FILENO);
 		exit(EXIT_SUCCESS);
 	}
-	printf("ARGS: %s |\n", tools->args);
+	if (tools->args[0] == '\0')
+		return (ft_reset_tools(tools));
+	add_history(tools->args);
+	if (!ft_count_quotes(tools->args))
+		return (ft_error(2, tools));
+	if (!ft_token_reader(tools))
+		return (ft_error(1, tools));
+	ft_start_parser(tools);
+	ft_prepare_executor(tools);
+	ft_reset_tools(tools);
 	return (1);
 }

@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_arrdup.c                                        :+:      :+:    :+:   */
+/*   ft_prepare_executor.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 16:40:16 by fabet             #+#    #+#             */
-/*   Updated: 2022/10/16 16:40:18 by fabet            ###   ########.fr       */
+/*   Created: 2022/10/16 16:39:40 by fabet             #+#    #+#             */
+/*   Updated: 2022/10/16 16:39:42 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utilities.h"
+#include "executor.h"
 
-char	**ft_arrdup(char **arr)
+int	ft_prepare_executor(t_tools *tools)
 {
-	char	**result;
-	size_t	i;
-
-	i = 0;
-	while (arr[i] != NULL)
-		i++;
-	result = ft_calloc(sizeof(char *), i + 1);
-	if (!result)
-		return (NULL);
-	i = 0;
-	while (arr[i] != NULL)
+	signal(SIGQUIT, ft_sigquit_handler);
+	g_global.in_cmd = 1;
+	if (tools->pipes == 0)
+		ft_single_cmd(tools->simple_cmds, tools);
+	else
 	{
-		result[i] = ft_strdup(arr[i]);
-		if (result[i] == NULL)
-		{
-			ft_free_arr(result);
-			return (result);
-		}
-		i++;
+		tools->pid = ft_calloc(sizeof(int), tools->pipes + 2);
+		if (!tools->pid)
+			return (ft_error(1, tools));
+		ft_start_executor(tools);
 	}
-	return (result);
+	g_global.in_cmd = 0;
+	return (EXIT_SUCCESS);
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/19 21:02:57 by fabet             #+#    #+#             */
-/*   Updated: 2022/10/15 19:15:15 by fabet            ###   ########.fr       */
+/*   Created: 2022/10/16 16:38:58 by fabet             #+#    #+#             */
+/*   Updated: 2022/10/16 16:39:00 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,14 @@ typedef struct s_lexer
 	struct s_lexer	*prev;
 }	t_lexer;
 
+typedef struct s_parser_tools
+{
+	t_lexer			*lexer_list;
+	t_lexer			*redirections;
+	int				num_redirections;
+	struct s_tools	*tools;
+}	t_parser_tools;
+
 typedef struct s_tools
 {
 	char					*args;
@@ -47,6 +55,17 @@ typedef struct s_tools
 	bool					heredoc;
 	bool					reset;
 }	t_tools;
+
+typedef struct s_simple_cmds
+{
+	char					**str;
+	int						(*builtin)(t_tools *, struct s_simple_cmds *);
+	int						num_redirections;
+	char					*hd_file_name;
+	t_lexer					*redirections;
+	struct s_simple_cmds	*next;
+	struct s_simple_cmds	*prev;
+}	t_simple_cmds;
 
 typedef struct s_global
 {
