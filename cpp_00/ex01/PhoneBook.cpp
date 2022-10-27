@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:20:41 by fabet             #+#    #+#             */
-/*   Updated: 2022/10/27 12:51:04 by fabet            ###   ########.fr       */
+/*   Updated: 2022/10/27 14:16:58 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,16 +81,18 @@ void	PhoneBook::search(void) const
 	}
 	std::cout << "Enter the index of the contact you are looking for: ";
 	std::cin >> index;
+	std::cin.clear();
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	if (index >= this->counter || index < 0)
 	{
 		std::cout << "Error! Invalid index." << std::endl;
 		return;
 	}
 	std::cout
-			<< "First name: " << this->contacts[index].firstName
-			<< "Last name: " << this->contacts[index].lastName
-			<< "Nickname: " << this->contacts[index].nickName
-			<< "Phone number: " << this->contacts[index].phoneNumber
-			<< "Darkest secret: " << this->contacts[index].darkestSecret
+			<< "First name: " << this->contacts[index].firstName << std::endl
+			<< "Last name: " << this->contacts[index].lastName << std::endl
+			<< "Nickname: " << this->contacts[index].nickName << std::endl
+			<< "Phone number: " << this->contacts[index].phoneNumber << std::endl
+			<< "Darkest secret: " << this->contacts[index].darkestSecret << std::endl
 			<< std::endl;
 }

@@ -8,7 +8,7 @@ RM		= rm -f
 
 SOURCES	= main.cpp PhoneBook.cpp Contact.cpp
 
-$(NAME):
+$(NAME): $(SOURCES)
 	$(CPP) $(FLAGS) $(SOURCES) -o $(NAME)
 
 all:	$(NAME)

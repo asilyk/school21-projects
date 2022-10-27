@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:59:27 by fabet             #+#    #+#             */
-/*   Updated: 2022/10/27 12:34:23 by fabet            ###   ########.fr       */
+/*   Updated: 2022/10/27 15:00:19 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	printStartInfo(void)
 		<< "ADD: save a new contact." << std::endl
 		<< "SEARCH: display a specific contact." << std::endl
 		<< "EXIT: the program quits and the contacts are lost forever." << std::endl
-		<< "Any other input is discarded." << std::endl
+		<< "Any other input is discarded." << std::endl;
 }
 
 static void	getContactFields(std::string (&contactFields)[5])
@@ -82,66 +82,76 @@ int main()
 	}
 }
 
-// int main()
-// {
-// 	PhoneBook	phonebook;
-//
-// 	phonebook.addContact(
-// 						"Oleg",
-// 						"Tapov",
-// 						"rocker",
-// 						"212121",
-// 						"dfghjkl jqiwjjqwiqw"
-// 						);
-// 	phonebook.addContact(
-// 						"Alex",
-// 						"Gapov",
-// 						"goth",
-// 						"128121",
-// 						"sddsds dssd"
-// 						);
-// 	phonebook.addContact(
-// 						"Gavrik",
-// 						"Chepov",
-// 						"puker",
-// 						"12121233",
-// 						"qwwqwq wqqwqw"
-// 						);
-// 	phonebook.addContact(
-// 						"Papanya",
-// 						"Thcal",
-// 						"krolikkorolkrol",
-// 						"121498329283323893212",
-// 						"dsdssd ds"
-// 						);
-// 	phonebook.addContact(
-// 						"Happypoklonskiy",
-// 						"Iron",
-// 						"man",
-// 						"1455454",
-// 						"assasa"
-// 						);
-// 	phonebook.addContact(
-// 						"Wise",
-// 						"Tree",
-// 						"tree",
-// 						"121908",
-// 						"fgfdffddf"
-// 						);
-// 	phonebook.addContact(
-// 						"Gavrik",
-// 						"Chickov",
-// 						"chicka",
-// 						"466954854",
-// 						"qwwqwq wqqwqw"
-// 						);
-// 	phonebook.addContact(
-// 						"Hasbikalotuan",
-// 						"Abdurozev",
-// 						"hasbik",
-// 						"123323",
-// 						"sdssdd"
-// 						);
+int main()
+{
+	PhoneBook	phonebook;
 
-// 	phonebook.search();
-// }
+	phonebook.addContact(
+						"Oleg",
+						"Tapov",
+						"rocker",
+						"212121",
+						"dfghjkl jqiwjjqwiqw"
+						);
+	phonebook.addContact(
+						"Alex",
+						"Gapov",
+						"goth",
+						"128121",
+						"sddsds dssd"
+						);
+	phonebook.addContact(
+						"Gavrik",
+						"Chepov",
+						"puker",
+						"12121233",
+						"qwwqwq wqqwqw"
+						);
+	phonebook.addContact(
+						"Papanya",
+						"Thcal",
+						"krolikkorolkrol",
+						"121498329283323893212",
+						"dsdssd ds"
+						);
+	phonebook.addContact(
+						"Happypoklonskiy",
+						"Iron",
+						"man",
+						"1455454",
+						"assasa"
+						);
+	phonebook.addContact(
+						"Wise",
+						"Tree",
+						"tree",
+						"121908",
+						"fgfdffddf"
+						);
+	phonebook.addContact(
+						"Gavrik",
+						"Chickov",
+						"chicka",
+						"466954854",
+						"qwwqwq wqqwqw"
+						);
+	phonebook.addContact(
+						"Hasbikalotuan",
+						"Abdurozev",
+						"hasbik",
+						"123323",
+						"sdssdd"
+						);
+
+	phonebook.search();
+
+	phonebook.addContact(
+						"NewUSER",
+						"Ghaikov",
+						"gaschop",
+						"9298239823",
+						"sdswkljwssjswjsjswsdd"
+						);
+
+	phonebook.search();
+}
