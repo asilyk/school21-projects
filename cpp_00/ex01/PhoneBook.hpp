@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:10:58 by fabet             #+#    #+#             */
-/*   Updated: 2022/10/26 22:00:18 by fabet            ###   ########.fr       */
+/*   Updated: 2022/10/27 20:34:13 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 class PhoneBook
 {
 private:
-	Contact	contacts[8];
-	size_t	counter;
+	Contact	_contacts[8];
+	size_t	_counter;
 
 public:
 	PhoneBook(void);

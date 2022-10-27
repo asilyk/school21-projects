@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:20:41 by fabet             #+#    #+#             */
-/*   Updated: 2022/10/27 14:16:58 by fabet            ###   ########.fr       */
+/*   Updated: 2022/10/27 20:34:13 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 PhoneBook::PhoneBook(void)
 {
-	this->counter = 0;
+	this->_counter = 0;
 }
 
 void	PhoneBook::addContact(
@@ -30,8 +30,8 @@ void	PhoneBook::addContact(
 	if (i > 7)
 		i = 0;
 	else
-		this->counter++;
-	this->contacts[i] = Contact(
+		this->_counter++;
+	this->_contacts[i] = Contact(
 								i,
 								firstName,
 								lastName,
@@ -68,13 +68,13 @@ void	PhoneBook::search(void) const
 
 	printHeader();
 
-	while (i < this->counter)
+	while (i < this->_counter)
 	{
-		std::cout << "|" << std::setw(10) << this->contacts[i].index;
+		std::cout << "|" << std::setw(10) << this->_contacts[i].index;
 		std::cout
-			<< "|" << std::setw(10) << truncate(this->contacts[i].firstName)
-			<< "|" << std::setw(10) << truncate(this->contacts[i].lastName)
-			<< "|" << std::setw(10) << truncate(this->contacts[i].nickName)
+			<< "|" << std::setw(10) << truncate(this->_contacts[i].firstName)
+			<< "|" << std::setw(10) << truncate(this->_contacts[i].lastName)
+			<< "|" << std::setw(10) << truncate(this->_contacts[i].nickName)
 			<< "|" << std::endl;
 		std::cout << "|-------------------------------------------|" << std::endl;
 		i++;
@@ -83,16 +83,16 @@ void	PhoneBook::search(void) const
 	std::cin >> index;
 	std::cin.clear();
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	if (index >= this->counter || index < 0)
+	if (index >= this->_counter || index < 0)
 	{
 		std::cout << "Error! Invalid index." << std::endl;
 		return;
 	}
 	std::cout
-			<< "First name: " << this->contacts[index].firstName << std::endl
-			<< "Last name: " << this->contacts[index].lastName << std::endl
-			<< "Nickname: " << this->contacts[index].nickName << std::endl
-			<< "Phone number: " << this->contacts[index].phoneNumber << std::endl
-			<< "Darkest secret: " << this->contacts[index].darkestSecret << std::endl
+			<< "First name: " << this->_contacts[index].firstName << std::endl
+			<< "Last name: " << this->_contacts[index].lastName << std::endl
+			<< "Nickname: " << this->_contacts[index].nickName << std::endl
+			<< "Phone number: " << this->_contacts[index].phoneNumber << std::endl
+			<< "Darkest secret: " << this->_contacts[index].darkestSecret << std::endl
 			<< std::endl;
 }
