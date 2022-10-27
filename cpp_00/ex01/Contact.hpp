@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 14:51:23 by fabet             #+#    #+#             */
-/*   Updated: 2022/10/26 18:43:10 by fabet            ###   ########.fr       */
+/*   Updated: 2022/10/26 21:59:47 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@
 class Contact
 {
 public:
+	size_t		index;
+	std::string	firstName;
+	std::string	lastName;
+	std::string	nickName;
+	std::string	phoneNumber;
+	std::string	darkestSecret;
+
 	Contact(void);
 
 	Contact(
@@ -28,13 +35,6 @@ public:
 			std::string	phoneNumber,
 			std::string	darkestSecret
 			);
-
-	size_t		index;
-	std::string	firstName;
-	std::string	lastName;
-	std::string	nickName;
-	std::string	phoneNumber;
-	std::string	darkestSecret;
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:20:41 by fabet             #+#    #+#             */
-/*   Updated: 2022/10/26 19:09:06 by fabet            ###   ########.fr       */
+/*   Updated: 2022/10/27 12:51:04 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,8 @@ void	PhoneBook::addContact(
 	i++;
 }
 
-void	PhoneBook::search(void)
+static void	printHeader(void)
 {
-	size_t	i = 0;
-
 	std::cout << "|-------------------------------------------|" << std::endl;
 	std::cout
 		<< "|" << std::setw(10) << "index"
@@ -54,16 +52,45 @@ void	PhoneBook::search(void)
 		<< "|" << std::setw(10) << "nickname"
 		<< "|" << std::endl;
 	std::cout << "|-------------------------------------------|" << std::endl;
+}
+
+static std::string	truncate(std::string const str)
+{
+	if (str.length() > 10)
+		return (str.substr(0, 9) + ".");
+	return (str);
+}
+
+void	PhoneBook::search(void) const
+{
+	size_t	i = 0;
+	size_t	index;
+
+	printHeader();
 
 	while (i < this->counter)
 	{
 		std::cout << "|" << std::setw(10) << this->contacts[i].index;
 		std::cout
-		<< "|" << std::setw(10) << this->contacts[i].firstName.resize(10)
-		<< "|" << std::setw(10) << this->contacts[i].lastName.resize(10)
-		<< "|" << std::setw(10) << this->contacts[i].nickName.resize(10)
-		<< "|" << std::endl;
+			<< "|" << std::setw(10) << truncate(this->contacts[i].firstName)
+			<< "|" << std::setw(10) << truncate(this->contacts[i].lastName)
+			<< "|" << std::setw(10) << truncate(this->contacts[i].nickName)
+			<< "|" << std::endl;
 		std::cout << "|-------------------------------------------|" << std::endl;
 		i++;
 	}
+	std::cout << "Enter the index of the contact you are looking for: ";
+	std::cin >> index;
+	if (index >= this->counter || index < 0)
+	{
+		std::cout << "Error! Invalid index." << std::endl;
+		return;
+	}
+	std::cout
+			<< "First name: " << this->contacts[index].firstName
+			<< "Last name: " << this->contacts[index].lastName
+			<< "Nickname: " << this->contacts[index].nickName
+			<< "Phone number: " << this->contacts[index].phoneNumber
+			<< "Darkest secret: " << this->contacts[index].darkestSecret
+			<< std::endl;
 }

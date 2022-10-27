@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:10:58 by fabet             #+#    #+#             */
-/*   Updated: 2022/10/26 18:57:36 by fabet            ###   ########.fr       */
+/*   Updated: 2022/10/26 22:00:18 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 
 class PhoneBook
 {
+private:
+	Contact	contacts[8];
+	size_t	counter;
+
 public:
 	PhoneBook(void);
 
@@ -30,11 +34,7 @@ public:
 						std::string	darkestSecret
 						);
 
-	void	search(void);
-
-private:
-	Contact	contacts[8];
-	size_t	counter;
+	void	search(void) const;
 };
 
 #endif
