@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 15:55:32 by fabet             #+#    #+#             */
-/*   Updated: 2022/10/30 05:46:03 by fabet            ###   ########.fr       */
+/*   Updated: 2022/10/30 06:37:38 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,38 @@
 # include <fstream>
 # include <string>
 
-void	error(std::string error)
+static void	error(std::string error)
 {
 	std::cerr << "Error! " << error << std::endl;
 	exit(1);
 }
 
-int	main(int argc, char **argv)
+static void readContent(char const **argv, std::string &content)
 {
 	std::ifstream	ifs;
+	std::string		filename = argv[1];
+	char			ch;
+
+	ifs.open(filename, std::ifstream::in);
+	if (!ifs.is_open())
+		error("File does not exist.");
+	while (ifs.get(ch))
+		content += ch;
+	ifs.close();
+}
+
+
+static void	writeNewContent(char const **argv, std::string &content)
+{
 	std::ofstream	ofs;
 	std::string		filename = argv[1];
 	std::string		s1 = argv[2];
 	std::string		s2 = argv[3];
-	char			ch;
-	std::string		content = "";
 	size_t			found;
 
-	if (argc != 4)
-		error("Invalid number of arguments.");
-
-	ifs.open(argv[1], std::ifstream::in);
-	if (!ifs.is_open())
-		error("File does not exist.");
 	ofs.open(filename + ".replace", std::ifstream::out);
-
-	while (ifs.get(ch))
-		content += ch;
-
-	ifs.close();
-
+	if (!ofs.is_open())
+		error("File does not exist.");
 	found = content.find(s1);
 	while (found != std::string::npos)
 	{
@@ -53,5 +55,15 @@ int	main(int argc, char **argv)
 	}
 	ofs << content;
 	ofs.close();
+}
+
+int	main(int argc, char **argv)
+{
+	std::string		content = "";
+
+	if (argc != 4)
+		error("Invalid number of arguments.");
+	readContent(argv, content);
+	writeNewContent(argv, content);
 	return (0);
 }
