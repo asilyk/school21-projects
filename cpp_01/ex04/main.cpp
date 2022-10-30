@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 15:55:32 by fabet             #+#    #+#             */
-/*   Updated: 2022/10/30 06:37:38 by fabet            ###   ########.fr       */
+/*   Updated: 2022/10/30 06:39:32 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	writeNewContent(char const **argv, std::string &content)
 	ofs.close();
 }
 
-int	main(int argc, char **argv)
+int	main(int argc, char const **argv)
 {
 	std::string		content = "";
 
