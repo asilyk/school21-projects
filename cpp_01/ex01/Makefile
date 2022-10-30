@@ -6,9 +6,11 @@ FLAGS	= -Wall -Wextra -Werror -std=c++98
 
 RM		= rm -f
 
-SOURCES	= main.cpp Zombie.hpp Zombie.cpp zombieHorde.cpp
+SOURCES	= main.cpp Zombie.cpp zombieHorde.cpp
 
-$(NAME): $(SOURCES)
+HEADERS = Zombie.hpp
+
+$(NAME): $(SOURCES) $(HEADERS)
 	$(CPP) $(FLAGS) $(SOURCES) -o $(NAME)
 
 all:	$(NAME)
