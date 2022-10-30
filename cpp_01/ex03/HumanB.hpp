@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:10:43 by fabet             #+#    #+#             */
-/*   Updated: 2022/10/29 18:37:42 by fabet            ###   ########.fr       */
+/*   Updated: 2022/10/30 04:51:00 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@ public:
 	HumanB(std::string name);
 	~HumanB(void);
 	void	attack() const;
-	void	setWeapon(Weapon weapon);
+	void	setWeapon(Weapon &weapon);
+
 private:
-	Weapon		*_weapon;
 	std::string	_name;
+	Weapon		*_weapon;
 };
 
 #endif

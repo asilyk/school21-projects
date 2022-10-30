@@ -6,16 +6,14 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:18:14 by fabet             #+#    #+#             */
-/*   Updated: 2022/10/29 19:05:40 by fabet            ###   ########.fr       */
+/*   Updated: 2022/10/30 04:51:21 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanB.hpp"
 
-HumanB::HumanB(std::string name)
+HumanB::HumanB(std::string name) : _name(name), _weapon(NULL)
 {
-	this->_name = name;
-	this->_weapon = NULL;
 }
 
 HumanB::~HumanB(void)
@@ -30,7 +28,7 @@ void	HumanB::attack() const
 		std::cout << this->_name << " attacks with their " << this->_weapon->getType() << std::endl;
 }
 
-void	HumanB::setWeapon(Weapon weapon)
+void	HumanB::setWeapon(Weapon &weapon)
 {
 	this->_weapon = &weapon;
 }
