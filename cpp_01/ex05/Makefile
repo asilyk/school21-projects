@@ -1,4 +1,4 @@
-NAME	= weapon
+NAME	= harl
 
 CPP		= g++
 

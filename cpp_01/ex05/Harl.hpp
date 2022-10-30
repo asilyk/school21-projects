@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 06:46:00 by fabet             #+#    #+#             */
-/*   Updated: 2022/10/30 06:51:51 by fabet            ###   ########.fr       */
+/*   Updated: 2022/10/30 07:15:29 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 class Harl
 {
 public:
+	Harl();
+	~Harl();
 	void	complain(std::string level);
 
 private:
