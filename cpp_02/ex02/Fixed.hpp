@@ -27,6 +27,25 @@ public:
 	~Fixed();
 
 	Fixed	&operator=(Fixed const &rhs);
+	bool	operator>(Fixed fixed) const;
+	bool	operator<(Fixed fixed) const;
+	bool	operator>=(Fixed fixed) const;
+	bool	operator<=(Fixed fixed) const;
+	bool	operator==(Fixed fixed) const;
+	bool	operator!=(Fixed fixed) const;
+	float	operator+(Fixed fixed) const;
+	float	operator-(Fixed fixed) const;
+	float	operator*(Fixed fixed) const;
+	float	operator/(Fixed fixed) const;
+	Fixed	operator++();
+	Fixed	operator--();
+	Fixed	operator++(int);
+	Fixed	operator--(int);
+
+	static Fixed &min(Fixed &lhs, Fixed &rhs);
+	static const Fixed &min(Fixed const &lhs, Fixed const &rhs);
+	static Fixed &max(Fixed &lhs, Fixed &rhs);
+	static const Fixed &max(Fixed const &lhs, const Fixed &rhs);
 
 	int		getRawBits(void) const;
 	void	setRawBits(int const raw);
