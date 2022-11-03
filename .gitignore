@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/macos,visualstudiocode,c++,c,xcode,clion,cmake
-# Edit at https://www.toptal.com/developers/gitignore?templates=macos,visualstudiocode,c++,c,xcode,clion,cmake
+# Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,clion,macos,c,c++,cmake
+# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,clion,macos,c,c++,cmake
 
 ### C ###
 # Prerequisites
@@ -193,6 +193,7 @@ CMakeCache.txt
 CMakeFiles
 CMakeScripts
 Testing
+# Makefile
 cmake_install.cmake
 install_manifest.txt
 compile_commands.json
@@ -255,21 +256,4 @@ Temporary Items
 .history
 .ionide
 
-### Xcode ###
-## User settings
-xcuserdata/
-
-## Xcode 8 and earlier
-*.xcscmblueprint
-*.xccheckout
-
-### Xcode Patch ###
-*.xcodeproj/*
-!*.xcodeproj/project.pbxproj
-!*.xcodeproj/xcshareddata/
-!*.xcodeproj/project.xcworkspace/
-!*.xcworkspace/contents.xcworkspacedata
-/*.gcno
-**/xcshareddata/WorkspaceSettings.xcsettings
-
-# End of https://www.toptal.com/developers/gitignore/api/macos,visualstudiocode,c++,c,xcode,clion,cmake
+# End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,clion,macos,c,c++,cmake
