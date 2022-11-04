@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 07:11:20 by fabet             #+#    #+#             */
-/*   Updated: 2022/11/04 07:11:48 by fabet            ###   ########.fr       */
+/*   Updated: 2022/11/04 07:17:13 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 class AAnimal
 {
 public:
-	AAnimal();s
+	AAnimal();
 	AAnimal(const AAnimal &src);
 	virtual ~AAnimal();
 
