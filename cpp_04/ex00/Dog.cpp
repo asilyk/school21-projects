@@ -6,19 +6,19 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 07:14:45 by fabet             #+#    #+#             */
-/*   Updated: 2022/11/04 07:14:45 by fabet            ###   ########.fr       */
+/*   Updated: 2022/11/04 18:43:10 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-Dog::Dog()
+Dog::Dog(): Animal()
 {
 	this->_type = "Dog";
 	std::cout << "Dog default constructor was called." << std::endl;
 }
 
-Dog::Dog(const Dog &src)
+Dog::Dog(const Dog &src): Animal()
 {
 	std::cout << "Dog copy constructor was called." << std::endl;
 	*this = src;

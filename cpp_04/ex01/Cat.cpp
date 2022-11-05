@@ -6,20 +6,20 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 07:14:12 by fabet             #+#    #+#             */
-/*   Updated: 2022/11/04 07:14:13 by fabet            ###   ########.fr       */
+/*   Updated: 2022/11/04 18:44:16 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat()
+Cat::Cat(): Animal()
 {
 	this->_type = "Cat";
 	this->_brain = new Brain();
 	std::cout << "Cat default constructor was called." << std::endl;
 }
 
-Cat::Cat(const Cat &src)
+Cat::Cat(const Cat &src): Animal()
 {
 	std::cout << "Cat copy constructor was called." << std::endl;
 	*this = src;

@@ -6,19 +6,19 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 07:14:58 by fabet             #+#    #+#             */
-/*   Updated: 2022/11/04 07:14:58 by fabet            ###   ########.fr       */
+/*   Updated: 2022/11/04 18:43:48 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongCat.hpp"
 
-WrongCat::WrongCat()
+WrongCat::WrongCat(): WrongAnimal()
 {
 	this->_type = "WrongCat";
 	std::cout << "WrongCat default constructor was called." << std::endl;
 }
 
-WrongCat::WrongCat(const WrongCat &src)
+WrongCat::WrongCat(const WrongCat &src): WrongAnimal()
 {
 	std::cout << "WrongCat copy constructor was called." << std::endl;
 	*this = src;
