@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 07:11:34 by fabet             #+#    #+#             */
-/*   Updated: 2022/11/04 18:44:41 by fabet            ###   ########.fr       */
+/*   Updated: 2022/11/05 10:13:11 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ Dog	&Dog::operator=(Dog const &rhs)
 	if (this != &rhs)
 	{
 		this->_type = rhs._type;
-		this->_brain = rhs._brain;
+		this->_brain = new Brain(*rhs._brain);
 	}
 	return (*this);
 }
