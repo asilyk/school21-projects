@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 17:19:20 by fabet             #+#    #+#             */
-/*   Updated: 2022/11/07 14:22:15 by fabet            ###   ########.fr       */
+/*   Updated: 2022/11/07 14:46:40 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ Form::Form() : _name("Default"), _isSigned(false), _gradeToSign(1), _gradeToExec
 
 Form::Form(std::string name, int gradeToSign, int gradeToExecute) : _name(name), _isSigned(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute)
 {
-	if (this->getGradeToSign() <= 1 || this->getGradeToExecute() <= 1)
+	if (this->getGradeToSign() < 1 || this->getGradeToExecute() < 1)
 		throw Form::GradeTooHighException();
-	if (this->getGradeToSign() >= 150 || this->getGradeToExecute() >= 150)
+	if (this->getGradeToSign() > 150 || this->getGradeToExecute() > 150)
 		throw Form::GradeTooLowException();
 	std::cout << this->getName() << " Form is created!" << std::endl;
 }
