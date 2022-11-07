@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 17:19:20 by fabet             #+#    #+#             */
-/*   Updated: 2022/11/04 19:05:46 by fabet            ###   ########.fr       */
+/*   Updated: 2022/11/07 14:22:15 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,28 +19,28 @@ Form::Form() : _name("Default"), _isSigned(false), _gradeToSign(1), _gradeToExec
 
 Form::Form(std::string name, int gradeToSign, int gradeToExecute) : _name(name), _isSigned(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute)
 {
-	if (this->_gradeToSign <= 1 || this->_gradeToExecute <= 1)
+	if (this->getGradeToSign() <= 1 || this->getGradeToExecute() <= 1)
 		throw Form::GradeTooHighException();
-	if (this->_gradeToSign >= 150 || this->_gradeToExecute >= 150)
+	if (this->getGradeToSign() >= 150 || this->getGradeToExecute() >= 150)
 		throw Form::GradeTooLowException();
-	std::cout << this->_name << " Form is created!" << std::endl;
+	std::cout << this->getName() << " Form is created!" << std::endl;
 }
 
 Form::Form(Form const &src): _name(src.getName()), _isSigned(false), _gradeToSign(src.getGradeToSign()), _gradeToExecute(src.getGradeToExecute())
 {
-	std::cout << this->_name << " Form is created with copy constructor!" << std::endl;
+	std::cout << this->getName() << " Form is created with copy constructor!" << std::endl;
 	*this = src;
 }
 
 Form::~Form()
 {
-	std::cout << "Form " << this->_name << " is destroyed!" << std::endl;
+	std::cout << "Form " << this->getName() << " is destroyed!" << std::endl;
 }
 
 Form	&Form::operator=(Form const &rhs)
 {
 	if (this != &rhs)
-		this->_isSigned = rhs._isSigned;
+		this->_isSigned = rhs.getIsSigned();
 	return (*this);
 }
 
@@ -64,9 +64,9 @@ int	Form::getGradeToExecute() const
 	return (this->_gradeToExecute);
 }
 
-void	Form::beSigned(Bureaucrat *bureaucrat)
+void	Form::beSigned(Bureaucrat const &bureaucrat)
 {
-	if (bureaucrat->getGrade() > this->_gradeToSign)
+	if (bureaucrat.getGrade() > this->getGradeToSign())
 		throw Bureaucrat::GradeTooLowException();
 	this->_isSigned = true;
 }

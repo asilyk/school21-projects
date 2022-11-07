@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 15:09:55 by fabet             #+#    #+#             */
-/*   Updated: 2022/11/04 19:20:05 by fabet            ###   ########.fr       */
+/*   Updated: 2022/11/07 14:25:38 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	main(void)
 {
+	std::cout << "-----------TEST 1------------" << std::endl;
 	{
 		try
 		{
@@ -27,9 +28,9 @@ int	main(void)
 			std::cout << form2 << std::endl;
 			std::cout << form3 << std::endl;
 
-			bureaucrat->signForm(form1);
-			bureaucrat->signForm(form2);
-			form3->beSigned(bureaucrat);
+			bureaucrat->signForm(*form1);
+			bureaucrat->signForm(*form2);
+			form3->beSigned(*bureaucrat);
 			std::cout << form3 << std::endl;
 
 			delete bureaucrat;
@@ -42,6 +43,7 @@ int	main(void)
 			std::cout << e.what() << std::endl;
 		}
 	}
+	std::cout << "-----------TEST 2------------" << std::endl;
 	{
 		try
 		{
@@ -56,6 +58,7 @@ int	main(void)
 			std::cout << e.what() << std::endl;
 		}
 	}
+	std::cout << "-----------TEST 3------------" << std::endl;
 	{
 		try
 		{
@@ -70,6 +73,7 @@ int	main(void)
 			std::cout << e.what() << std::endl;
 		}
 	}
+	std::cout << "-----------TEST 4------------" << std::endl;
 	{
 		try
 		{
@@ -78,7 +82,7 @@ int	main(void)
 
 			std::cout << bureaucrat << std::endl;
 			std::cout << form << std::endl;
-			form->beSigned(bureaucrat);
+			form->beSigned(*bureaucrat);
 			std::cout << form << std::endl;
 
 			delete bureaucrat;

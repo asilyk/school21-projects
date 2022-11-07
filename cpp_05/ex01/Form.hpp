@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 17:19:18 by fabet             #+#    #+#             */
-/*   Updated: 2022/11/04 18:57:12 by fabet            ###   ########.fr       */
+/*   Updated: 2022/11/07 12:16:41 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ public:
 	int			getGradeToSign() const;
 	int			getGradeToExecute() const;
 
-	void beSigned(Bureaucrat *bureaucrat);
+	void beSigned(Bureaucrat const &bureaucrat);
 
 	class GradeTooHighException : public std::exception
 	{

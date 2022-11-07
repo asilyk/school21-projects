@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 15:09:57 by fabet             #+#    #+#             */
-/*   Updated: 2022/11/04 18:57:21 by fabet            ###   ########.fr       */
+/*   Updated: 2022/11/07 14:40:16 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ public:
 	void	incrementGrade();
 	void	decrementGrade();
 
-	void	signForm(Form *form);
+	void	signForm(Form &form);
 
 	class GradeTooHighException : public std::exception
 	{
