@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 15:09:55 by fabet             #+#    #+#             */
-/*   Updated: 2022/11/04 17:12:51 by fabet            ###   ########.fr       */
+/*   Updated: 2022/11/07 14:14:44 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	main(void)
 {
+	std::cout << "-----------TEST 1------------" << std::endl;
 	{
 		try
 		{
@@ -30,6 +31,7 @@ int	main(void)
 			std::cout << e.what() << std::endl;
 		}
 	}
+	std::cout << "-----------TEST 2------------" << std::endl;
 	{
 		try
 		{
@@ -42,6 +44,7 @@ int	main(void)
 			std::cout << e.what() << std::endl;
 		}
 	}
+	std::cout << "-----------TEST 3------------" << std::endl;
 	{
 		try
 		{
@@ -54,6 +57,7 @@ int	main(void)
 			std::cout << e.what() << std::endl;
 		}
 	}
+	std::cout << "-----------TEST 4------------" << std::endl;
 	{
 		try
 		{
@@ -68,6 +72,7 @@ int	main(void)
 			std::cout << e.what() << std::endl;
 		}
 	}
+	std::cout << "-----------TEST 5------------" << std::endl;
 	{
 		try
 		{

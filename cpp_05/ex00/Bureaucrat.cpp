@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 15:09:59 by fabet             #+#    #+#             */
-/*   Updated: 2022/11/04 17:07:25 by fabet            ###   ########.fr       */
+/*   Updated: 2022/11/07 13:42:52 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,28 +19,28 @@ Bureaucrat::Bureaucrat() : _name("Default"), _grade(150)
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 {
-	if (this->_grade <= 1)
+	if (this->getGrade() < 1)
 		throw Bureaucrat::GradeTooHighException();
-	if (this->_grade >= 150)
+	if (this->getGrade() > 150)
 		throw Bureaucrat::GradeTooLowException();
-	std::cout << this->_name << " Bureaucrat is created!" << std::endl;
+	std::cout << this->getName() << " Bureaucrat is created!" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat const &src)
 {
-	std::cout << this->_name << " Bureaucrat is created with copy constructor!" << std::endl;
+	std::cout << this->getName() << " Bureaucrat is created with copy constructor!" << std::endl;
 	*this = src;
 }
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << "Bureaucrat " << this->_name << " is destroyed!" << std::endl;
+	std::cout << "Bureaucrat " << this->getName() << " is destroyed!" << std::endl;
 }
 
 Bureaucrat	&Bureaucrat::operator=(Bureaucrat const &rhs)
 {
 	if (this != &rhs)
-		this->_grade = rhs._grade;
+		this->_grade = rhs.getGrade();
 	return (*this);
 }
 
@@ -56,14 +56,14 @@ int	Bureaucrat::getGrade() const
 
 void	Bureaucrat::incrementGrade()
 {
-	if (this->_grade <= 1)
+	if (this->getGrade() <= 1)
 		throw Bureaucrat::GradeTooHighException();
 	this->_grade--;
 }
 
 void	Bureaucrat::decrementGrade()
 {
-	if (this->_grade >= 150)
+	if (this->getGrade() >= 150)
 		throw Bureaucrat::GradeTooLowException();
 	this->_grade++;
 }
