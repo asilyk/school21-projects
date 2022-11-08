@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 13:01:21 by fabet             #+#    #+#             */
-/*   Updated: 2022/11/08 14:15:29 by fabet            ###   ########.fr       */
+/*   Updated: 2022/11/08 18:46:47 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ Conversion::Conversion(const std::string input): _input(input)
 
 Conversion::Conversion(const Conversion &src): _input(src.getInput())
 {
-	// std::cout << "Conversion is destroyed!" << std::endl;
+	// std::cout << "Conversion is created with copy constructor!" << std::endl;
 	*this = src;
 }
 
 Conversion::~Conversion()
 {
-	// std::cout << "Conversion Deconstructor called" << std::endl;
+	// std::cout << "Conversion is destroyed!" << std::endl;
 }
 
 Conversion	&Conversion::operator=(const Conversion &rhs)

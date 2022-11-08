@@ -1,4 +1,4 @@
-NAME	= serialization
+NAME	= conversion
 
 CPP		= c++
 
@@ -6,9 +6,9 @@ FLAGS	= -Wall -Wextra -Werror -std=c++98
 
 RM		= rm -f
 
-SOURCES	= main.cpp Data.cpp
+SOURCES	= main.cpp Conversion.cpp
 
-HEADERS = Data.hpp
+HEADERS = Conversion.hpp
 
 $(NAME): $(SOURCES) $(HEADERS)
 	$(CPP) $(FLAGS) $(SOURCES) -o $(NAME)

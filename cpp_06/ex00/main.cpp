@@ -5,21 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 18:37:35 by fabet             #+#    #+#             */
-/*   Updated: 2022/11/08 19:01:34 by fabet            ###   ########.fr       */
+/*   Created: 2022/11/08 12:54:36 by fabet             #+#    #+#             */
+/*   Updated: 2022/11/08 14:12:50 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Data.hpp"
+#include "Conversion.hpp"
 
-int	main()
+int main(int argc, char **argv)
 {
-	Data *data = new Data("Hello");
-	std::cout << "Data *data: " << data << ", " << data->getData() << std::endl;
-	uintptr_t ptr = serialize(data);
-	std::cout << "uintptr_t ptr: " << ptr << std::endl;
-	Data *newData = deserialize(ptr);
-	std::cout << "Data *newData: " << newData << ", " << newData->getData() << std::endl;
-	delete data;
+	if (argc != 2)
+	{
+		std::cerr << "Error! Invalid number of arguments." << std::endl;
+		return (1);
+	}
+	try
+	{
+		Conversion *conversion = new Conversion(argv[1]);
+		std::cout << conversion;
+		delete conversion;
+	}
+	catch(const Conversion::InvalidTypeException& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 	return (0);
 }
