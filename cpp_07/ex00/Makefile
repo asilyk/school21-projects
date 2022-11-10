@@ -8,7 +8,7 @@ RM		= rm -f
 
 SOURCES	= main.cpp
 
-HEADERS =
+HEADERS = whatever.hpp
 
 $(NAME): $(SOURCES) $(HEADERS)
 	$(CPP) $(FLAGS) $(SOURCES) -o $(NAME)

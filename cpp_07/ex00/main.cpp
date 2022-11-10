@@ -6,35 +6,12 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:21:12 by fabet             #+#    #+#             */
-/*   Updated: 2022/11/09 19:58:17 by fabet            ###   ########.fr       */
+/*   Updated: 2022/11/10 15:10:14 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-
-template<typename T>
-void	swap(T &lhs, T &rhs)
-{
-	T temp = lhs;
-	lhs = rhs;
-	rhs = temp;
-}
-
-template<typename T>
-T	const &min(const T &lhs, const T &rhs)
-{
-	if (lhs < rhs)
-		return (lhs);
-	return (rhs);
-}
-
-template<typename T>
-T	const &max(const T &lhs, const T &rhs)
-{
-	if (lhs > rhs)
-		return (lhs);
-	return (rhs);
-}
+#include "whatever.hpp"
 
 int	main()
 {
@@ -56,3 +33,36 @@ int	main()
 
 	return 0;
 }
+
+// class Awesome
+// {
+// public:
+// 	Awesome() : _n(0) {}
+// 	Awesome(int n) : _n( n ) {}
+// 	Awesome	&operator=(Awesome &a) { _n = a._n; return *this; }
+// 	bool	operator==(Awesome const &rhs) const { return (this->_n == rhs._n); }
+// 	bool	operator!=(Awesome const &rhs) const{ return (this->_n != rhs._n); }
+// 	bool	operator>(Awesome const &rhs) const { return (this->_n > rhs._n); }
+// 	bool	operator<(Awesome const &rhs) const { return (this->_n < rhs._n); }
+// 	bool	operator>=(Awesome const &rhs) const { return (this->_n >= rhs._n); }
+// 	bool	operator<=(Awesome const &rhs) const { return (this->_n <= rhs._n); }
+
+// 	int	get_n() const { return _n; }
+
+// private:
+// 	int	_n;
+// };
+
+// std::ostream & operator<<(std::ostream & o, const Awesome &a) { o << a.get_n(); return o; }
+
+// int main(void)
+// {
+// 	Awesome a(2), b(4);
+
+// 	swap(a, b);
+// 	std::cout << a << " " << b << std::endl;
+// 	std::cout << max(a, b) << std::endl;
+// 	std::cout << min(a, b) << std::endl;
+
+// 	return (0);
+// }
