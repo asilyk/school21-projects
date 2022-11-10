@@ -1,5 +1,16 @@
-#include <iostream>
-#include <Array.hpp>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/10 16:29:37 by fabet             #+#    #+#             */
+/*   Updated: 2022/11/10 16:42:23 by fabet            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "Array.tpp"
 
 #define MAX_VAL 750
 int main(int, char**)
@@ -47,6 +58,7 @@ int main(int, char**)
     for (int i = 0; i < MAX_VAL; i++)
     {
         numbers[i] = rand();
+        std::cout   <<  "numbers["  <<  i   <<  "] = "  <<  numbers[i]  <<  std::endl;
     }
     delete [] mirror;//
     return 0;

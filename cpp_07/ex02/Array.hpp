@@ -1,33 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iter.hpp                                           :+:      :+:    :+:   */
+/*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/09 18:32:29 by fabet             #+#    #+#             */
-/*   Updated: 2022/11/10 16:06:29 by fabet            ###   ########.fr       */
+/*   Created: 2022/11/10 16:07:16 by fabet             #+#    #+#             */
+/*   Updated: 2022/11/10 16:40:06 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ITER_HPP
-# define ITER_HPP
+#ifndef ARRAY_HPP
+# define ARRAY_HPP
 
 # include <iostream>
 
 template<typename T>
-void	print(T const &element)
+class Array
 {
-	std::cout << element << std::endl;
-}
+public:
+	Array();
+	Array(int size);
+	Array(const Array &src);
+	~Array();
 
-template<typename T>
-void	iter(T *array, int len, void (*func)(T const &))
-{
-	if (array == NULL || func == NULL || len < 1)
-		return ;
-	for (int i = 0; i < len; i++)
-		func(array[i]);
-}
+	Array	&operator=(const Array &src);
+	T	&operator[](int index) const;
+
+	int	getSize() const;
+
+	class InvalidIndexException : public std::exception
+	{
+	public:
+		virtual const char	*what() const throw();
+	};
+
+private:
+	T				*_array;
+	int				_size;
+};
 
 #endif
