@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 12:11:52 by fabet             #+#    #+#             */
-/*   Updated: 2022/11/11 14:41:19 by fabet            ###   ########.fr       */
+/*   Updated: 2022/11/11 17:34:45 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,15 +110,15 @@ std::vector<int>	Span::getStorage() const
 
 const char	*Span::VectorInvalidException::what() const throw()
 {
-	return ("Error: Invalid or broken vector");
+	return ("Error! Invalid or broken vector!");
 }
 
 const char	*Span::ArrayFullException::what() const throw()
 {
-	return ("Error: Array full");
+	return ("Error! Vector is full!");
 }
 
 const char	*Span::ComparisonInvalidException::what() const throw()
 {
-	return ("Error: more than one element in vector needed to be compared");
+	return ("Error! More than one element in vector needed to be compared.");
 }
