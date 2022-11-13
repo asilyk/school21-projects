@@ -1,6 +1,8 @@
 # Created by https://www.toptal.com/developers/gitignore/api/c,clion,visualstudiocode,cmake
 # Edit at https://www.toptal.com/developers/gitignore?templates=c,clion,visualstudiocode,cmake
 
+.DS_Store
+
 ### C ###
 # Prerequisites
 *.d
