@@ -6,17 +6,17 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 13:48:11 by fabet             #+#    #+#             */
-/*   Updated: 2022/11/12 14:43:36 by fabet            ###   ########.fr       */
+/*   Updated: 2022/11/12 23:07:29 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-typedef int color;
+typedef unsigned int color;
 
-# define WINDOW_HEIGHT	1920
-# define WINDOW_WIDTH	1080
+# define WINDOW_HEIGHT	400
+# define WINDOW_WIDTH	600
 
 # define ON_DESTROY	17
 # define NoEventMask	(1L<<12)

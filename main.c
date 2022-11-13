@@ -6,7 +6,7 @@
 /*   By: fabet <fabet@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 13:33:44 by fabet             #+#    #+#             */
-/*   Updated: 2022/11/12 15:11:48 by fabet            ###   ########.fr       */
+/*   Updated: 2022/11/12 23:15:46 by fabet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int	ft_end_game(t_game	*game)
 	return (0);
 }
 
-int	ft_create_trgb(int t, int r, int g, int b)
+unsigned int	ft_create_trgb(unsigned int t, unsigned int r, unsigned int g, unsigned int b)
 {
-	return (t << 24 | r << 16 | g << 8 | b);
+	return(t << 24 | r << 16 | g << 8 | b);
 }
 
 void	ft_draw_floor_and_ceilling(t_game	*game)
@@ -53,7 +53,32 @@ void	ft_draw_floor_and_ceilling(t_game	*game)
 
 int	ft_draw(t_game	*game)
 {
-	ft_draw_floor_and_ceilling(game);
+	// ft_draw_floor_and_ceilling(game);
+	int color = 0xABCDEF;
+
+	if (game->bits_per_pixel != 32)
+		color = mlx_get_color_value(game->mlx, color);
+
+	for(int y = 0; y < WINDOW_HEIGHT; ++y)
+		for(int x = 0; x < WINDOW_WIDTH; ++x)
+		{
+			int pixel = (y * game->size_line) + (x * 4);
+
+			if (game->endian == 1)
+			{
+				game->image_data[pixel + 0] = (color >> 24);
+				game->image_data[pixel + 1] = (color >> 16) & 0xFF;
+				game->image_data[pixel + 2] = (color >> 8) & 0xFF;
+				game->image_data[pixel + 3] = (color) & 0xFF;
+			}
+			else if (game->endian == 0)
+			{
+				game->image_data[pixel + 0] = (color) & 0xFF;
+				game->image_data[pixel + 1] = (color >> 8) & 0xFF;
+				game->image_data[pixel + 2] = (color >> 16) & 0xFF;
+				game->image_data[pixel + 3] = (color >> 24);
+			}
+		}
 	mlx_put_image_to_window(game->mlx, game->win,game->image, 0, 0);
 	return (0);
 }
@@ -63,18 +88,18 @@ t_game	*ft_init_game()
 	t_game	*game = malloc(sizeof(t_game));
 
 	game->mlx = mlx_init();
-	game->win = mlx_new_window(game->mlx, WINDOW_HEIGHT, WINDOW_WIDTH, "cub3d");
+	game->win = mlx_new_window(game->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "cub3d");
 	game->floor_color = ft_create_trgb(50, 0, 100, 0);
 	game->ceilling_color = ft_create_trgb(50, 100, 100, 255);
 	game->image = mlx_new_image(game->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
 	game->image_data = mlx_get_data_addr(game->image, &game->bits_per_pixel, &game->size_line, &game->endian);
-	ft_draw(game);
 	return (game);
 }
 
 int	main()
 {
 	t_game	*game = ft_init_game();
+	ft_draw(game);
 	mlx_hook(game->win, ON_DESTROY, NoEventMask, ft_end_game, game);
 	mlx_loop(game->mlx);
 }
